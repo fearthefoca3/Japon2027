@@ -254,6 +254,8 @@ footer{border-top:1px solid var(--rule);padding-block:20px 40px;font-size:12.5px
 .timeline .seg span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
 .timeline .seg i{font-style:normal;font-family:var(--f-mono);opacity:.9}
 @media (max-width:640px){.timeline{flex-wrap:wrap}.timeline .seg{flex:1 1 30%!important}}
+.lk{white-space:nowrap}
+.lk .mini{font-size:12.5px;font-weight:500;margin-right:10px}
 .stnum{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 .stay{scroll-margin-top:70px}
 
@@ -900,6 +902,9 @@ const fmtN = n => { try{ return Math.round(n).toLocaleString('es-ES',{useGroupin
 const yen = n => fmtN(n) + ' ¥';
 const eur = n => fmtN(n) + ' €';
 const stayById = id => STAYS.find(s => s.id === id);
+const bkUrl = s => `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(s.q)}&checkin=${s.in}&checkout=${s.out}&group_adults=${TRIP.travellers}&no_rooms=1`;
+const abUrl = s => `https://www.airbnb.es/s/${encodeURIComponent(s.q)}/homes?checkin=${s.in}&checkout=${s.out}&adults=${TRIP.travellers}`;
+const stayLinks = (s, cls='btn') => `<a class="${cls}" href="${bkUrl(s)}" target="_blank" rel="noopener">Booking ↗</a><a class="${cls}" href="${abUrl(s)}" target="_blank" rel="noopener">Airbnb ↗</a>`;
 const color = reg => REGION[reg] || 'var(--ai)';
 const links = t => t.replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, (_,a,b) => `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(b)}" target="_blank" rel="noopener">${a}</a>`);
 const phUrl = (f, w) => `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(f)}?width=${w}`;
@@ -994,7 +999,7 @@ function vDias(){
     if(s){
       const tot = nights(s.in, s.out), ni = nights(s.in, d.d) + 1, si = STAYS.indexOf(s) + 1;
       sleep = d.d === s.in
-        ? `<div class="sleep change"><b>${si===1?'Check-in':'Cambio de alojamiento'}</b> · alojamiento ${si} en ${esc(s.name)}, ${tot} ${tot===1?'noche':'noches'} en el mismo sitio</div>`
+        ? `<div class="sleep change"><b>${si===1?'Check-in':'Cambio de alojamiento'}</b> · alojamiento ${si} en ${esc(s.name)}, ${tot} ${tot===1?'noche':'noches'} en el mismo sitio</div>${stayLinks(s)}`
         : `<div class="sleep"><b>Mismo alojamiento</b> · ${esc(s.name)}, noche ${ni} de ${tot}</div>`;
     } else if(d.d === TRIP.end) sleep = `<div class="sleep change"><b>Check-out</b> · último día, sin alojamiento</div>`;
     const qs = [...d.plan.join(' ').matchAll(/\[\[[^|\]]+\|([^\]]+)\]\]/g)].map(m => m[1]);
@@ -1041,12 +1046,10 @@ function vAloj(){
   const tl = STAYS.map((s,i) => { const n = nights(s.in,s.out);
     return `<a href="#alojamiento" data-st="${s.id}" class="seg" style="flex:${n};--c:${color(s.reg)}" title="${esc(s.name)} · ${n} ${n===1?'noche':'noches'}"><b>${i+1}</b><span>${esc(s.name)}</span><i>${n}</i></a>` }).join('');
   const rows = STAYS.map((s,i) => { const n = nights(s.in,s.out);
-    return `<tr style="--c:${color(s.reg)}"><td class="mono">${i+1}</td><td><span class="sw"></span>${esc(s.name)}${s.onsen?' <span class="chip onsen">onsen</span>':''}</td><td class="mono" style="white-space:nowrap">${fmtD(s.in)} → ${fmtD(s.out)}</td><td class="mono">${n}</td><td>${n===1?'Una noche, el ryokan':'Un solo alojamiento, sin cambios'}</td></tr>` }).join('');
+    return `<tr style="--c:${color(s.reg)}"><td class="mono">${i+1}</td><td><span class="sw"></span>${esc(s.name)}${s.onsen?' <span class="chip onsen">onsen</span>':''}</td><td class="mono" style="white-space:nowrap">${fmtD(s.in)} → ${fmtD(s.out)}</td><td class="mono">${n}</td><td>${n===1?'Una noche, el ryokan':'Un solo alojamiento, sin cambios'}</td><td class=\"lk\">${stayLinks(s,'mini')}</td></tr>` }).join('');
   const cards = STAYS.map((s,i) => {
     const n = nights(s.in, s.out);
     const mid = (s.precio[0]+s.precio[1])/2;
-    const url = `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(s.q)}&checkin=${s.in}&checkout=${s.out}&group_adults=${TRIP.travellers}&no_rooms=1`;
-    const abnb = `https://www.airbnb.es/s/${encodeURIComponent(s.q)}/homes?checkin=${s.in}&checkout=${s.out}&adults=${TRIP.travellers}`;
     return `<article class="stay" id="st-${s.id}" style="--c:${color(s.reg)}">
       <div class="signbox"><div class="stnum">Alojamiento ${i+1} de ${N} · ${n===1?'1 noche':n+' noches seguidas en el mismo sitio'}</div><div class="k">${s.jp}</div><div class="r">${esc(s.name)}${s.onsen?' <span class="chip onsen">onsen</span>':''}</div><div class="kn">${s.kana}</div></div>
       <div><div class="gal">${stayPh(s.id).slice(0,7).map(k=>fig(k,'s-'+s.id,480)).join('')}</div>
@@ -1057,7 +1060,7 @@ function vAloj(){
         <dt>Precio</dt><dd class="mono">${yen(s.precio[0])} a ${yen(s.precio[1])} por noche y habitación</dd>
         <dt>Total</dt><dd class="mono">≈ ${yen(mid*n)} · ${eur(mid*n/TRIP.eurJpy)}</dd></dl>
         <div style="font-size:13.5px;color:var(--muted)">${esc(s.tip)}</div>
-        <div class="row"><a class="btn" href="${url}" target="_blank" rel="noopener">Buscar en Booking ↗</a>${s.airbnb?`<a class="btn" href="${abnb}" target="_blank" rel="noopener">Buscar en Airbnb ↗</a>`:''}</div></div></div></article>`;
+        <div class="eyebrow" style="margin-top:4px">Buscar con estas fechas para ${TRIP.travellers} personas</div><div class="row">${stayLinks(s)}</div></div></div></article>`;
   }).join('');
   const tot = STAYS.reduce((a,s)=>a+nights(s.in,s.out)*(s.precio[0]+s.precio[1])/2,0);
   $('#v-alojamiento').innerHTML = `
@@ -1065,7 +1068,7 @@ function vAloj(){
     <p class="lead">Hoteles business en las ciudades (habitaciones pequeñas pero limpias, buena ubicación y precio contenido) y dos noches de capricho en ryokan con onsen. Precios por habitación doble en temporada alta de agosto.</p></div>
     <div class="panel row" style="justify-content:space-between"><div><div class="eyebrow">Total estimado de alojamiento</div><div class="mono" style="font-size:24px;font-weight:600;color:var(--ai)">${yen(tot)} · ${eur(tot/TRIP.eurJpy)}</div></div><div style="color:var(--muted);font-size:13.5px">Para ${TRIP.travellers} personas en habitación doble</div></div>
     <div class="panel"><div class="eyebrow" style="margin-bottom:10px">${totN} noches en ${N} alojamientos · toca uno para ir a su ficha</div><div class="timeline">${tl}</div></div>
-    <div class="tbl"><table><thead><tr><th>N.º</th><th>Base</th><th>Fechas</th><th>Noches</th><th>Alojamiento</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <div class="tbl"><table><thead><tr><th>N.º</th><th>Base</th><th>Fechas</th><th>Noches</th><th>Alojamiento</th><th>Buscar</th></tr></thead><tbody>${rows}</tbody></table></div>
     <div class="note info">Cada base es <b>un único alojamiento para todas sus noches</b>, sin cambios intermedios. En Tokio hay dos estancias (al principio y al final): si os gusta el primer alojamiento, reservad también allí la segunda.</div>
     <div class="stays">${cards}</div>`;
   document.querySelectorAll('#v-alojamiento .seg').forEach(a => a.addEventListener('click', e => {
