@@ -233,6 +233,72 @@ footer{border-top:1px solid var(--rule);padding-block:20px 40px;font-size:12.5px
 .stay .gal .ph figcaption{font-size:10.5px}
 .credit{font-size:12px;color:var(--muted)}
 
+/* Estancias */
+.sleep{font-size:13px;padding:5px 10px;border-radius:6px;background:var(--paper);border:1px solid var(--rule);color:var(--muted)}
+.sleep b{color:var(--ink);font-weight:500}
+.sleep.change{border-color:var(--c);background:var(--ai-soft)}
+.timeline{display:flex;gap:3px;min-height:58px}
+.timeline .seg{display:flex;flex-direction:column;justify-content:space-between;min-width:0;padding:5px 5px 4px;border-radius:5px;background:var(--c);color:#fff;text-decoration:none;font-size:11px;line-height:1.2;overflow:hidden}
+.timeline .seg b{font-family:var(--f-mono)}
+.timeline .seg span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
+.timeline .seg i{font-style:normal;font-family:var(--f-mono);opacity:.9}
+@media (max-width:640px){.timeline{flex-wrap:wrap}.timeline .seg{flex:1 1 30%!important}}
+.stnum{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.stay{scroll-margin-top:70px}
+
+/* Mapas */
+.maps{display:grid;gap:36px}
+.region{display:grid;gap:12px;scroll-margin-top:70px;border-top:5px solid var(--c);padding-top:14px}
+.region h3{font-size:21px}
+.region h3 .jp{color:var(--muted);font-weight:500}
+.rgrid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:820px){.rgrid{grid-template-columns:1fr}}
+.mapbox{height:440px;border-radius:10px;border:1px solid var(--rule);overflow:hidden;background:var(--ai-soft);z-index:0}
+@media (max-width:560px){.mapbox{height:340px}}
+.rside{display:grid;gap:8px;min-width:0}
+.rroutes{display:grid;gap:6px}
+.rroutes .btn{width:100%;justify-content:space-between;white-space:normal;text-align:left}
+.rpts{margin:0;padding-left:22px;font-size:13.5px;columns:1}
+.rpts li{margin:3px 0}
+.rpts .mono{font-size:11.5px;color:var(--muted)}
+.rnav button{border-left:4px solid var(--c)}
+/* Leaflet (estilos mínimos, en línea) */
+.leaflet-pane,.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile-container,.leaflet-pane>svg,.leaflet-pane>canvas,.leaflet-zoom-box,.leaflet-image-layer,.leaflet-layer{position:absolute;left:0;top:0}
+.leaflet-container{overflow:hidden;font-family:var(--f-body);-webkit-tap-highlight-color:transparent;touch-action:pan-x pan-y;outline-offset:1px}
+.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow{user-select:none;-webkit-user-drag:none}
+.leaflet-container .leaflet-tile-pane img,.leaflet-container img.leaflet-tile{max-width:none!important;max-height:none!important;width:auto;padding:0}
+.leaflet-tile{filter:inherit;visibility:hidden}
+.leaflet-tile-loaded{visibility:inherit}
+.leaflet-zoom-animated{transform-origin:0 0}
+.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}
+.leaflet-map-pane canvas{z-index:100}.leaflet-map-pane svg{z-index:200}
+.leaflet-control{position:relative;z-index:800;pointer-events:auto;float:left;clear:both}
+.leaflet-top,.leaflet-bottom{position:absolute;z-index:1000;pointer-events:none}
+.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}
+.leaflet-right .leaflet-control{float:right}
+.leaflet-top .leaflet-control{margin-top:10px}.leaflet-bottom .leaflet-control{margin-bottom:0}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-right .leaflet-control{margin-right:0}
+.leaflet-fade-anim .leaflet-popup{opacity:0;transition:opacity .2s linear}
+.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}
+.leaflet-zoom-anim .leaflet-zoom-animated{transition:transform .25s cubic-bezier(0,0,.25,1)}
+.leaflet-zoom-anim .leaflet-tile,.leaflet-pan-anim .leaflet-tile{transition:none}
+.leaflet-interactive{cursor:pointer}
+.leaflet-grab{cursor:grab}.leaflet-dragging .leaflet-grab{cursor:grabbing}
+.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.35);border-radius:6px;overflow:hidden}
+.leaflet-bar a{background:#fff;border-bottom:1px solid #ccc;width:30px;height:30px;line-height:30px;display:block;text-align:center;text-decoration:none;color:#17202B;font:bold 18px/30px var(--f-mono)}
+.leaflet-bar a:last-child{border-bottom:none}
+.leaflet-bar a.leaflet-disabled{color:#bbb;cursor:default}
+.leaflet-control-attribution{background:rgba(255,255,255,.8);padding:0 5px;color:#333;font-size:10.5px}
+.leaflet-control-attribution a{color:#1E3A6B}
+.leaflet-popup{position:absolute;text-align:center;margin-bottom:20px}
+.leaflet-popup-content-wrapper{padding:1px;text-align:left;border-radius:10px;background:#fff;color:#17202B;box-shadow:0 3px 14px rgba(0,0,0,.3)}
+.leaflet-popup-content{margin:10px 14px;line-height:1.45;font-size:13px;min-width:140px}
+.leaflet-popup-content a{color:#1E3A6B}
+.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-top:-1px;margin-left:-20px;overflow:hidden;pointer-events:none}
+.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;transform:rotate(45deg);background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.3)}
+.leaflet-container a.leaflet-popup-close-button{position:absolute;top:0;right:0;width:24px;height:24px;font:16px/24px system-ui,sans-serif;color:#757575;text-decoration:none;text-align:center}
+.leaflet-tooltip{position:absolute;padding:2px 7px;background:#fff;border:1px solid rgba(0,0,0,.12);border-radius:4px;color:#17202B;white-space:nowrap;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.25);font-size:12px;font-weight:500}
+.leaflet-tooltip-top::before,.leaflet-tooltip-right::before{display:none}
+
 /* Visor */
 dialog.lb{border:0;padding:0;background:transparent;max-width:min(1100px,94vw);width:100%}
 dialog.lb::backdrop{background:rgba(8,11,16,.88)}
@@ -251,7 +317,7 @@ dialog.lb::backdrop{background:rgba(8,11,16,.88)}
       <div>
         <div class="kanji">日本 2027</div>
         <div class="roma">Japón 2027</div>
-        <div class="sub">Cuaderno de ruta · 30 jul → 28 ago · de Tokio a Hokkaido y de vuelta por Kansai</div>
+        <div class="sub">Cuaderno de ruta · 30 jul → 28 ago · de Tokio a Hokkaido, bajada por Kansai y vuelta a Tokio</div>
       </div>
       <div class="countdown"><div class="n mono" id="cd">…</div><div class="l">días para salir</div></div>
     </div>
@@ -274,6 +340,7 @@ dialog.lb::backdrop{background:rgba(8,11,16,.88)}
 
 <main class="wrap">
   <section class="view" id="v-ruta"></section>
+  <section class="view" id="v-mapas" hidden></section>
   <section class="view" id="v-dias" hidden></section>
   <section class="view" id="v-transporte" hidden></section>
   <section class="view" id="v-alojamiento" hidden></section>
@@ -284,6 +351,7 @@ dialog.lb::backdrop{background:rgba(8,11,16,.88)}
 
 <footer><div class="wrap">Fotos de Wikimedia Commons con licencias libres. Toca cualquier foto para ampliarla y ver su autor y licencia. Precios orientativos consultados en noviembre de 2026. Confirmar siempre en la web oficial antes de comprar. Las notas, la lista de preparativos y el presupuesto se guardan solo en este navegador.</div></footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 <script>
 /* =========================================================
    DATOS DEL VIAJE · editar aquí para cambiar el contenido
@@ -298,38 +366,38 @@ const REGION = {
 /* Paradas con noche (alojamiento). precio = rango por habitación doble y noche en yenes */
 const STAYS = [
   {id:'tokio', name:'Tokio', jp:'東京', kana:'とうきょう', reg:'kanto', in:'2027-07-31', out:'2027-08-06',
-   zona:'Ueno o Asakusa (más baratos y con tren directo a Narita y Haneda). Alternativa: Ikebukuro.',
-   tipo:'Hotel business (APA, Toyoko Inn, Sotetsu Fresa, Via Inn) o apartamento',
-   precio:[12000,18000], tip:'Seis noches seguidas: compensa un apartamento con lavadora para lavar ropa antes de ir al norte.', q:'Asakusa, Tokyo'},
+   zona:'Ueno, Asakusa o Akihabara (baratos, bien conectados con Haneda y Narita, y cerca de las tiendas de figuras)',
+   tipo:'Airbnb o apartamento con lavadora. También hoteles business (APA, Toyoko Inn, Sotetsu Fresa)',
+   precio:[12000,18000], tip:'Un solo alojamiento para las 6 noches, sin cambios. Si os gusta, reservad allí mismo la estancia del final (26 a 28 ago).', q:'Ueno, Tokyo', airbnb:true},
   {id:'aomori', name:'Aomori', jp:'青森', kana:'あおもり', reg:'tohoku', in:'2027-08-06', out:'2027-08-08',
-   zona:'Centro de Aomori. Si está lleno: Hirosaki (45 min) o Hachinohe (30 min en shinkansen, cubierto por el pase)', tipo:'Hotel business', precio:[18000,35000],
-   tip:'Dos noches de Nebuta: es la cama más difícil de todo el viaje. Prioridad número uno de reserva. Dormir en Hachinohe y venir en tren es un plan B muy válido.', q:'Aomori'},
+   zona:'Centro de Aomori. Si está lleno: Hirosaki (45 min) o Hachinohe (30 min en shinkansen, cubierto por el pase)', tipo:'Hotel business o Airbnb', precio:[18000,35000],
+   tip:'Dos noches de Nebuta: es la cama más difícil de todo el viaje. Prioridad número uno de reserva. Dormir en Hachinohe y venir en tren es un plan B muy válido.', q:'Aomori', airbnb:true},
   {id:'hakodate', name:'Hakodate', jp:'函館', kana:'はこだて', reg:'hokkaido', in:'2027-08-08', out:'2027-08-10',
    zona:'Estación de Hakodate o zona de la bahía', tipo:'Hotel con desayuno buffet de marisco', precio:[10000,16000],
-   tip:'Muchos hoteles de Hakodate son famosos por el desayuno. Merece pagar un poco más con desayuno incluido.', q:'Hakodate Station'},
+   tip:'Muchos hoteles de Hakodate son famosos por el desayuno. Merece pagar un poco más con desayuno incluido.', q:'Hakodate Station', airbnb:true},
   {id:'noboribetsu', name:'Noboribetsu', jp:'登別', kana:'のぼりべつ', reg:'hokkaido', in:'2027-08-10', out:'2027-08-11', onsen:true,
    zona:'Noboribetsu Onsen (pueblo termal, no la estación)', tipo:'Ryokan con onsen, cena y desayuno incluidos (1泊2食)', precio:[30000,50000],
-   tip:'Única noche suelta del viaje, y es a propósito: el ryokan es la experiencia en sí (onsen, yukata, cena kaiseki) y una noche es lo habitual.', q:'Noboribetsu Onsen'},
+   tip:'Única noche suelta del viaje, y es a propósito: el ryokan es la experiencia en sí (onsen, yukata, cena kaiseki) y una noche es lo habitual. No hay ryokan en Airbnb, se reserva en Booking o en Japanican.', q:'Noboribetsu Onsen'},
   {id:'sapporo', name:'Sapporo', jp:'札幌', kana:'さっぽろ', reg:'hokkaido', in:'2027-08-11', out:'2027-08-13',
-   zona:'Susukino u Odori', tipo:'Hotel business', precio:[9000,14000], tip:'Hokkaido es la parte fresca del viaje (máximas de 25 a 27 °C).', q:'Susukino, Sapporo'},
-  {id:'osaka1', name:'Osaka', jp:'大阪', kana:'おおさか', reg:'kansai', in:'2027-08-13', out:'2027-08-15',
-   zona:'Namba o Shin-Imamiya (lo más económico)', tipo:'Hotel business o hostal con doble', precio:[9000,16000],
-   tip:'Coincide con Obon (13 al 16). Sube precio y se llena. Reservar pronto.', q:'Namba, Osaka'},
+   zona:'Susukino u Odori', tipo:'Hotel business o Airbnb', precio:[9000,14000], tip:'Hokkaido es la parte fresca del viaje (máximas de 25 a 27 °C).', q:'Susukino, Sapporo', airbnb:true},
+  {id:'osaka', name:'Osaka', jp:'大阪', kana:'おおさか', reg:'kansai', in:'2027-08-13', out:'2027-08-15',
+   zona:'Namba o Nipponbashi (al lado de Den Den Town)', tipo:'Hotel business o Airbnb', precio:[9000,16000],
+   tip:'Coincide con Obon (13 al 16). Sube precio y se llena. Reservar pronto.', q:'Namba, Osaka', airbnb:true},
   {id:'kioto', name:'Kioto', jp:'京都', kana:'きょうと', reg:'kansai', in:'2027-08-15', out:'2027-08-20',
-   zona:'Shijo y Karasuma o cerca de la estación de Kioto', tipo:'Hotel business o machiya (casa tradicional) compartida', precio:[13000,22000],
-   tip:'Kioto cobra un impuesto de alojamiento por persona y noche que se paga aparte en el hotel.', q:'Shijo Karasuma, Kyoto'},
+   zona:'Shijo y Karasuma o cerca de la estación de Kioto', tipo:'Machiya (casa tradicional) en Airbnb o hotel business', precio:[13000,22000],
+   tip:'Un solo alojamiento para las 5 noches. Kioto cobra un impuesto de alojamiento por persona y noche que se paga aparte.', q:'Shijo Karasuma, Kyoto', airbnb:true},
   {id:'kanazawa', name:'Kanazawa', jp:'金沢', kana:'かなざわ', reg:'chubu', in:'2027-08-20', out:'2027-08-22',
-   zona:'Estación de Kanazawa (el bus a Shirakawa-go sale de allí)', tipo:'Hotel business', precio:[10000,15000],
-   tip:'Base de dos noches con Shirakawa-go en excursión de ida y vuelta, sin cargar maletas.', q:'Kanazawa Station'},
+   zona:'Estación de Kanazawa (el bus a Shirakawa-go sale de allí)', tipo:'Hotel business o Airbnb', precio:[10000,15000],
+   tip:'Base de dos noches con Shirakawa-go en excursión de ida y vuelta, sin cargar maletas.', q:'Kanazawa Station', airbnb:true},
   {id:'takayama', name:'Takayama', jp:'高山', kana:'たかやま', reg:'chubu', in:'2027-08-22', out:'2027-08-24', onsen:true,
-   zona:'Casco antiguo de Takayama u Okuhida Onsen (más rural)', tipo:'Minshuku o ryokan con cena de ternera de Hida (o 1 noche ryokan + 1 noche hotel)', precio:[15000,35000],
+   zona:'Casco antiguo de Takayama', tipo:'Minshuku o ryokan con cena de ternera de Hida, las dos noches en el mismo', precio:[15000,35000],
    tip:'Segundo capricho del viaje. Un minshuku familiar con cena es más barato que un ryokan y muy auténtico.', q:'Takayama'},
   {id:'hiroshima', name:'Hiroshima', jp:'広島', kana:'ひろしま', reg:'chugoku', in:'2027-08-24', out:'2027-08-26',
-   zona:'Hatchobori o alrededores de la estación', tipo:'Hotel business', precio:[9000,14000],
-   tip:'Opción especial: una noche en Miyajima para ver el torii sin excursionistas (más caro).', q:'Hatchobori, Hiroshima'},
-  {id:'osaka2', name:'Osaka', jp:'大阪', kana:'おおさか', reg:'kansai', in:'2027-08-26', out:'2027-08-28',
-   zona:'Namba (Nankai directo a KIX) o Bentencho si vais a Universal', tipo:'Hotel business', precio:[9000,15000],
-   tip:'Última base. Ideal para compras y para tener el aeropuerto a 40 minutos.', q:'Namba, Osaka'},
+   zona:'Hatchobori o alrededores de la estación', tipo:'Hotel business o Airbnb', precio:[9000,14000],
+   tip:'Opción especial: una noche en Miyajima para ver el torii sin excursionistas (más caro).', q:'Hatchobori, Hiroshima', airbnb:true},
+  {id:'tokio2', name:'Tokio', jp:'東京', kana:'とうきょう', reg:'kanto', in:'2027-08-26', out:'2027-08-28',
+   zona:'Akihabara o Ueno, para ir y volver de compras sin cargar bolsas', tipo:'El mismo alojamiento de la primera semana si os gustó', precio:[12000,18000],
+   tip:'Vuelta a Tokio para las compras grandes. Lo más cómodo es reservar desde ya las dos estancias de Tokio en el mismo sitio.', q:'Akihabara, Tokyo', airbnb:true},
 ];
 
 /* Diagrama de ruta: incluye paradas sin noche (mini) y vuelos (air) */
@@ -341,7 +409,7 @@ const ROUTE = [
   {stay:'hakodate', meta:'8 a 10 ago · 2 noches', chips:[['','Mirador nocturno'],['','Mercado matinal']]},
   {stay:'noboribetsu', meta:'10 ago · 1 noche de ryokan', chips:[['onsen','Ryokan con onsen']]},
   {stay:'sapporo', air:true, meta:'11 a 13 ago · 2 noches', chips:[['','Otaru en excursión']]},
-  {stay:'osaka1', meta:'13 a 15 ago · 2 noches · vuelo interno desde Sapporo', chips:[['fest','Awa Odori (excursión)'],['','Obon']]},
+  {stay:'osaka', meta:'13 a 15 ago · 2 noches · vuelo interno desde Sapporo', chips:[['fest','Awa Odori (excursión)'],['','Obon']]},
   {name:'Tokushima', jp:'徳島', reg:'kansai', mini:true, meta:'14 ago · excursión en bus para el Awa Odori'},
   {stay:'kioto', meta:'15 a 20 ago · 5 noches', chips:[['fest','Gozan Okuribi'],['','Nara, Uji y Nintendo Museum']]},
   {stay:'kanazawa', meta:'20 a 22 ago · 2 noches', chips:[['pass','Pase Takayama Hokuriku'],['','Shirakawa-go en excursión']]},
@@ -349,98 +417,97 @@ const ROUTE = [
   {stay:'takayama', meta:'22 a 24 ago · 2 noches', chips:[['onsen','Minshuku o ryokan'],['','Alpes japoneses']]},
   {stay:'hiroshima', meta:'24 a 26 ago · 2 noches', chips:[['pass','Pase Kansai Hiroshima'],['','Miyajima']]},
   {name:'Himeji', jp:'姫路', reg:'chugoku', mini:true, meta:'26 ago · parada en ruta, castillo'},
-  {stay:'osaka2', air:true, meta:'26 a 28 ago · 2 noches', chips:[['','Universal Studios opcional']]},
-  {name:'Barcelona', jp:'バルセロナ', reg:'air', meta:'Vuelta el 28 ago desde Kansai (KIX)'},
+  {stay:'tokio2', air:true, meta:'26 a 28 ago · 2 noches · compras finales', chips:[['','Figuras y recuerdos'],['','Tax free']]},
+  {name:'Barcelona', jp:'バルセロナ', reg:'air', meta:'Vuelta el 28 ago desde Tokio (Haneda o Narita)'},
 ];
 
 /* Día a día. base = id de STAYS (o 'avion'). [[Texto|búsqueda]] crea enlace a Google Maps */
 const DAYS = [
  {d:'2027-07-30', base:'avion', title:'Salida desde Barcelona', tags:['transporte'],
-  plan:['Vuelo BCN → Tokio con una escala. Llegada al día siguiente por la diferencia horaria (+7 h en verano).','Llevar en cabina una muda, cargador y la eSIM ya instalada.']},
+  plan:['Vuelo BCN → Tokio con una escala. Llegada al día siguiente por la diferencia horaria (+7 h en verano).','Facturar la maleta grande casi vacía. En cabina, una muda, cargador y la eSIM ya instalada.']},
  {d:'2027-07-31', base:'tokio', title:'Aterrizaje y primer paseo', tags:['transporte','festival'],
-  plan:['Recoger Suica (o activarla en el móvil) y efectivo en un cajero de 7-Eleven.','Tren al hotel en Ueno o Asakusa, check-in y siesta corta.','Tarde: paseo suave por [[Ueno Ameyoko|Ameya Yokocho Ueno]] y cena de ramen.'],
+  plan:['Recoger Suica (o activarla en el móvil) y efectivo en un cajero de 7-Eleven.','Tren al alojamiento en Ueno o Asakusa, check-in y siesta corta.','Tarde: paseo suave por [[Ueno Ameyoko|Ameya Yokocho Ueno]] y cena de ramen.'],
   alt:'El Sumidagawa Hanabi (fuegos del río Sumida) se celebra el último sábado de julio, que en 2027 cae este mismo día. Si el cuerpo aguanta, verlo desde Asakusa. Confirmar la fecha oficial en primavera.'},
- {d:'2027-08-01', base:'tokio', title:'Asakusa, Ueno y Akihabara', tags:['cultura','anime'],
-  plan:['<span class="t">07:30</span>[[Senso-ji|Senso-ji Asakusa]] antes de que llegue el calor y la gente. Nakamise y melon pan.','[[Tokyo Skytree|Tokyo Skytree]] desde fuera o subir al atardecer si el cielo está despejado.','Tarde: [[Akihabara|Akihabara Electric Town]]. Super Potato, Radio Kaikan, gashapon y salones recreativos.'],
+ {d:'2027-08-01', base:'tokio', title:'Asakusa, Skytree y Akihabara', tags:['cultura','anime'],
+  plan:['<span class="t">07:30</span>[[Senso-ji|Senso-ji Asakusa]] antes de que llegue el calor y la gente. Nakamise y melon pan.','[[Tokyo Skytree|Tokyo Skytree]] desde fuera o subir al atardecer si el cielo está despejado.','Tarde: primer vistazo a [[Akihabara|Akihabara Electric Town]]. Radio Kaikan, Mandarake y Super Potato para comparar precios de figuras. La compra fuerte se deja para el 27.'],
   alt:'<b>Económico:</b> el mirador gratuito del [[Ayuntamiento de Tokio|Tokyo Metropolitan Government Building]] sustituye bien al Skytree.'},
  {d:'2027-08-02', base:'tokio', title:'Shibuya, Harajuku y Shinjuku', tags:['cultura','comida','anime'],
-  plan:['Mañana en el santuario [[Meiji Jingu|Meiji Jingu]] (sombra y calma).','[[Takeshita Dori|Takeshita Street]] y Omotesando.','[[Shibuya Scramble|Shibuya Scramble Crossing]], [[Mugiwara Store y Pokémon Center en Shibuya Parco|Shibuya Parco]] y Nintendo Tokyo.','Noche: [[Omoide Yokocho|Omoide Yokocho]] y [[Golden Gai|Golden Gai Shinjuku]] para yakitori y un trago.']},
+  plan:['Mañana en el santuario [[Meiji Jingu|Meiji Jingu]] (sombra y calma).','[[Takeshita Dori|Takeshita Street]] y Omotesando.','[[Cruce de Shibuya|Shibuya Scramble Crossing]] y las tiendas de Shibuya Parco.','Noche: [[Omoide Yokocho|Omoide Yokocho]] y [[Golden Gai|Golden Gai Shinjuku]] para yakitori y un trago.']},
  {d:'2027-08-03', base:'tokio', title:'Excursión a Kamakura y Enoshima', tags:['cultura','naturaleza'],
-  plan:['Tren JR Yokosuka a Kita-Kamakura (1 h). Templos de Engaku-ji y paseo hasta el [[Gran Buda de Kamakura|Kotoku-in]].','Enoden hasta [[Enoshima|Enoshima]]: isla, cuevas y playa de verano.','Volver al atardecer y cena en la zona del hotel.'],
+  plan:['Tren JR Yokosuka a Kita-Kamakura (1 h). Templo de [[Engaku-ji|Engaku-ji Kamakura]] y paseo hasta el [[Gran Buda de Kamakura|Kotoku-in]].','Enoden hasta [[Enoshima|Enoshima]]: isla, cuevas y playa de verano.','Volver al atardecer y cena en la zona del alojamiento.'],
   alt:'<b>Alternativa:</b> Nikko (santuario Toshogu y cascadas) en el mismo formato de excursión de un día.'},
  {d:'2027-08-04', base:'tokio', title:'Ghibli, Nakano y teamLab', tags:['anime','cultura'],
-  plan:['Mañana: [[Museo Ghibli|Ghibli Museum Mitaka]] con entrada comprada (salen el día 10 del mes anterior).','[[Nakano Broadway|Nakano Broadway]]: tiendas de figuras y manga de segunda mano a buen precio.','Tarde: [[teamLab Planets|teamLab Planets Toyosu]] y paseo por Odaiba.'],
-  alt:'<b>Para One Piece:</b> la Mugiwara Store de Shibuya y la de Ikebukuro, y el Pokémon Center Mega Tokyo en Sunshine City.'},
+  plan:['Mañana: [[Museo Ghibli|Ghibli Museum Mitaka]] con entrada comprada (salen el día 10 del mes anterior) y paseo por el [[parque Inokashira|Inokashira Park]].','[[Nakano Broadway|Nakano Broadway]]: figuras y manga de segunda mano. Apuntad precios para comparar con Akihabara.','Tarde: [[teamLab Planets|teamLab Planets Toyosu]] y paseo por Odaiba.']},
  {d:'2027-08-05', base:'tokio', title:'Hakone: onsen y vistas al Fuji', tags:['naturaleza','onsen'],
-  plan:['Odakyu desde Shinjuku con el Hakone Free Pass (tren, cable, barco y buses de la zona).','Circuito: Hakone-Yumoto → Owakudani (huevos negros) → lago Ashi en barco.','Baño en un onsen de día como [[Tenzan Tohji-kyo|Tenzan Tohji-kyo Hakone]].','Por la noche: lavadora del apartamento y mochila lista para el norte.'],
+  plan:['Odakyu desde Shinjuku con el Hakone Free Pass (tren, teleférico, barco y buses de la zona).','Circuito: [[Hakone-Yumoto|Hakone-Yumoto Station]] → teleférico a [[Owakudani|Owakudani]] (huevos negros) → [[lago Ashi|Hakone Shrine]] en barco.','Baño en un onsen de día como [[Tenzan Tohji-kyo|Tenzan Tohji-kyo Hakone]].','Por la noche: lavadora y maletas listas para el norte.'],
   alt:'En agosto el Fuji suele estar tapado por la calima. Si queréis subirlo, la temporada de ascenso es de julio a septiembre y requiere reserva previa.'},
  {d:'2027-08-06', base:'aomori', title:'Tanabata en Sendai y primera noche de Nebuta', tags:['festival','transporte'],
-  plan:['Activar el JR East-South Hokkaido Rail Pass (día 1 de 6). Shinkansen Hayabusa a Sendai (1 h 30). Mochilas en las taquillas de la estación.','Mañana y mediodía: decoraciones de papel del [[Tanabata de Sendai|Sendai Tanabata Matsuri Ichibancho]] en las galerías comerciales.','Comida de gyutan (lengua de ternera a la brasa), la especialidad de Sendai.','Tarde: Hayabusa a Shin-Aomori (1 h 30) y check-in.','Noche: desfile nocturno del Nebuta por el centro de Aomori.']},
+  plan:['Activar el JR East-South Hokkaido Rail Pass (día 1 de 6). Shinkansen Hayabusa a [[Sendai|Sendai Station]] (1 h 30). Maletas en las taquillas grandes de la estación, que se llenan pronto: llegad temprano.','Mañana y mediodía: decoraciones de papel del [[Tanabata de Sendai|Sendai Tanabata Matsuri Ichibancho]] en las galerías comerciales.','Comida de gyutan (lengua de ternera a la brasa), la especialidad de Sendai.','Tarde: Hayabusa a [[Shin-Aomori|Shin-Aomori Station]] (1 h 30) y check-in.','Noche: desfile nocturno del Nebuta por el centro de Aomori.']},
  {d:'2027-08-07', base:'aomori', title:'Nebuta Matsuri, último día', tags:['festival','cultura'],
-  plan:['Mañana tranquila: [[Nebuta Museum Wa Rasse|Nebuta Museum Wa Rasse]] para ver las carrozas de cerca y el mercado de marisco [[Aomori Gyosai Center|Aomori Gyosai Center]] (nokke-don).','Mediodía: desfile diurno de los nebuta.','Noche: carrozas sobre el mar y fuegos artificiales en la bahía, el gran cierre del festival.'],
-  alt:'El Nebuta suele celebrarse del 2 al 7 de agosto. Si las fechas de 2027 se publican distintas, se ajusta. <b>Alternativa de mañana:</b> castillo de Hirosaki (45 min).'},
+  plan:['Mañana tranquila: [[Nebuta Museum Wa Rasse|Nebuta Museum Wa Rasse]] para ver las carrozas de cerca y el mercado [[Aomori Gyosai Center|Aomori Gyosai Center]] (nokke-don, el bol de marisco a tu gusto).','Mediodía: desfile diurno de los nebuta.','Noche: carrozas sobre el mar y fuegos artificiales en la bahía, el gran cierre del festival.'],
+  alt:'El Nebuta suele celebrarse del 2 al 7 de agosto. Si las fechas de 2027 se publican distintas, se ajusta. <b>Alternativa de mañana:</b> [[castillo de Hirosaki|Hirosaki Castle]] (45 min).'},
  {d:'2027-08-08', base:'hakodate', title:'Cruce a Hokkaido', tags:['comida','naturaleza'],
   plan:['Pase día 3. Shinkansen por el túnel del Seikan hasta Shin-Hakodate-Hokuto y tren Hakodate Liner.','Fuerte estrellado de [[Goryokaku|Goryokaku Tower]].','Atardecer y noche: teleférico al [[Monte Hakodate|Mount Hakodate Ropeway]], de las mejores vistas nocturnas de Japón.']},
  {d:'2027-08-09', base:'hakodate', title:'Hakodate sin prisas', tags:['comida','naturaleza','onsen'],
-  plan:['<span class="t">07:00</span>Desayuno de kaisendon (bol de marisco) en el [[Mercado matinal de Hakodate|Hakodate Morning Market]].','Excursión al [[Parque de Onuma|Onuma Quasi-National Park]] (25 min en tren, cubierto por el pase): lagos, islotes, bici o barca con el volcán Komagatake al fondo.','Tarde: barrio de Motomachi y almacenes de ladrillo rojo de [[Kanemori|Kanemori Red Brick Warehouse]].','Noche: baño en un onsen público de Yunokawa, el barrio termal de Hakodate.']},
+  plan:['<span class="t">07:00</span>Desayuno de kaisendon (bol de marisco) en el [[Mercado matinal de Hakodate|Hakodate Morning Market]].','Excursión al [[Parque de Onuma|Onuma Koen Station]] (25 min en tren, cubierto por el pase): lagos, islotes, bici o barca con el volcán Komagatake al fondo. Probad el Onuma dango.','Tarde: barrio de [[Motomachi|Motomachi Hakodate]] con sus iglesias y almacenes de ladrillo rojo de [[Kanemori|Kanemori Red Brick Warehouse]].','Noche: baño en un onsen público de [[Yunokawa|Yunokawa Onsen Hakodate]], el barrio termal de Hakodate.']},
  {d:'2027-08-10', base:'noboribetsu', title:'Noche de ryokan en Noboribetsu', tags:['onsen','naturaleza'],
   plan:['Pase día 5. Limited Express Hokuto a Noboribetsu (2 h 30) y bus al pueblo termal.','Paseo por el valle volcánico [[Jigokudani|Jigokudani Noboribetsu]] y el baño de pies natural del río Oyunuma.','Noche de ryokan: yukata, cena kaiseki y onsen.']},
  {d:'2027-08-11', base:'sapporo', title:'Sapporo', tags:['comida','cultura'],
-  plan:['Pase día 6 (último). Desayuno en el ryokan y Hokuto a Sapporo (1 h 10).','Parque Odori, torre de la TV y antiguo ayuntamiento de ladrillo.','[[Sapporo Beer Museum|Sapporo Beer Museum]] con degustación y cena de jingisukan (cordero a la plancha).','Noche: ramen de miso en el [[Ganso Ramen Yokocho|Ganso Ramen Yokocho Susukino]].']},
+  plan:['Pase día 6 (último). Desayuno en el ryokan y Hokuto a Sapporo (1 h 10).','[[Parque Odori|Odori Park]], torre de la TV y antiguo ayuntamiento de ladrillo.','[[Sapporo Beer Museum|Sapporo Beer Museum]] con degustación y cena de jingisukan (cordero a la plancha).','Noche: ramen de miso en el [[Ganso Ramen Yokocho|Ganso Ramen Yokocho Susukino]].']},
  {d:'2027-08-12', base:'sapporo', title:'Excursión a Otaru', tags:['comida','cultura'],
-  plan:['Tren a Otaru (35 min, unos 750 ¥ por trayecto).','Canal de Otaru, calle Sakaimachi, talleres de vidrio y la caja de música del Otaru Orgel Do.','Sushi en Sushiya-dori, de los mejores precios de Japón para su calidad.','Volver a Sapporo y preparar la mochila para el vuelo.']},
- {d:'2027-08-13', base:'osaka1', title:'Vuelo a Osaka y Dotonbori', tags:['transporte','comida'],
-  plan:['Tren al aeropuerto New Chitose (40 min) y vuelo low cost a Kansai a primera hora.','Tarde en [[Den Den Town|Den Den Town Nipponbashi]], la Akihabara de Osaka.','Noche en [[Dotonbori|Dotonbori Osaka]]: takoyaki, kushikatsu y neones.']},
- {d:'2027-08-14', base:'osaka1', title:'Awa Odori en Tokushima', tags:['festival'],
-  plan:['Bus directo desde Namba o Umeda a Tokushima (unas 2 h 30). Reservar ida y vuelta con antelación.','Tarde: subir al [[Monte Bizan|Mount Bizan Tokushima]] o visitar los remolinos de Naruto.','Desde las 18:00: el Awa Odori, el mayor festival de danza de Japón. Miles de bailarines por las calles.','Último bus de vuelta a Osaka.'],
+  plan:['Tren a Otaru (35 min, unos 750 ¥ por trayecto).','[[Canal de Otaru|Otaru Canal]], calle [[Sakaimachi|Sakaimachi Street Otaru]], talleres de vidrio y el museo de cajas de música [[Otaru Orgel Do|Otaru Music Box Museum]].','Sushi en Sushiya-dori, de los mejores precios de Japón para su calidad.','Volver a Sapporo y preparar las maletas para el vuelo.']},
+ {d:'2027-08-13', base:'osaka', title:'Vuelo a Osaka, Den Den Town y Dotonbori', tags:['transporte','comida','anime'],
+  plan:['Tren al aeropuerto New Chitose (40 min) y vuelo low cost a Kansai a primera hora, con la maleta grande facturada.','Tarde en [[Den Den Town|Den Den Town Nipponbashi]], la Akihabara de Osaka.','Kushikatsu en [[Shinsekai|Shinsekai Osaka]], a 10 minutos a pie.','Noche en [[Dotonbori|Dotonbori Osaka]]: takoyaki y neones.']},
+ {d:'2027-08-14', base:'osaka', title:'Awa Odori en Tokushima', tags:['festival'],
+  plan:['Bus directo desde Namba o Umeda a Tokushima (unas 2 h 30). Reservar ida y vuelta con antelación.','Tarde: subir al [[Monte Bizan|Mount Bizan Tokushima]] o ver los remolinos de [[Naruto|Naruto Whirlpools]].','Desde las 18:00: el Awa Odori, el mayor festival de danza de Japón. Miles de bailarines por las calles.','Último bus de vuelta a Osaka.'],
   alt:'El Awa Odori se celebra cada año del 12 al 15 de agosto. Dormir en Tokushima esas noches es carísimo, por eso se plantea como excursión.'},
  {d:'2027-08-15', base:'kioto', title:'Castillo de Osaka y llegada a Kioto', tags:['cultura','comida'],
-  plan:['<span class="t">08:30</span>[[Castillo de Osaka|Osaka Castle]] a primera hora y comida en el [[Mercado Kuromon|Kuromon Market]].','JR Special Rapid a Kioto (30 min) y check-in.','Al bajar el sol: [[Fushimi Inari|Fushimi Inari Taisha]] hasta el mirador de Yotsutsuji.','Noche en [[Gion|Gion Kyoto]] y la calle Pontocho.']},
+  plan:['<span class="t">08:30</span>[[Castillo de Osaka|Osaka Castle]] a primera hora y comida en el [[Mercado Kuromon|Kuromon Market]].','JR Special Rapid a Kioto (30 min) y check-in.','Al bajar el sol: [[Fushimi Inari|Fushimi Inari Taisha]] hasta el mirador de Yotsutsuji.','Noche en [[Gion|Gion Kyoto]] y el callejón de [[Pontocho|Pontocho Kyoto]].']},
  {d:'2027-08-16', base:'kioto', title:'Higashiyama y Gozan Okuribi', tags:['cultura','festival'],
-  plan:['<span class="t">07:00</span>[[Kiyomizu-dera|Kiyomizu-dera]] y bajar por Sannenzaka y Ninenzaka.','Mediodía: [[Mercado Nishiki|Nishiki Market]].','<span class="t">20:00</span>Gozan Okuribi: cinco hogueras gigantes con forma de kanji en las montañas que despiden a los espíritus de Obon. Verlo desde la orilla del río Kamo.']},
+  plan:['<span class="t">07:00</span>[[Kiyomizu-dera|Kiyomizu-dera]] y bajar por Sannenzaka y Ninenzaka.','Mediodía: [[Mercado Nishiki|Nishiki Market]].','<span class="t">20:00</span>Gozan Okuribi: cinco hogueras gigantes con forma de kanji en las montañas que despiden a los espíritus de Obon. Verlo desde la orilla del río Kamo, junto a [[Demachiyanagi|Demachiyanagi Station]].']},
  {d:'2027-08-17', base:'kioto', title:'Arashiyama y Kinkaku-ji', tags:['cultura','naturaleza'],
-  plan:['<span class="t">07:00</span>[[Bosque de bambú de Arashiyama|Arashiyama Bamboo Grove]] antes de las multitudes.','[[Tenryu-ji|Tenryu-ji]] y su jardín, y el parque de monos de Iwatayama.','Tarde: [[Kinkaku-ji|Kinkaku-ji]] (pabellón dorado) y [[Ryoan-ji|Ryoan-ji]] (jardín de piedras).']},
+  plan:['<span class="t">07:00</span>[[Bosque de bambú de Arashiyama|Arashiyama Bamboo Grove]] antes de las multitudes.','[[Tenryu-ji|Tenryu-ji]] y su jardín, y el [[parque de monos de Iwatayama|Arashiyama Monkey Park Iwatayama]].','Tarde: [[Kinkaku-ji|Kinkaku-ji]] (pabellón dorado) y [[Ryoan-ji|Ryoan-ji]] (jardín de piedras).']},
  {d:'2027-08-18', base:'kioto', title:'Excursión a Nara', tags:['cultura','naturaleza'],
   plan:['JR Nara Line (45 min).','[[Todai-ji|Todai-ji]] y su Gran Buda, el parque de los ciervos y [[Kasuga Taisha|Kasuga Taisha]].','Comer mochi recién machacado en Nakatanidou.','Volver y cena tranquila en Kioto.']},
  {d:'2027-08-19', base:'kioto', title:'Nintendo Museum y Uji', tags:['anime','cultura','comida'],
-  plan:['[[Nintendo Museum|Nintendo Museum Ogura Uji]] con entrada por sorteo (solicitar con meses de antelación).','Tarde en Uji: [[Byodo-in|Byodo-in]] (el templo de la moneda de 10 yenes) y té matcha en la calle Byodoin Omotesando.','Última noche en Kioto. Paseo nocturno por el río Kamo.']},
+  plan:['[[Nintendo Museum|Nintendo Museum Ogura Uji]] con entrada por sorteo (solicitar con meses de antelación).','Tarde en Uji: [[Byodo-in|Byodo-in]] (el templo de la moneda de 10 yenes), el puente de Uji y té matcha en la calle Byodoin Omotesando.','Última noche en Kioto. Paseo nocturno por el río Kamo.']},
  {d:'2027-08-20', base:'kanazawa', title:'Kanazawa', tags:['cultura','comida'],
   plan:['Activar el Takayama-Hokuriku Area Tourist Pass (día 1 de 5). Thunderbird a Tsuruga y Hokuriku Shinkansen a Kanazawa (2 h 15).','Jardín [[Kenroku-en|Kenroku-en]], uno de los tres grandes jardines de Japón.','Barrio de geishas [[Higashi Chaya|Higashi Chaya District]] y helado con pan de oro.','Cena de marisco en el [[Mercado Omicho|Omicho Market]].']},
  {d:'2027-08-21', base:'kanazawa', title:'Excursión a Shirakawa-go', tags:['naturaleza','cultura'],
-  plan:['Pase día 2. Bus a [[Shirakawa-go|Shirakawa-go]] (1 h 15, plaza reservada) sin equipaje.','Aldea de casas gassho (techos de paja), mirador de Shiroyama y casa Wada.','Bus de vuelta a Kanazawa por la tarde.','Noche: barrio samurái de [[Nagamachi|Nagamachi Kanazawa]] y cena en Katamachi.']},
+  plan:['Pase día 2. Bus a [[Shirakawa-go|Shirakawa-go]] (1 h 15, plaza reservada) sin equipaje.','Aldea de casas gassho (techos de paja), mirador de Shiroyama y casa Wada.','Bus de vuelta a Kanazawa por la tarde.','Noche: barrio samurái de [[Nagamachi|Nagamachi Samurai District]] y cena en Katamachi.']},
  {d:'2027-08-22', base:'takayama', title:'Llegada a Takayama', tags:['cultura','comida','transporte'],
   plan:['Pase día 3. Hokuriku Shinkansen a Toyama y Limited Express Hida a Takayama (2 h 30 en total).','Casco antiguo de [[Sanmachi Suji|Sanmachi Suji Takayama]]: bodegas de sake y sushi de ternera de Hida.','Noche de minshuku o ryokan con cena.']},
  {d:'2027-08-23', base:'takayama', title:'Alpes japoneses y onsen', tags:['naturaleza','onsen'],
-  plan:['Mercado matinal de Miyagawa.','Bus a Okuhida y [[Shinhotaka Ropeway|Shinhotaka Ropeway]] para ver los Alpes a 2.150 m, con aire fresco.','Onsen al aire libre en Okuhida antes de volver.'],
+  plan:['[[Mercado matinal de Miyagawa|Miyagawa Morning Market]].','Bus a Okuhida y [[Shinhotaka Ropeway|Shinhotaka Ropeway]] para ver los Alpes a 2.150 m, con aire fresco.','Onsen al aire libre en [[Okuhida|Hirayu Onsen]] antes de volver.'],
   alt:'<b>Más tranquilo:</b> [[Hida no Sato|Hida Folk Village]] y tarde libre en Takayama.'},
  {d:'2027-08-24', base:'hiroshima', title:'Gran traslado a Hiroshima', tags:['transporte','cultura'],
-  plan:['Salir temprano. Takayama → Toyama → Tsuruga → Shin-Osaka con el pase Takayama-Hokuriku (día 5, unas 4 h 30).','Activar el Kansai-Hiroshima Area Pass (día 1 de 5) y Shinkansen a Hiroshima (1 h 30).','Al atardecer: [[Parque Memorial de la Paz|Hiroshima Peace Memorial Park]] y la Cúpula de la Bomba Atómica.','Cena de okonomiyaki en [[Okonomimura|Okonomimura Hiroshima]].'],
+  plan:['Salir temprano. Takayama → Toyama → Tsuruga → Shin-Osaka con el pase Takayama-Hokuriku (día 5, unas 4 h 30).','Activar el Kansai-Hiroshima Area Pass (día 1 de 5) y Shinkansen a Hiroshima (1 h 30). Asiento con espacio para maleta grande reservado.','Al atardecer: [[Parque Memorial de la Paz|Hiroshima Peace Memorial Park]] y la Cúpula de la Bomba Atómica.','Cena de okonomiyaki en [[Okonomimura|Okonomimura Hiroshima]].'],
   alt:'Es el día de más tren del viaje. Llevar comida (ekiben) y algo para entretenerse.'},
  {d:'2027-08-25', base:'hiroshima', title:'Miyajima', tags:['cultura','naturaleza'],
-  plan:['Museo de la Paz a primera hora.','Tren y ferry JR a [[Miyajima|Itsukushima Shrine]] (cubiertos por el pase).','Torii flotante, santuario de Itsukushima y subida al monte Misen (teleférico o a pie si no hace demasiado calor).','Ostras a la brasa y momiji manju. Quedarse a ver el torii iluminado si da tiempo.']},
- {d:'2027-08-26', base:'osaka2', title:'Castillo de Himeji y vuelta a Osaka', tags:['cultura','transporte'],
-  plan:['Shinkansen a Himeji (1 h, pase día 3). Consigna de maletas en la estación.','[[Castillo de Himeji|Himeji Castle]], el castillo original más bonito de Japón, y el jardín Koko-en.','Tren a Osaka y check-in en Namba.','Tarde: comprar la maleta grande para los recuerdos en [[Don Quijote Namba|Don Quijote Dotonbori]] o Bic Camera (de 3.000 a 10.000 ¥ según tamaño).','Noche: [[Shinsekai|Shinsekai Osaka]] y su kushikatsu.']},
- {d:'2027-08-27', base:'osaka2', title:'Universal Studios o Kobe y compras', tags:['anime','comida'],
-  plan:['Opción A: [[Universal Studios Japan|Universal Studios Japan]] con Super Nintendo World (entrada con hora para la zona Nintendo).','Opción B, más económica: Kobe con el pase. Barrio de Kitano, puerto y ternera de Kobe en menú de mediodía.','Compras finales en Namba, Shinsaibashi y [[Den Den Town|Den Den Town Nipponbashi]]. Tax free con pasaporte a partir de 5.000 ¥ por tienda.','Por la noche, hacer la maleta y pesarla (muchos hoteles prestan báscula).','Cena de despedida en un izakaya.']},
+  plan:['Museo de la Paz a primera hora.','Tren y ferry JR a [[Miyajima|Itsukushima Shrine]] (cubiertos por el pase).','Torii flotante, santuario de Itsukushima y subida al [[monte Misen|Mount Misen]] (teleférico o a pie si no hace demasiado calor).','Ostras a la brasa y momiji manju. Quedarse a ver el torii iluminado si da tiempo.']},
+ {d:'2027-08-26', base:'tokio2', title:'Himeji y vuelta a Tokio', tags:['cultura','transporte'],
+  plan:['Shinkansen a Himeji (1 h, pase día 3). Maletas en las taquillas de la estación.','[[Castillo de Himeji|Himeji Castle]], el castillo original más bonito de Japón, y el jardín [[Koko-en|Kokoen Garden Himeji]].','Shinkansen Nozomi directo de Himeji a Tokio (3 h 15). Asiento con espacio para maleta grande reservado.','Check-in en Tokio, en el mismo alojamiento de la primera semana si es posible.']},
+ {d:'2027-08-27', base:'tokio2', title:'Día de compras: figuras y recuerdos', tags:['anime','comida'],
+  plan:['Mañana en [[Akihabara|Akihabara Radio Kaikan]]: Radio Kaikan, [[Mandarake Complex|Mandarake Complex Akihabara]] y Surugaya para figuras nuevas y de segunda mano.','Tarde en [[Ikebukuro|Sunshine City Ikebukuro]]: Pokémon Center Mega Tokyo y tiendas de anime. Si queda algo pendiente, [[Nakano Broadway|Nakano Broadway]].','Tax free con pasaporte a partir de 5.000 ¥ por tienda. Pedid que envuelvan bien las cajas.','Noche: maletas hechas y pesadas (muchos alojamientos prestan báscula). Cena de despedida en un izakaya.']},
  {d:'2027-08-28', base:'avion', title:'Vuelta a casa', tags:['transporte'],
-  plan:['JR Kansai Airport Rapid (pase día 5) o Nankai desde Namba hasta el aeropuerto de Kansai (unos 40 min).','Vuelo KIX → Barcelona con una escala. Se llega el mismo día por la diferencia horaria.']},
+  plan:['Últimas compras de mañana si el vuelo es por la tarde.','Keikyu hasta [[Haneda|Haneda Airport Terminal 3]] (unos 30 min) o tren a Narita.','Vuelo a Barcelona con una escala. Se llega el mismo día por la diferencia horaria.']},
 ];
 
 /* Trayectos */
 const LEGS = [
- {f:'30 jul', de:'Barcelona (BCN)', a:'Tokio (HND o NRT)', m:'Avión, 1 escala', dur:'16 a 19 h', p:'≈ 1.100 € pp ida y vuelta', reg:'air', n:'Comprar como multidestino: ida a Tokio y vuelta desde Osaka KIX. Escalas habituales en Estambul, Doha, Dubái, Helsinki, París, Ámsterdam o Fráncfort.'},
- {f:'31 jul', de:'Aeropuerto', a:'Hotel en Ueno o Asakusa', m:'Keikyu (Haneda) o Keisei (Narita)', dur:'30 a 60 min', p:'300 a 2.600 ¥', reg:'kanto', n:'Desde Haneda el Keikyu va directo a Asakusa. Desde Narita, Keisei Access Express o Skyliner a Ueno.'},
+ {f:'30 jul', de:'Barcelona (BCN)', a:'Tokio (HND o NRT)', m:'Avión, 1 escala', dur:'16 a 19 h', p:'≈ 1.100 € pp ida y vuelta', reg:'air', n:'Ida y vuelta a Tokio, más sencillo y normalmente más barato que un multidestino. Escalas habituales en Estambul, Doha, Dubái, Helsinki, París, Ámsterdam o Fráncfort. Tarifa con 1 maleta facturada + equipaje de mano.'},
+ {f:'31 jul', de:'Aeropuerto', a:'Alojamiento en Ueno o Asakusa', m:'Keikyu (Haneda) o Keisei (Narita)', dur:'30 a 60 min', p:'300 a 2.600 ¥', reg:'kanto', n:'Desde Haneda el Keikyu va directo a Asakusa. Desde Narita, Keisei Access Express o Skyliner a Ueno.'},
  {f:'1 a 5 ago', de:'Tokio', a:'Tokio', m:'Metro y JR con Suica', dur:'', p:'≈ 800 ¥ por día', reg:'kanto', n:'No compensa pase de metro salvo días muy intensos.'},
  {f:'3 ago', de:'Tokio', a:'Kamakura y Enoshima', m:'JR Yokosuka y Enoden', dur:'1 h', p:'≈ 2.500 ¥ total', reg:'kanto', n:''},
  {f:'5 ago', de:'Shinjuku', a:'Hakone', m:'Odakyu + Hakone Free Pass', dur:'1 h 30', p:'≈ 6.100 ¥', reg:'kanto', n:'El pase incluye ida y vuelta desde Shinjuku y todo el circuito por Hakone.'},
- {f:'6 ago', de:'Tokio', a:'Sendai → Aomori', m:'Tohoku Shinkansen Hayabusa', dur:'1 h 30 + 1 h 30', p:'Pase día 1', reg:'tohoku', pass:'ehk', n:'Parada de unas horas en Sendai para el Tanabata. Reservar los dos asientos en cuanto abra la venta, un mes antes.'},
+ {f:'6 ago', de:'Tokio', a:'Sendai → Aomori', m:'Tohoku Shinkansen Hayabusa', dur:'1 h 30 + 1 h 30', p:'Pase día 1', reg:'tohoku', pass:'ehk', n:'Parada de unas horas en Sendai para el Tanabata. Taquillas grandes en la estación de Sendai (unos 700 a 900 ¥).'},
  {f:'7 ago', de:'Aomori', a:'Aomori', m:'A pie', dur:'', p:'Pase día 2', reg:'tohoku', pass:'ehk', n:'Día de festival sin tren. Si os alojáis en Hachinohe o Hirosaki, el pase cubre el trayecto.'},
  {f:'8 ago', de:'Shin-Aomori', a:'Hakodate', m:'Hokkaido Shinkansen + Hakodate Liner', dur:'1 h 30', p:'Pase día 3', reg:'hokkaido', pass:'ehk', n:'Cruza el túnel submarino del Seikan.'},
  {f:'9 ago', de:'Hakodate', a:'Onuma Koen y vuelta', m:'JR', dur:'25 min', p:'Pase día 4', reg:'hokkaido', pass:'ehk', n:''},
  {f:'10 ago', de:'Hakodate', a:'Noboribetsu', m:'Limited Express Hokuto + bus', dur:'2 h 45', p:'Pase día 5 + bus ≈ 350 ¥', reg:'hokkaido', pass:'ehk', n:''},
  {f:'11 ago', de:'Noboribetsu', a:'Sapporo', m:'Limited Express Hokuto', dur:'1 h 10', p:'Pase día 6', reg:'hokkaido', pass:'ehk', n:''},
  {f:'12 ago', de:'Sapporo', a:'Otaru y vuelta', m:'JR rápido', dur:'35 min', p:'≈ 1.500 ¥', reg:'hokkaido', n:'El pase ya ha caducado.'},
- {f:'13 ago', de:'Sapporo (CTS)', a:'Osaka (KIX)', m:'Avión low cost (Peach, Jetstar)', dur:'2 h 10', p:'8.000 a 15.000 ¥ con maleta', reg:'air', n:'Tren JR a New Chitose ≈ 1.150 ¥. Con equipaje ligero basta la tarifa más barata con equipaje de mano (las low cost suelen limitarlo a 7 kg). Si la maleta pasa de eso, añadir maleta facturada al comprar, que en el aeropuerto sale más cara.'},
+ {f:'13 ago', de:'Sapporo (CTS)', a:'Osaka (KIX o ITM)', m:'Avión low cost (Peach, Jetstar) o Skymark', dur:'2 h 10', p:'10.000 a 18.000 ¥ con maleta facturada', reg:'air', n:'Añadir la maleta grande al comprar el billete, que en el aeropuerto sale bastante más cara. Tren JR a New Chitose ≈ 1.150 ¥.'},
  {f:'14 ago', de:'Osaka', a:'Tokushima y vuelta', m:'Autobús de carretera', dur:'2 h 30', p:'≈ 8.000 ¥ ida y vuelta', reg:'kansai', n:'Durante el Awa Odori se agotan los buses de vuelta. Reservar en cuanto salgan.'},
  {f:'15 ago', de:'Osaka', a:'Kioto', m:'JR Special Rapid', dur:'30 min', p:'≈ 580 ¥', reg:'kansai', n:''},
  {f:'18 ago', de:'Kioto', a:'Nara y vuelta', m:'JR Nara Line', dur:'45 min', p:'≈ 1.500 ¥', reg:'kansai', n:''},
@@ -450,12 +517,13 @@ const LEGS = [
  {f:'22 ago', de:'Kanazawa', a:'Takayama', m:'Hokuriku Shinkansen + Limited Express Hida', dur:'2 h 30', p:'Pase día 3', reg:'chubu', pass:'thk', n:'Trasbordo en Toyama.'},
  {f:'23 ago', de:'Takayama', a:'Okuhida y vuelta', m:'Autobús Nohi', dur:'1 h 30', p:'≈ 4.000 ¥ (no cubierto)', reg:'chubu', n:'Existe un pase de bus de 2 días para Okuhida que suele compensar.'},
  {f:'24 ago', de:'Takayama', a:'Shin-Osaka', m:'Hida + Shinkansen + Thunderbird', dur:'4 h 30', p:'Pase día 5', reg:'chubu', pass:'thk', n:'Vía Toyama y Tsuruga para quedarse dentro del pase.'},
- {f:'24 ago', de:'Shin-Osaka', a:'Hiroshima', m:'Sanyo Shinkansen', dur:'1 h 30', p:'Pase día 1', reg:'chugoku', pass:'kh', n:'El pase incluye Nozomi y Mizuho en este tramo.'},
+ {f:'24 ago', de:'Shin-Osaka', a:'Hiroshima', m:'Sanyo Shinkansen', dur:'1 h 30', p:'Pase día 1', reg:'chugoku', pass:'kh', n:'Maleta grande: si sus lados suman más de 160 cm, hay que reservar asiento con espacio para equipaje grande.'},
  {f:'25 ago', de:'Hiroshima', a:'Miyajima y vuelta', m:'JR Sanyo + ferry JR', dur:'40 min', p:'Pase día 2 + tasa de visitante 100 ¥', reg:'chugoku', pass:'kh', n:'Solo el ferry de JR está cubierto, no el de Matsudai.'},
- {f:'26 ago', de:'Hiroshima', a:'Himeji → Osaka', m:'Sanyo Shinkansen', dur:'1 h + 1 h', p:'Pase día 3', reg:'chugoku', pass:'kh', n:''},
- {f:'27 ago', de:'Osaka', a:'Universal o Kobe', m:'JR', dur:'20 a 40 min', p:'Pase día 4', reg:'kansai', pass:'kh', n:''},
- {f:'28 ago', de:'Osaka', a:'Aeropuerto KIX', m:'JR Kansai Airport Rapid', dur:'50 min', p:'Pase día 5', reg:'kansai', pass:'kh', n:'Confirmar en la web de JR West que la línea del aeropuerto entra en el pase. Si no, Nankai desde Namba ≈ 970 ¥.'},
- {f:'28 ago', de:'Osaka (KIX)', a:'Barcelona (BCN)', m:'Avión, 1 escala', dur:'16 a 19 h', p:'Incluido en el billete', reg:'air', n:'La tasa de salida de Japón (3.000 ¥ desde julio de 2026) va incluida en el billete. Ojo a la vuelta con la segunda maleta de compras: comprobar cuántas incluye la tarifa.'},
+ {f:'26 ago', de:'Hiroshima', a:'Himeji', m:'Sanyo Shinkansen', dur:'1 h', p:'Pase día 3', reg:'chugoku', pass:'kh', n:''},
+ {f:'26 ago', de:'Himeji', a:'Tokio', m:'Tokaido Shinkansen Nozomi (directo)', dur:'3 h 15', p:'≈ 16.000 ¥ (no cubierto)', reg:'kanto', n:'Mismo aviso para la maleta grande que el 24 de agosto.'},
+ {f:'27 ago', de:'Tokio', a:'Tokio', m:'Metro y JR con Suica', dur:'', p:'≈ 800 ¥', reg:'kanto', n:''},
+ {f:'28 ago', de:'Tokio', a:'Aeropuerto de Haneda', m:'Keikyu', dur:'30 min', p:'≈ 300 a 600 ¥', reg:'kanto', n:'Si el vuelo sale de Narita: Keisei Skyliner desde Ueno (unos 2.600 ¥).'},
+ {f:'28 ago', de:'Tokio (HND o NRT)', a:'Barcelona (BCN)', m:'Avión, 1 escala', dur:'16 a 19 h', p:'Incluido en el billete', reg:'air', n:'La tasa de salida de Japón (3.000 ¥ desde julio de 2026) va incluida en el billete. La maleta grande vuelve llena de compras: vigilad el límite de 23 kg.'},
 ];
 
 const PASSES = [
@@ -463,28 +531,28 @@ const PASSES = [
   cover:'Tokio → Sendai → Aomori → Hakodate (con Onuma) → Noboribetsu → Sapporo. Incluye shinkansen Hayabusa y reserva de asiento.',
   vs:'Billetes sueltos ≈ 43.000 ¥', url:'https://www.jreast.co.jp/multi/en/pass/easthokkaido.html'},
  {id:'thk', name:'Takayama-Hokuriku Area Tourist Pass', price:19800, days:'5 días seguidos · 20 al 24 ago',
-  cover:'Kioto → Kanazawa, bus a Shirakawa-go, Kanazawa → Takayama y vuelta a Osaka vía Toyama y Tsuruga.',
+  cover:'Kioto → Kanazawa, bus a Shirakawa-go, Kanazawa → Takayama y salida a Osaka vía Toyama y Tsuruga.',
   vs:'Billetes sueltos ≈ 31.000 ¥', url:'https://www.westjr.co.jp/global/en/'},
- {id:'kh', name:'Kansai-Hiroshima Area Pass', price:17000, days:'5 días seguidos · 24 al 28 ago',
-  cover:'Shin-Osaka ↔ Hiroshima en Nozomi, ferry JR a Miyajima, Himeji y JR por Kansai (Kobe, Universal).',
-  vs:'Billetes sueltos ≈ 23.000 ¥', url:'https://www.westjr.co.jp/global/en/'},
+ {id:'kh', name:'Kansai-Hiroshima Area Pass', price:17000, days:'5 días seguidos · 24 al 28 ago (se usan 3)',
+  cover:'Shin-Osaka → Hiroshima en Nozomi, ferry JR a Miyajima y Hiroshima → Himeji.',
+  vs:'Billetes sueltos ≈ 19.000 ¥. Ahorra poco: comparad precios al reservar', url:'https://www.westjr.co.jp/global/en/'},
 ];
 
 /* Preparativos: due = fecha límite orientativa */
 const CHECK = [
  {id:'c-aomori', t:'Reservar alojamiento en Aomori para las noches del 6 y 7 de agosto', s:'Es lo primero que se agota. Reserva con cancelación gratuita ya, aunque el plan cambie. Plan B: Hachinohe o Hirosaki.', due:'2026-11-30'},
- {id:'c-hoteles', t:'Reservar Hakodate, Osaka (Obon) y Kioto con cancelación gratuita', s:'Se puede afinar después. Lo importante es asegurar cama en fechas de festival.', due:'2026-12-31'},
- {id:'c-vuelos', t:'Comprar vuelos multidestino BCN → Tokio y KIX → BCN', s:'Vigilar con alertas de precio. El mejor momento suele ser entre enero y marzo. Como volveréis con una maleta más de compras, comparar tarifas con dos maletas facturadas a la vuelta: JAL suele incluirlas en turista, otras cobran la segunda.', due:'2027-03-15'},
+ {id:'c-hoteles', t:'Reservar Tokio (31 jul a 6 ago y 26 a 28 ago), Hakodate, Osaka y Kioto con cancelación gratuita', s:'Si os convence un alojamiento en Tokio, reservad las dos estancias allí mismo. Lo importante es asegurar cama en fechas de festival y Obon.', due:'2026-12-31'},
+ {id:'c-vuelos', t:'Comprar vuelos Barcelona ↔ Tokio con 1 maleta facturada', s:'Vigilar con alertas de precio. El mejor momento suele ser entre enero y marzo. Comprobar que la tarifa incluye la maleta grande en los dos sentidos.', due:'2027-03-15'},
  {id:'c-nintendo', t:'Apuntarse al sorteo de entradas del Nintendo Museum', s:'Funciona por sorteo con varios meses de antelación. Revisar fechas en su web.', due:'2027-05-01'},
  {id:'c-ryokan', t:'Reservar los dos ryokan (Noboribetsu y Takayama)', s:'Plan con cena y desayuno (1泊2食).', due:'2027-03-31'},
  {id:'c-seguro', t:'Contratar seguro de viaje con cobertura médica y cancelación', s:'Agosto es temporada de tifones. Que cubra retrasos y cambios.', due:'2027-04-30'},
  {id:'c-pases', t:'Comprar los tres pases de tren regionales', s:'Se compran online. Ver condiciones de canje y antelación máxima.', due:'2027-06-30'},
- {id:'c-peach', t:'Comprar el vuelo Sapporo → Osaka', s:'Peach y Jetstar sacan ofertas. Añadir maleta solo si hace falta.', due:'2027-05-31'},
+ {id:'c-peach', t:'Comprar el vuelo Sapporo → Osaka', s:'Peach y Jetstar sacan ofertas. Añadir la maleta grande al comprar.', due:'2027-05-31'},
  {id:'c-ghibli', t:'Comprar entradas del Museo Ghibli (4 de agosto)', s:'Salen el día 10 de julio a las 10:00 hora de Japón (03:00 en España).', due:'2027-07-10'},
  {id:'c-bus', t:'Reservar bus Osaka ↔ Tokushima para el Awa Odori', s:'', due:'2027-07-13'},
  {id:'c-shinkansen', t:'Reservar asientos de shinkansen del norte', s:'La venta abre un mes antes. El 6 de agosto empieza Obon en algunas zonas.', due:'2027-07-06'},
  {id:'c-shirakawa', t:'Reservar los buses Kanazawa → Shirakawa-go → Takayama', s:'Aunque el pase los cubre, hay que reservar plaza.', due:'2027-07-21'},
- {id:'c-usj', t:'Decidir Universal Studios y comprar entrada', s:'Precio variable por fecha. Añadir Express Pass si se quiere asegurar Nintendo World.', due:'2027-07-31'},
+ {id:'c-maleta', t:'Reservar shinkansen con espacio para maleta grande (24 y 26 ago)', s:'Solo si la maleta suma más de 160 cm entre sus tres lados. Se elige al reservar el asiento en la web de JR West o smartEX.', due:'2027-07-24'},
  {id:'c-esim', t:'eSIM de datos para Japón', s:'Ubigi, Airalo, Holafly o similar. Instalar antes de salir.', due:'2027-07-25'},
  {id:'c-vjw', t:'Rellenar Visit Japan Web', s:'Registro de inmigración y aduanas con código QR. Pasaporte español sin visado hasta 90 días.', due:'2027-07-27'},
  {id:'c-dinero', t:'Tarjeta sin comisiones (Revolut, Wise o similar) y algo de efectivo', s:'Los cajeros de 7-Eleven aceptan tarjetas extranjeras.', due:'2027-07-20'},
@@ -496,7 +564,8 @@ const TIPS = [
  {h:'Obon y aglomeraciones', items:['Del 13 al 16 de agosto media Japón viaja. Trenes llenos y hoteles más caros.','Reservar siempre asiento en shinkansen esos días.','Los sitios famosos, a primera hora. A las 7:00 Fushimi Inari o Arashiyama son otro mundo.']},
  {h:'Tifones', items:['Agosto y septiembre son temporada de tifones. Un tifón puede cancelar trenes y vuelos un día.','Consultar tenki.jp o la app Safety tips. Tener un plan B de interior por ciudad.','Seguro de viaje que cubra cambios y retrasos.']},
  {h:'Ahorrar sin pasar penurias', items:['Desayuno de konbini (onigiri, sándwich de huevo, café) por unos 600 ¥.','Comida de mediodía en teishoku, ramen o udon por 900 a 1.400 ¥. Muchos restaurantes caros tienen menú de mediodía.','Supermercados después de las 19:00: bento y sushi con descuento del 20 al 50 %.','Agua gratis en todos los restaurantes. No se dejan propinas.']},
- {h:'Equipaje ligero y maleta de compras', items:['Ir con maleta de cabina o mochila. Toda la ruta se hace mejor ligeros: trenes, buses de montaña y el vuelo low cost.','La maleta grande se compra al final, en Osaka (26 ago), en Don Quijote o Bic Camera. Vale de 3.000 a 10.000 ¥.','En Tokio comprad lo pequeño y dejad lo voluminoso para Osaka. Den Den Town tiene casi lo mismo que Akihabara.','Llevad una bolsa de viaje plegable en la mochila por si alguna compra abulta antes de tiempo.','Para pasar un día sin bultos, todas las estaciones grandes tienen taquillas (coin lockers) de 400 a 800 ¥ al día, y muchas aceptan Suica.']},
+ {h:'Maleta grande y compras', items:['La maleta grande va facturada y casi vacía a la ida. Mejor un tamaño medio cuyos lados sumen 160 cm o menos (por ejemplo 70 × 50 × 30): así no hace falta reservar espacio especial en el shinkansen.','Si la maleta pasa de 160 cm, en los shinkansen Tokaido y Sanyo (24 y 26 ago) hay que reservar asiento con espacio para equipaje grande. Sin reserva hay recargo.','En el vuelo Sapporo → Osaka, añadir la maleta facturada al comprar el billete. En el aeropuerto sale mucho más cara.','En Sendai (6 ago) y Himeji (26 ago) la maleta va a las taquillas grandes de la estación, de 700 a 900 ¥. Se llenan pronto, llegad temprano.','Llevad una bolsa de viaje plegable en la mochila por si alguna compra abulta antes de tiempo.']},
+ {h:'Comprar figuras sin cargar con ellas', items:['La primera semana en Tokio, mirad y apuntad precios en Akihabara y Nakano. La compra fuerte, el 27 de agosto, el último día completo.','Mandarake, Surugaya y Radio Kaikan tienen segunda mano en muy buen estado y más barata que nueva.','Tax free con pasaporte a partir de 5.000 ¥ por tienda. Guardad los tickets juntos.','Las cajas de figuras ocupan mucho. Si no caben, se puede plegar la caja aparte o comprar allí una segunda maleta (la segunda facturada se paga en el vuelo de vuelta).']},
  {h:'Etiqueta básica', items:['En onsen: ducharse antes, no meter la toalla en el agua y el bañador no se usa. Los tatuajes pueden estar prohibidos (buscar onsen "tattoo friendly" o tapar con parches).','Silencio en trenes y nada de hablar por teléfono.','Hay pocas papeleras. Llevar una bolsa para la basura.','Descalzarse donde haya escalón de entrada o zapatillas preparadas.']},
  {h:'Apps útiles', items:['Google Maps para transporte (horarios y andenes muy precisos).','Japan Transit Planner (NAVITIME) para combinar pases JR.','Google Translate con cámara para cartas y carteles.','Tabelog para encontrar restaurantes buenos (3,5 es una nota alta).']},
 ];
@@ -554,8 +623,6 @@ const PH = {
   kaiseki2:['Breakfast at Tamahan Ryokan, Kyoto.jpg','Desayuno de ryokan'],
   hayabusa1:['Shinkansen train Hayabusa 18.jpg','Shinkansen Hayabusa'],
   hayabusa2:['Shinkansen, the Hayabusa and the Super-Komachi super express.jpg','Hayabusa y Komachi'],
-  matsu1:['The islands of Matsushima from Saigyo Modoshi No Matsu park (2456102064).jpg','Bahía de Matsushima'],
-  matsu2:['Matsushima famous island.jpg','Islotes de Matsushima'],
   tanabata1:['Sendai Tanabata 2005.jpg','Tanabata de Sendai'],
   tanabata2:['TanabataOrizuru.jpg','Grullas de papel del Tanabata'],
   tanabata3:['Kinchaku.jpg','Adorno kinchaku del Tanabata'],
@@ -656,63 +723,174 @@ const PH = {
   hime2:['Himeji castle in may 2015.jpg','Himeji, la Garza Blanca'],
   hime3:['Himeji Castle Aerial photograph 2010.jpg','Himeji desde el aire'],
   hime4:['Himeji castle from distance.JPG','Himeji a lo lejos'],
-  kobe1:['Kobe Port Tower and Maritime Museum, November 2016.jpg','Puerto de Kobe'],
-  kobe2:['Kobe-meriken-park.jpg','Meriken Park, Kobe'],
-  kobe3:['Kobe port tower.jpg','Torre del puerto de Kobe'],
-  kobe4:['Kobe port tower12s3200.jpg','Kobe Port Tower'],
   kanemori1:['Kanemori Red Brick Warehouse Hakodate Hokkaido pref Japan01n.jpg','Almacenes de ladrillo rojo de Hakodate'],
   kanemori2:['Kanemori Red Brick Warehouse Hakodate Hokkaido pref Japan04n.jpg','Bahía de Hakodate'],
   nagamachi:['Nagamachi Bukeyashiki.jpg','Barrio samurái de Nagamachi'],
   taka4:['Takayama (15485428565).jpg','Takayama'],
+  ameyoko1:['Ameya Yokocho (4042438662).jpg','Mercado de Ameyoko'],
+  ameyoko2:['Ameya-Yokochō Entrance.jpg','Entrada de Ameya Yokocho'],
+  takeshita1:['Harajuku - Takeshita Street 18 (15120528043).jpg','Takeshita Dori'],
+  takeshita2:['Takeshita Street Gate, Harajuku, Tokyo (2009-12-14 13.54.42 by Rudy Herman).jpg','Arco de Takeshita Dori'],
+  goldengai1:['2024-10-20 Shinjuku Golden Gai at night.jpg','Golden Gai de noche'],
+  goldengai2:['Golden Gai, Kabukicho, Shinjuku (30325593928).jpg','Bares de Golden Gai'],
+  engaku1:['Engakuji, Kamakura.jpg','Engaku-ji, Kita-Kamakura'],
+  engaku2:['Engakuji-Shariden-M9239.jpg','Shariden de Engaku-ji'],
+  inokashira:['Inokashira Park @ Kichijoji (9434338396).jpg','Parque Inokashira, junto al Museo Ghibli'],
+  radiokaikan:['Akihabara Radio Kaikan (52497176109).jpg','Radio Kaikan, Akihabara'],
+  radiokaikan2:['Akihabara Radio Kaikan Shopping Building (53416976349).jpg','Edificio de tiendas Radio Kaikan'],
+  mandarake1:['MANDARAKE COMPLEX AKIHABARA.JPG','Mandarake Complex, Akihabara'],
+  mandarake2:['Mandarake Nakano main store 2024-04-11.jpg','Mandarake en Nakano Broadway'],
+  sunshine1:['Image-Sunshine 60 Ikebukuro Tokyo.JPG','Sunshine 60, Ikebukuro'],
+  sunshine2:['Ikebukuro Station, seen from Sunshine 60 building.jpg','Ikebukuro desde Sunshine 60'],
+  ropeway:['Hakone Ropeway 1.jpg','Teleférico de Hakone'],
+  gyutan1:['Gyutan teishoku.JPG','Gyutan, lengua de ternera de Sendai'],
+  gyutan2:['Gyuutan set (24890555591).jpg','Menú de gyutan'],
+  hirosaki:['Hirosakijo.jpg','Castillo de Hirosaki'],
+  onumast:['Ōnuma-Kōen Station.JPG','Estación de Onuma Koen'],
+  onumadango:['Onuma Dango.jpg','Onuma dango, el dulce del parque'],
+  motomachi1:['Motomachi Catholic Church in Hakodate Hokkaido Japan03n.jpg','Iglesia de Motomachi'],
+  motomachi2:['St Johns Church Hakodate Hokkaido Japan03s3.jpg','Iglesia de San Juan, Motomachi'],
+  beermuseum1:['Sapporo Beer Museum.JPG','Sapporo Beer Museum'],
+  beermuseum2:['Sapporo Beer Museum - 4.jpg','Fábrica de ladrillo de Sapporo Beer'],
+  jingis1:['Jingisukan at Asahi Beer Community Hall.jpg','Jingisukan, cordero a la plancha'],
+  jingis2:['Genghis Khan cooking pan.jpg','Plancha de jingisukan'],
+  sakaimachi1:['Sakaimachi street Otaru Hokkaido05s3.jpg','Calle Sakaimachi, Otaru'],
+  sakaimachi2:['Sakaimachi street Otaru Hokkaido16n.jpg','Tiendas de Sakaimachi'],
+  orgel:['Otaru Music Box Museum interior.jpg','Museo de cajas de música de Otaru'],
+  steamclock:['The Otaru Steam Clock 時計 steaming on the Marchen intersection in Otaru Hokkaido Japan (3884434944).jpg','Reloj de vapor de Otaru'],
+  takoyaki1:['Takoyaki stall by sakura chihaya in Osaka.jpg','Puesto de takoyaki'],
+  takoyaki2:['Takoyaki cooking by chou i ci in Dotonbori, Osaka.jpg','Takoyaki en Dotonbori'],
+  kushikatsu1:['Kushikatsu (3603151166).jpg','Kushikatsu'],
+  kushikatsu2:['Shinsekai(Osaka) Janjan.jpg','Calle Janjan Yokocho, Shinsekai'],
+  naruto:['Naruto whirlpools 20170609-2.jpg','Remolinos de Naruto'],
+  pontocho1:['Friday evening in Pontocho Alley, Kyoto (52270424607).jpg','Pontocho al anochecer'],
+  pontocho2:['Pontocho Alley, Kyoto (53589184823).jpg','Callejón de Pontocho'],
+  ryoanji1:['Ryoan-ji, Hojo Teien (Rock Garden) -1 (April 2016) - panoramio.jpg','Jardín de piedras de Ryoan-ji'],
+  ryoanji2:['RyoanJi-Dry garden.jpg','Jardín seco de Ryoan-ji'],
+  monkey1:['Macaca fuscata in Arashiyama Monkey Park Iwatayama.jpg','Macaco en Iwatayama'],
+  monkey2:['Iwatayama Monkey Park.jpg','Parque de monos de Iwatayama'],
+  uji1:['Uji-Bridge.jpg','Puente de Uji'],
+  uji2:['Tea house next to Uji bridge.jpg','Casa de té junto al puente de Uji'],
+  goldice:['Gold leaf on soft ice cream - Kanazawa, Japan - DSC00135.jpg','Helado con pan de oro'],
+  katamachi:['Kanazawa Katamachi.jpg','Katamachi, Kanazawa'],
+  nagamachi2:['Nagamachi Buke Yashiki District 04.jpg','Muros samuráis de Nagamachi'],
+  hidasushi:['Sushi, Hida Beef.jpg','Sushi de ternera de Hida'],
+  hidanosato:['JP-Takayama-hida-no-sato-1.jpg','Hida no Sato'],
+  misen1:['Mount Misen-01.jpg','Monte Misen'],
+  misen2:['Miyajima, Mount Misen, Japan27.jpg','Vistas desde el Misen'],
+  oysters:['Grilled oysters Food in Miyajima - DSC02189.JPG','Ostras a la brasa de Miyajima'],
+  kokoen1:['Koi at Koko-en Garden, Himeji (6155582399).jpg','Carpas en Koko-en'],
+  kokoen2:['Tsukiyama Chisen Garden at Kōko-en 3.jpg','Jardín Koko-en'],
+  n700fuji:['Shinkansen N700 with Mount Fuji.jpg','Shinkansen Tokaido con el Fuji'],
 };
 const DAY_PH = {
   '2027-07-30':['haneda1','haneda2','haneda3','haneda4'],
-  '2027-07-31':['sumida1','sumida2','skytree1','skytree2'],
-  '2027-08-01':['sensoji1','sensoji2','sensoji3','akiba1','akiba2','akiba3'],
-  '2027-08-02':['shibuya1','meiji1','meiji2','shibuya2','omoide1','omoide2'],
-  '2027-08-03':['kamakura1','kamakura2','enoshima1','enoshima2'],
-  '2027-08-04':['nakano2','nakano1','nakano3','akiba1'],
-  '2027-08-05':['hakone1','hakone2','owaku1','owaku2','onsen1'],
-  '2027-08-06':['tanabata1','tanabata2','tanabata3','tanabata4','hayabusa1','hayabusa2','nebuta1'],
-  '2027-08-07':['nebuta2','nebuta3','nebuta4','nebuta1','shinaomori'],
-  '2027-08-08':['hknight1','gory1','gory2','hknight2'],
-  '2027-08-09':['hkmarket','kaisendon','kanemori1','kanemori2'],
+  '2027-07-31':['sumida1','ameyoko1','ameyoko2','sumida2','skytree2'],
+  '2027-08-01':['sensoji1','sensoji2','sensoji3','skytree1','akiba1','radiokaikan','akiba2'],
+  '2027-08-02':['meiji1','meiji2','takeshita1','takeshita2','shibuya1','shibuya2','omoide1','goldengai1','goldengai2'],
+  '2027-08-03':['kamakura1','engaku1','engaku2','kamakura2','enoshima1','enoshima2'],
+  '2027-08-04':['inokashira','nakano1','nakano2','mandarake2','nakano3'],
+  '2027-08-05':['hakone1','hakone2','ropeway','owaku1','owaku2','onsen1'],
+  '2027-08-06':['tanabata1','tanabata2','tanabata3','tanabata4','gyutan1','gyutan2','hayabusa1','nebuta1'],
+  '2027-08-07':['nebuta2','nebuta3','nebuta4','shinaomori','hirosaki'],
+  '2027-08-08':['hknight1','gory1','gory2','hayabusa2','hknight2'],
+  '2027-08-09':['hkmarket','kaisendon','onumast','onumadango','motomachi1','motomachi2','kanemori1','kanemori2'],
   '2027-08-10':['jigoku1','jigoku2','nobo3','onsen2','kaiseki1','kaiseki2'],
-  '2027-08-11':['odori1','odori2','ramen1','ramen2','ramen3'],
-  '2027-08-12':['otaru1','otaru2','otaru3','otaru4'],
-  '2027-08-13':['doton1','doton2','doton3','kix1'],
-  '2027-08-14':['awa1','awa2','awa3','awa4','bizan1'],
-  '2027-08-15':['fushimi1','castle1','kuromon','fushimi2','fushimi3','gion1','gion2'],
-  '2027-08-16':['okuribi1','kiyo1','kiyo2','nishiki1','nishiki2','okuribi2','okuribi3'],
-  '2027-08-17':['arashi1','arashi2','tenryu','kinkaku1','kinkaku2'],
+  '2027-08-11':['odori1','odori2','beermuseum1','beermuseum2','jingis1','jingis2','ramen1','ramen2','ramen3'],
+  '2027-08-12':['otaru1','otaru2','sakaimachi1','sakaimachi2','orgel','steamclock','otaru3','otaru4'],
+  '2027-08-13':['doton1','shinsekai1','kushikatsu1','kushikatsu2','takoyaki1','takoyaki2','doton2','doton3','kix1'],
+  '2027-08-14':['awa1','awa2','awa3','awa4','bizan1','naruto'],
+  '2027-08-15':['fushimi1','castle1','castle2','kuromon','fushimi2','fushimi3','gion1','pontocho1','pontocho2'],
+  '2027-08-16':['okuribi1','kiyo1','kiyo2','nishiki1','nishiki2','okuribi2','okuribi3','gion2'],
+  '2027-08-17':['arashi1','arashi2','tenryu','monkey1','monkey2','kinkaku1','kinkaku2','ryoanji1','ryoanji2'],
   '2027-08-18':['todai','deer1','deer2','kasuga1','kasuga2'],
-  '2027-08-19':['byodo1','byodo2','byodo3','byodo4'],
-  '2027-08-20':['kenroku1','kenroku2','chaya1','chaya2','omicho1','omicho2'],
-  '2027-08-21':['shira1','shira2','shira3','shira4','nagamachi'],
-  '2027-08-22':['taka1','taka2','taka3','taka4'],
-  '2027-08-23':['alps2','takam','alps1','onsen3'],
+  '2027-08-19':['byodo1','byodo2','byodo3','byodo4','uji1','uji2'],
+  '2027-08-20':['kenroku1','kenroku2','chaya1','chaya2','goldice','omicho1','omicho2'],
+  '2027-08-21':['shira1','shira2','shira3','shira4','nagamachi','nagamachi2','katamachi'],
+  '2027-08-22':['taka1','taka2','taka3','taka4','hidasushi'],
+  '2027-08-23':['alps2','takam','alps1','onsen3','hidanosato'],
   '2027-08-24':['dome1','dome2','okono1','okono2'],
-  '2027-08-25':['torii1','torii2','itsuku','corridor','miyapan'],
-  '2027-08-26':['hime1','hime2','hime3','hime4','shinsekai1','shinsekai2'],
-  '2027-08-27':['kobe1','kobe2','kobe3','kobe4','doton4'],
-  '2027-08-28':['kix1','kix2','kix3','kix4'],
+  '2027-08-25':['torii1','torii2','itsuku','corridor','misen1','misen2','oysters','miyapan'],
+  '2027-08-26':['hime1','hime2','hime3','hime4','kokoen1','kokoen2','n700fuji'],
+  '2027-08-27':['radiokaikan2','mandarake1','akiba3','sunshine1','sunshine2','akiba1'],
+  '2027-08-28':['haneda4','haneda2','haneda3','haneda1'],
 };
-/* Fotos de cada alojamiento: las de sus días + las de ryokan si toca */
-const STAY_PH_EXTRA = { aomori:['nebuta1','nebuta2','nebuta3','nebuta4'], noboribetsu:['jigoku1','onsen2','kaiseki1'], takayama:['taka1','onsen3','kaiseki2'], osaka1:['doton1','castle2'] };
+/* Fotos de cada alojamiento: primero las propias, luego las de sus días */
+const STAY_PH_EXTRA = { tokio:['sensoji1','shibuya2'], aomori:['nebuta1','nebuta2','nebuta3','nebuta4'], noboribetsu:['jigoku1','onsen2','kaiseki1'], takayama:['taka1','onsen3','kaiseki2'], osaka:['doton1','castle2'], tokio2:['radiokaikan2','mandarake1','sunshine1','akiba1'] };
 /* Paradas sin noche del diagrama */
-const MINI_PH = { 'Sendai':['tanabata1','tanabata2','tanabata3','hayabusa1'], 'Tokushima':['awa1','awa2','awa3','bizan1'], 'Shirakawa-go':['shira1','shira2','shira3','shira4'], 'Himeji':['hime1','hime2','hime3','hime4'], 'Barcelona':['haneda1','haneda3','kix1','kix4'] };
+const MINI_PH = { 'Sendai':['tanabata1','tanabata2','gyutan1','tanabata3'], 'Tokushima':['awa1','awa2','awa3','naruto'], 'Shirakawa-go':['shira1','shira2','shira3','shira4'], 'Himeji':['hime1','hime2','kokoen1','kokoen2'], 'Barcelona':['haneda1','haneda2','haneda3','haneda4'] };
 const HERO_PH = ['fushimi1','nebuta1','shira2','torii1','shibuya2','hknight1'];
+
+/* =========================================================
+   MAPAS · [nombre, lat, lng, día, búsqueda en Google Maps]
+   ========================================================= */
+const REGIONS = [
+ {id:'general', name:'Ruta completa', jp:'全行程', reg:'air', dates:'30 jul a 28 ago',
+  desc:'Las bases donde dormís unidas en el orden del viaje. Línea continua en tren, discontinua en avión. Los puntos pequeños son excursiones de día.',
+  line:[[35.7138,139.7773],[38.2601,140.8822],[40.8285,140.7340],[41.7737,140.7265],[42.4966,141.1489],[43.0606,141.3485]],
+  flight:[[43.0606,141.3485],[34.6687,135.5013]],
+  line2:[[34.6687,135.5013],[34.9858,135.7588],[35.6455,136.0556],[36.5781,136.6478],[36.7012,137.2132],[36.1409,137.2597],[36.7012,137.2132],[35.6455,136.0556],[34.7335,135.5003],[34.3966,132.4596],[34.8394,134.6939],[35.1709,136.8815],[35.6812,139.7671]],
+  pts:[['Tokio',35.7138,139.7773,'31 jul a 6 ago y 26 a 28 ago','Ueno Station',1],['Sendai',38.2601,140.8822,'6 ago','Sendai Station',0],['Aomori',40.8285,140.7340,'6 a 8 ago','Aomori Station',1],['Hakodate',41.7737,140.7265,'8 a 10 ago','Hakodate Station',1],['Noboribetsu',42.4966,141.1489,'10 ago','Noboribetsu Onsen',1],['Sapporo',43.0606,141.3485,'11 a 13 ago','Sapporo Station',1],['Otaru',43.1990,141.0029,'12 ago','Otaru Canal',0],['Osaka',34.6687,135.5013,'13 a 15 ago','Namba Station',1],['Tokushima',34.0746,134.5513,'14 ago','Tokushima Station',0],['Kioto',34.9858,135.7588,'15 a 20 ago','Kyoto Station',1],['Nara',34.6851,135.8048,'18 ago','Nara Park',0],['Kanazawa',36.5781,136.6478,'20 a 22 ago','Kanazawa Station',1],['Shirakawa-go',36.2577,136.9060,'21 ago','Shirakawa-go',0],['Takayama',36.1409,137.2597,'22 a 24 ago','Takayama Station',1],['Hiroshima',34.3966,132.4596,'24 a 26 ago','Hiroshima Station',1],['Miyajima',34.2959,132.3199,'25 ago','Itsukushima Shrine',0],['Himeji',34.8394,134.6939,'26 ago','Himeji Castle',0],['Kamakura',35.3167,139.5358,'3 ago','Kotoku-in',0],['Hakone',35.2440,139.0193,'5 ago','Owakudani',0]],
+  routes:[{l:'Norte en tren: Tokio → Sapporo', s:['Ueno Station','Sendai Station','Aomori Station','Hakodate Station','Noboribetsu Onsen','Sapporo Station']},
+          {l:'Sur en tren: Osaka → Tokio', s:['Namba Station','Kyoto Station','Kanazawa Station','Takayama Station','Hiroshima Station','Himeji Castle','Tokyo Station']}]},
+ {id:'kanto', name:'Tokio y alrededores', jp:'関東', reg:'kanto', dates:'31 jul a 6 ago y 26 a 28 ago',
+  desc:'Todo lo de Tokio y las excursiones a Kamakura y Hakone. Cada día tiene su propia ruta para abrir en Google Maps.',
+  pts:[['Haneda',35.5494,139.7798,'31 jul y 28 ago','Haneda Airport Terminal 3'],['Ameyoko, Ueno',35.7101,139.7745,'31 jul','Ameya Yokocho'],['Senso-ji, Asakusa',35.7148,139.7967,'1 ago','Senso-ji'],['Tokyo Skytree',35.7101,139.8107,'1 ago','Tokyo Skytree'],['Akihabara',35.6984,139.7731,'1 y 27 ago','Akihabara Radio Kaikan'],['Meiji Jingu',35.6764,139.6993,'2 ago','Meiji Jingu'],['Takeshita Dori',35.6716,139.7031,'2 ago','Takeshita Street'],['Cruce de Shibuya',35.6595,139.7005,'2 ago','Shibuya Scramble Crossing'],['Omoide Yokocho y Golden Gai',35.6930,139.6995,'2 ago','Omoide Yokocho'],['Engaku-ji',35.3374,139.5469,'3 ago','Engaku-ji Kamakura'],['Gran Buda de Kamakura',35.3167,139.5358,'3 ago','Kotoku-in'],['Enoshima',35.2995,139.4800,'3 ago','Enoshima'],['Museo Ghibli',35.6962,139.5704,'4 ago','Ghibli Museum Mitaka'],['Nakano Broadway',35.7090,139.6656,'4 y 27 ago','Nakano Broadway'],['teamLab Planets',35.6491,139.7898,'4 ago','teamLab Planets Tokyo'],['Hakone-Yumoto',35.2326,139.1069,'5 ago','Hakone-Yumoto Station'],['Owakudani',35.2440,139.0193,'5 ago','Owakudani'],['Lago Ashi',35.2048,139.0249,'5 ago','Hakone Shrine'],['Ikebukuro, Sunshine City',35.7289,139.7193,'27 ago','Sunshine City Ikebukuro']],
+  routes:[{l:'1 ago · Asakusa, Skytree y Akihabara', s:['Senso-ji','Tokyo Skytree','Akihabara Radio Kaikan']},
+          {l:'2 ago · Harajuku, Shibuya y Shinjuku', s:['Meiji Jingu','Takeshita Street','Shibuya Scramble Crossing','Omoide Yokocho','Golden Gai Shinjuku']},
+          {l:'3 ago · Kamakura y Enoshima', s:['Kita-Kamakura Station','Engaku-ji Kamakura','Kotoku-in','Enoshima']},
+          {l:'4 ago · Ghibli, Nakano y teamLab', s:['Ghibli Museum Mitaka','Nakano Broadway','teamLab Planets Tokyo']},
+          {l:'5 ago · Hakone', s:['Shinjuku Station','Hakone-Yumoto Station','Owakudani','Hakone Shrine']},
+          {l:'27 ago · Compras', s:['Akihabara Radio Kaikan','Mandarake Complex Akihabara','Sunshine City Ikebukuro','Nakano Broadway']}]},
+ {id:'tohoku', name:'Tohoku: Sendai y Aomori', jp:'東北', reg:'tohoku', dates:'6 a 8 ago',
+  desc:'Subida en shinkansen con parada en Sendai para el Tanabata y dos noches en Aomori para el Nebuta.',
+  line:[[35.6812,139.7671],[38.2601,140.8822],[40.8270,140.6935],[40.8284,140.7346]],
+  pts:[['Estación de Tokio',35.6812,139.7671,'6 ago','Tokyo Station'],['Tanabata, Sendai',38.2618,140.8730,'6 ago','Sendai Ichibancho'],['Shin-Aomori',40.8270,140.6935,'6 ago','Shin-Aomori Station'],['Nebuta Museum Wa Rasse',40.8284,140.7346,'7 ago','Nebuta Museum Wa Rasse'],['Aomori Gyosai Center',40.8240,140.7380,'7 ago','Aomori Gyosai Center'],['Castillo de Hirosaki (opcional)',40.6075,140.4636,'7 ago','Hirosaki Castle']],
+  routes:[{l:'6 ago · Tokio → Sendai → Aomori', s:['Tokyo Station','Sendai Ichibancho','Shin-Aomori Station','Aomori Station']},
+          {l:'7 ago · Aomori', s:['Nebuta Museum Wa Rasse','Aomori Gyosai Center']}]},
+ {id:'hokkaido', name:'Hokkaido', jp:'北海道', reg:'hokkaido', dates:'8 a 13 ago',
+  desc:'Hakodate dos noches, ryokan en Noboribetsu y Sapporo con excursión a Otaru. Se vuela a Osaka desde New Chitose.',
+  line:[[41.9048,140.6486],[41.7737,140.7265],[42.4966,141.1489],[43.0606,141.3485],[42.7752,141.6923]],
+  pts:[['Shin-Hakodate-Hokuto',41.9048,140.6486,'8 ago','Shin-Hakodate-Hokuto Station'],['Goryokaku',41.7969,140.7570,'8 ago','Goryokaku Tower'],['Monte Hakodate',41.7594,140.7041,'8 ago','Mount Hakodate Ropeway'],['Mercado matinal',41.7737,140.7265,'9 ago','Hakodate Morning Market'],['Parque de Onuma',41.9786,140.6693,'9 ago','Onuma Koen Station'],['Motomachi y Kanemori',41.7676,140.7172,'9 ago','Kanemori Red Brick Warehouse'],['Yunokawa Onsen',41.7778,140.7880,'9 ago','Yunokawa Onsen Hakodate'],['Jigokudani, Noboribetsu',42.4966,141.1489,'10 ago','Jigokudani Noboribetsu'],['Parque Odori',43.0606,141.3485,'11 ago','Odori Park'],['Sapporo Beer Museum',43.0714,141.3687,'11 ago','Sapporo Beer Museum'],['Ganso Ramen Yokocho',43.0545,141.3533,'11 ago','Ganso Ramen Yokocho Susukino'],['Canal de Otaru',43.1990,141.0029,'12 ago','Otaru Canal'],['Aeropuerto New Chitose',42.7752,141.6923,'13 ago','New Chitose Airport']],
+  routes:[{l:'8 ago · Llegada a Hakodate', s:['Shin-Hakodate-Hokuto Station','Goryokaku Tower','Mount Hakodate Ropeway']},
+          {l:'9 ago · Hakodate y Onuma', s:['Hakodate Morning Market','Onuma Koen Station','Kanemori Red Brick Warehouse','Yunokawa Onsen Hakodate']},
+          {l:'10 y 11 ago · Noboribetsu → Sapporo', s:['Hakodate Station','Noboribetsu Onsen','Sapporo Station','Odori Park','Sapporo Beer Museum']},
+          {l:'12 ago · Otaru', s:['Sapporo Station','Otaru Canal','Sakaimachi Street Otaru']}]},
+ {id:'kansai', name:'Kansai: Osaka, Kioto y Nara', jp:'関西', reg:'kansai', dates:'13 a 20 ago',
+  desc:'Osaka dos noches con el Awa Odori de Tokushima en excursión, y Kioto cinco noches con Nara y Uji.',
+  pts:[['Aeropuerto de Kansai',34.4320,135.2304,'13 ago','Kansai International Airport'],['Den Den Town',34.6603,135.5059,'13 ago','Den Den Town Nipponbashi'],['Shinsekai',34.6525,135.5063,'13 ago','Shinsekai Osaka'],['Dotonbori',34.6687,135.5013,'13 ago','Dotonbori'],['Awa Odori, Tokushima',34.0746,134.5513,'14 ago','Tokushima Station'],['Monte Bizan',34.0662,134.5395,'14 ago','Mount Bizan Tokushima'],['Castillo de Osaka',34.6873,135.5262,'15 ago','Osaka Castle'],['Mercado Kuromon',34.6654,135.5068,'15 ago','Kuromon Market'],['Fushimi Inari',34.9671,135.7727,'15 ago','Fushimi Inari Taisha'],['Gion y Pontocho',35.0027,135.7752,'15 ago','Hanamikoji Street'],['Kiyomizu-dera',34.9949,135.7850,'16 ago','Kiyomizu-dera'],['Mercado Nishiki',35.0050,135.7650,'16 ago','Nishiki Market'],['Okuribi desde el río Kamo',35.0306,135.7724,'16 ago','Demachiyanagi Station'],['Bambú de Arashiyama',35.0170,135.6713,'17 ago','Arashiyama Bamboo Grove'],['Kinkaku-ji',35.0394,135.7292,'17 ago','Kinkaku-ji'],['Ryoan-ji',35.0345,135.7182,'17 ago','Ryoan-ji'],['Todai-ji, Nara',34.6890,135.8398,'18 ago','Todai-ji'],['Kasuga Taisha',34.6813,135.8484,'18 ago','Kasuga Taisha'],['Nintendo Museum',34.9071,135.7845,'19 ago','Nintendo Museum'],['Byodo-in, Uji',34.8893,135.8077,'19 ago','Byodo-in']],
+  routes:[{l:'13 ago · Osaka', s:['Den Den Town Nipponbashi','Shinsekai Osaka','Dotonbori']},
+          {l:'15 ago · Osaka → Kioto', s:['Osaka Castle','Kuromon Market','Fushimi Inari Taisha','Hanamikoji Street','Pontocho Kyoto']},
+          {l:'16 ago · Higashiyama y Okuribi', s:['Kiyomizu-dera','Nishiki Market','Demachiyanagi Station']},
+          {l:'17 ago · Arashiyama y Kinkaku-ji', s:['Arashiyama Bamboo Grove','Tenryu-ji','Kinkaku-ji','Ryoan-ji']},
+          {l:'18 ago · Nara', s:['Kyoto Station','Todai-ji','Kasuga Taisha']},
+          {l:'19 ago · Nintendo Museum y Uji', s:['Nintendo Museum','Byodo-in','Uji Bridge']}]},
+ {id:'chubu', name:'Kanazawa, Shirakawa-go y Takayama', jp:'北陸・飛騨', reg:'chubu', dates:'20 a 24 ago',
+  desc:'Kanazawa dos noches con Shirakawa-go de excursión, y Takayama dos noches con los Alpes japoneses.',
+  line:[[35.6455,136.0556],[36.5781,136.6478],[36.7012,137.2132],[36.1409,137.2597]],
+  pts:[['Kanazawa (estación)',36.5781,136.6478,'20 ago','Kanazawa Station'],['Kenroku-en',36.5622,136.6626,'20 ago','Kenroku-en'],['Higashi Chaya',36.5724,136.6667,'20 ago','Higashi Chaya District'],['Mercado Omicho',36.5714,136.6566,'20 ago','Omicho Market'],['Nagamachi',36.5627,136.6496,'21 ago','Nagamachi Samurai District'],['Shirakawa-go',36.2577,136.9060,'21 ago','Shirakawa-go'],['Toyama (trasbordo)',36.7012,137.2132,'22 ago','Toyama Station'],['Sanmachi Suji, Takayama',36.1409,137.2597,'22 ago','Sanmachi Suji Takayama'],['Mercado de Miyagawa',36.1440,137.2575,'23 ago','Miyagawa Morning Market'],['Hirayu Onsen',36.1990,137.5590,'23 ago','Hirayu Onsen'],['Shinhotaka Ropeway',36.2865,137.5761,'23 ago','Shinhotaka Ropeway']],
+  routes:[{l:'20 ago · Kanazawa', s:['Kanazawa Station','Kenroku-en','Higashi Chaya District','Omicho Market']},
+          {l:'21 ago · Shirakawa-go', s:['Kanazawa Station','Shirakawa-go','Nagamachi Samurai District']},
+          {l:'22 y 23 ago · Takayama y Okuhida', s:['Takayama Station','Sanmachi Suji Takayama','Hirayu Onsen','Shinhotaka Ropeway']}]},
+ {id:'chugoku', name:'Hiroshima, Miyajima y Himeji', jp:'中国', reg:'chugoku', dates:'24 a 26 ago',
+  desc:'Dos noches en Hiroshima con Miyajima, y parada en Himeji de camino a Tokio.',
+  line:[[34.7335,135.5003],[34.3966,132.4596],[34.3110,132.3036],[34.2959,132.3199]],
+  pts:[['Shin-Osaka',34.7335,135.5003,'24 ago','Shin-Osaka Station'],['Parque de la Paz',34.3955,132.4536,'24 ago','Hiroshima Peace Memorial Park'],['Okonomimura',34.3920,132.4633,'24 ago','Okonomimura Hiroshima'],['Itsukushima',34.2959,132.3199,'25 ago','Itsukushima Shrine'],['Monte Misen',34.2795,132.3195,'25 ago','Mount Misen'],['Castillo de Himeji',34.8394,134.6939,'26 ago','Himeji Castle'],['Koko-en',34.8380,134.6905,'26 ago','Kokoen Garden Himeji']],
+  routes:[{l:'24 ago · Hiroshima', s:['Hiroshima Station','Hiroshima Peace Memorial Park','Okonomimura Hiroshima']},
+          {l:'25 ago · Miyajima', s:['Hiroshima Peace Memorial Museum','Miyajimaguchi Station','Itsukushima Shrine','Mount Misen']},
+          {l:'26 ago · Himeji → Tokio', s:['Hiroshima Station','Himeji Castle','Kokoen Garden Himeji','Tokyo Station']}]},
+];
 
 /* Presupuesto por defecto (por persona) */
 const BUDGET_DEFAULT = {
-  vuelos:{v:1100, u:'€', l:'Vuelos internacionales', s:'Multidestino BCN → Tokio, KIX → BCN'},
-  interno:{v:12000, u:'¥', l:'Vuelo Sapporo → Osaka', s:'Low cost con mochila'},
+  vuelos:{v:1100, u:'€', l:'Vuelos internacionales', s:'Barcelona ↔ Tokio con 1 maleta facturada'},
+  interno:{v:15000, u:'¥', l:'Vuelo Sapporo → Osaka', s:'Low cost con maleta facturada'},
   pases:{v:76800, u:'¥', l:'Tres pases de tren regionales', s:'40.000 + 19.800 + 17.000'},
-  transp:{v:47000, u:'¥', l:'Resto de transporte', s:'Metro, Hakone, Otaru, bus de Okuhida, bus Tokushima y aeropuertos'},
+  transp:{v:62000, u:'¥', l:'Resto de transporte', s:'Shinkansen Himeji → Tokio, metro, Hakone, Otaru, buses, taquillas y aeropuertos'},
   aloj:{v:0, u:'¥', l:'Alojamiento', s:'Calculado desde la pestaña Alojamientos (punto medio del rango ÷ viajeros)', auto:true},
   comida:{v:5000, u:'¥/día', l:'Comida y bebida', s:'Konbini, ramen, teishoku y alguna cena especial', perDay:true},
-  ocio:{v:45000, u:'¥', l:'Entradas y actividades', s:'Templos, museos, teamLab, Ghibli, Nintendo, Universal'},
-  compras:{v:40000, u:'¥', l:'Compras y caprichos', s:'Figuras, manga, regalos'},
+  ocio:{v:35000, u:'¥', l:'Entradas y actividades', s:'Templos, museos, teamLab, Ghibli y Nintendo Museum. Sin parques de atracciones'},
+  compras:{v:60000, u:'¥', l:'Compras y caprichos', s:'Figuras, manga y recuerdos'},
   seguro:{v:150, u:'€', l:'Seguro, eSIM y varios', s:'Seguro con cancelación y datos móviles'},
 };
 
@@ -761,7 +939,7 @@ function header(){
 /* =========================================================
    VISTAS
    ========================================================= */
-const VIEWS = [['ruta','Ruta'],['dias','Día a día'],['transporte','Transporte'],['alojamiento','Alojamientos'],['presupuesto','Presupuesto'],['preparativos','Preparativos'],['consejos','Consejos']];
+const VIEWS = [['ruta','Ruta'],['mapas','Mapas'],['dias','Día a día'],['transporte','Transporte'],['alojamiento','Alojamientos'],['presupuesto','Presupuesto'],['preparativos','Preparativos'],['consejos','Consejos']];
 
 function vRuta(){
   const line = ROUTE.map(r => {
@@ -792,8 +970,8 @@ function vRuta(){
   }
 
   $('#v-ruta').innerHTML = `
-    <div><div class="eyebrow">Planteamiento</div><h2 style="font-size:26px">Una línea de norte a sur</h2>
-    <p class="lead">Entrada por Tokio, subida en tren hasta Hokkaido aprovechando los grandes festivales del norte, vuelo low cost a Osaka y vuelta por Kioto, los Alpes japoneses y Hiroshima. Se sale desde Kansai para no tener que volver a Tokio. Tres pases regionales en lugar del Japan Rail Pass nacional, que para esta ruta sale más caro.</p></div>
+    <div><div class="eyebrow">Planteamiento</div><h2 style="font-size:26px">Una vuelta completa desde Tokio</h2>
+    <p class="lead">Entrada y salida por Tokio. Subida en tren hasta Hokkaido aprovechando los festivales del norte, vuelo a Osaka, bajada por Kioto, los Alpes japoneses y Hiroshima, y vuelta a Tokio en shinkansen para las compras de los últimos días. Sin parques de atracciones. Tres pases regionales en lugar del Japan Rail Pass nacional, que para esta ruta sale más caro.</p></div>
     <div class="linemap">
       <div class="panel"><ol class="line">${line}</ol></div>
       <div style="display:grid;gap:16px;align-content:start">
@@ -805,7 +983,7 @@ function vRuta(){
           <span><i style="background:var(--shu);width:8px;height:8px;border-radius:50%"></i>Festival</span>
         </div>
         <div class="note"><b>Lo más urgente ahora:</b> la cama en Aomori para las noches del 6 y 7 de agosto. Durante el Nebuta se agota con casi un año de antelación. Reserva con cancelación gratuita y ya se ajustará.</div>
-        <div class="note info"><b>Equipaje ligero:</b> salvo el ryokan de Noboribetsu, todas las paradas son de dos noches o más. La maleta grande para los recuerdos se compra al final, en Osaka, que es la última base antes del vuelo de vuelta.</div>
+        <div class="note info"><b>Maletas:</b> vais con maleta de mano y una grande. Las figuras, que es lo que más pesa, se compran los dos últimos días en Tokio, justo antes del vuelo. Así la maleta grande viaja casi vacía tres semanas.</div>
       </div>
     </div>`;
   document.querySelectorAll('#v-ruta .cal a').forEach(a => a.addEventListener('click', e => {
@@ -823,11 +1001,21 @@ function vDias(){
     const c = s ? color(s.reg) : 'var(--l-air)';
     const x = pd(d.d);
     const chips = d.tags.map(t => `<span class="chip ${t==='festival'?'fest':t==='onsen'?'onsen':''}">${TAGS[t]}</span>`).join('');
+    let sleep = '';
+    if(s){
+      const tot = nights(s.in, s.out), ni = nights(s.in, d.d) + 1, si = STAYS.indexOf(s) + 1;
+      sleep = d.d === s.in
+        ? `<div class="sleep change"><b>${si===1?'Check-in':'Cambio de alojamiento'}</b> · alojamiento ${si} en ${esc(s.name)}, ${tot} ${tot===1?'noche':'noches'} en el mismo sitio</div>`
+        : `<div class="sleep"><b>Mismo alojamiento</b> · ${esc(s.name)}, noche ${ni} de ${tot}</div>`;
+    } else if(d.d === TRIP.end) sleep = `<div class="sleep change"><b>Check-out</b> · último día, sin alojamiento</div>`;
+    const qs = [...d.plan.join(' ').matchAll(/\[\[[^|\]]+\|([^\]]+)\]\]/g)].map(m => m[1]);
+    const route = qs.length >= 2 ? `<a class="btn" href="${gmDir(qs)}" target="_blank" rel="noopener">Ruta del día en Google Maps ↗</a>` : '';
     return `<article class="day" id="d-${d.d}" style="--c:${c}"><div class="bar"></div>
       <div class="hd"><div class="date"><div class="dm">${DIAS[x.getUTCDay()]}</div><div class="dn">${x.getUTCDate()}</div><div class="dm">${MESES[x.getUTCMonth()]}</div></div>
       <div><div class="daynum">Día ${idx} · ${esc(s?s.name+' '+s.jp:'En vuelo')}</div><h3>${esc(d.title)}</h3><div class="chips">${chips}</div></div></div>
       <div class="body"><div class="gal lead2">${(DAY_PH[d.d]||[]).map(k=>fig(k,'d-'+d.d)).join('')}</div><ul>${d.plan.map(p=>`<li>${links(p)}</li>`).join('')}</ul>
       ${d.alt?`<div class="alt">${links(d.alt)}</div>`:''}
+      <div class="row">${sleep}${route}</div>
       <details ${notes[d.d]?'open':''}><summary>Mis notas${notes[d.d]?' · guardadas':''}</summary>
       <textarea id="n-${d.d}" data-note="${d.d}" placeholder="Reservas, horarios, restaurantes apuntados…">${esc(notes[d.d]||'')}</textarea></details></div></article>`;
   }).join('');
@@ -853,19 +1041,25 @@ function vTransporte(){
     <div class="ds">${esc(p.vs)}</div><a class="btn" href="${p.url}" target="_blank" rel="noopener">Web oficial ↗</a></div>`).join('');
   $('#v-transporte').innerHTML = `
     <div><div class="eyebrow">Avión, tren y autobús</div><h2 style="font-size:26px">Transporte</h2>
-    <p class="lead">El Japan Rail Pass nacional de 21 días cuesta unos 100.000 ¥ y no compensa para esta ruta. Con tres pases regionales se cubren todos los trayectos largos por unos 76.800 ¥ por persona.</p></div>
+    <p class="lead">El Japan Rail Pass nacional de 21 días cuesta unos 100.000 ¥ y no compensa para esta ruta. Con tres pases regionales se cubren casi todos los trayectos largos por unos 76.800 ¥ por persona. Solo el shinkansen final de Himeji a Tokio se paga aparte.</p></div>
     <div class="passes">${tk}</div>
     <div class="tbl"><table><thead><tr><th>Fecha</th><th>Trayecto</th><th>Medio</th><th>Duración</th><th style="text-align:right">Coste pp</th></tr></thead><tbody>${rows}</tbody></table></div>
     <div class="note info">Precios por persona. Los asientos de shinkansen se reservan desde un mes antes a las 10:00 hora de Japón. Los pases se usan días seguidos desde el primer uso, así que las fechas de esta tabla están ajustadas para no desperdiciar días.</div>`;
 }
 
 function vAloj(){
-  const cards = STAYS.map(s => {
+  const N = STAYS.length, totN = STAYS.reduce((a,s)=>a+nights(s.in,s.out),0);
+  const tl = STAYS.map((s,i) => { const n = nights(s.in,s.out);
+    return `<a href="#alojamiento" data-st="${s.id}" class="seg" style="flex:${n};--c:${color(s.reg)}" title="${esc(s.name)} · ${n} ${n===1?'noche':'noches'}"><b>${i+1}</b><span>${esc(s.name)}</span><i>${n}</i></a>` }).join('');
+  const rows = STAYS.map((s,i) => { const n = nights(s.in,s.out);
+    return `<tr style="--c:${color(s.reg)}"><td class="mono">${i+1}</td><td><span class="sw"></span>${esc(s.name)}${s.onsen?' <span class="chip onsen">onsen</span>':''}</td><td class="mono" style="white-space:nowrap">${fmtD(s.in)} → ${fmtD(s.out)}</td><td class="mono">${n}</td><td>${n===1?'Una noche, el ryokan':'Un solo alojamiento, sin cambios'}</td></tr>` }).join('');
+  const cards = STAYS.map((s,i) => {
     const n = nights(s.in, s.out);
     const mid = (s.precio[0]+s.precio[1])/2;
     const url = `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(s.q)}&checkin=${s.in}&checkout=${s.out}&group_adults=${TRIP.travellers}&no_rooms=1`;
-    return `<article class="stay" style="--c:${color(s.reg)}">
-      <div class="signbox"><div class="k">${s.jp}</div><div class="r">${esc(s.name)}${s.onsen?' <span class="chip onsen">onsen</span>':''}</div><div class="kn">${s.kana}</div></div>
+    const abnb = `https://www.airbnb.es/s/${encodeURIComponent(s.q)}/homes?checkin=${s.in}&checkout=${s.out}&adults=${TRIP.travellers}`;
+    return `<article class="stay" id="st-${s.id}" style="--c:${color(s.reg)}">
+      <div class="signbox"><div class="stnum">Alojamiento ${i+1} de ${N} · ${n===1?'1 noche':n+' noches seguidas en el mismo sitio'}</div><div class="k">${s.jp}</div><div class="r">${esc(s.name)}${s.onsen?' <span class="chip onsen">onsen</span>':''}</div><div class="kn">${s.kana}</div></div>
       <div><div class="gal">${stayPh(s.id).slice(0,7).map(k=>fig(k,'s-'+s.id,480)).join('')}</div>
       <div class="in"><dl>
         <dt>Fechas</dt><dd class="mono">${fmtD(s.in)} → ${fmtD(s.out)} · ${n} ${n===1?'noche':'noches'}</dd>
@@ -874,14 +1068,20 @@ function vAloj(){
         <dt>Precio</dt><dd class="mono">${yen(s.precio[0])} a ${yen(s.precio[1])} por noche y habitación</dd>
         <dt>Total</dt><dd class="mono">≈ ${yen(mid*n)} · ${eur(mid*n/TRIP.eurJpy)}</dd></dl>
         <div style="font-size:13.5px;color:var(--muted)">${esc(s.tip)}</div>
-        <a class="btn" href="${url}" target="_blank" rel="noopener">Buscar en Booking ↗</a></div></div></article>`;
+        <div class="row"><a class="btn" href="${url}" target="_blank" rel="noopener">Buscar en Booking ↗</a>${s.airbnb?`<a class="btn" href="${abnb}" target="_blank" rel="noopener">Buscar en Airbnb ↗</a>`:''}</div></div></div></article>`;
   }).join('');
   const tot = STAYS.reduce((a,s)=>a+nights(s.in,s.out)*(s.precio[0]+s.precio[1])/2,0);
   $('#v-alojamiento').innerHTML = `
     <div><div class="eyebrow">28 noches</div><h2 style="font-size:26px">Alojamientos</h2>
     <p class="lead">Hoteles business en las ciudades (habitaciones pequeñas pero limpias, buena ubicación y precio contenido) y dos noches de capricho en ryokan con onsen. Precios por habitación doble en temporada alta de agosto.</p></div>
     <div class="panel row" style="justify-content:space-between"><div><div class="eyebrow">Total estimado de alojamiento</div><div class="mono" style="font-size:24px;font-weight:600;color:var(--ai)">${yen(tot)} · ${eur(tot/TRIP.eurJpy)}</div></div><div style="color:var(--muted);font-size:13.5px">Para ${TRIP.travellers} personas en habitación doble</div></div>
+    <div class="panel"><div class="eyebrow" style="margin-bottom:10px">${totN} noches en ${N} alojamientos · toca uno para ir a su ficha</div><div class="timeline">${tl}</div></div>
+    <div class="tbl"><table><thead><tr><th>N.º</th><th>Base</th><th>Fechas</th><th>Noches</th><th>Alojamiento</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <div class="note info">Cada base es <b>un único alojamiento para todas sus noches</b>, sin cambios intermedios. En Tokio hay dos estancias (al principio y al final): si os gusta el primer alojamiento, reservad también allí la segunda.</div>
     <div class="stays">${cards}</div>`;
+  document.querySelectorAll('#v-alojamiento .seg').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault(); const el = document.getElementById('st-'+a.dataset.st); if(el) el.scrollIntoView({block:'start', behavior:'smooth'});
+  }));
 }
 
 function vPresupuesto(){
@@ -968,7 +1168,70 @@ function vConsejos(){
 /* =========================================================
    NAVEGACIÓN
    ========================================================= */
-const RENDER = {ruta:vRuta, dias:vDias, transporte:vTransporte, alojamiento:vAloj, presupuesto:vPresupuesto, preparativos:vPrep, consejos:vConsejos};
+/* =========================================================
+   MAPAS
+   ========================================================= */
+const gmDir = stops => 'https://www.google.com/maps/dir/' + stops.map(q => encodeURIComponent(q)).join('/');
+const gmQ = q => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+const GEN_REG = {Tokio:'kanto',Kamakura:'kanto',Hakone:'kanto',Sendai:'tohoku',Aomori:'tohoku',Hakodate:'hokkaido',Noboribetsu:'hokkaido',Sapporo:'hokkaido',Otaru:'hokkaido',Osaka:'kansai',Tokushima:'kansai',Kioto:'kansai',Nara:'kansai',Kanazawa:'chubu','Shirakawa-go':'chubu',Takayama:'chubu',Hiroshima:'chugoku',Miyajima:'chugoku',Himeji:'chugoku'};
+function vMapas(){
+  const nav = REGIONS.map(r => `<button type="button" data-r="${r.id}" style="--c:${color(r.reg)}">${esc(r.name)}</button>`).join('');
+  const secs = REGIONS.map(r => `
+    <section class="region" id="rg-${r.id}" style="--c:${color(r.reg)}">
+      <div class="rhead"><div class="eyebrow">${esc(r.dates)}</div><h3>${esc(r.name)} <span class="jp">${r.jp}</span></h3><p class="lead">${esc(r.desc)}</p></div>
+      <div class="rgrid">
+        <div class="mapbox" id="map-${r.id}" role="img" aria-label="Mapa de ${esc(r.name)}"></div>
+        <div class="rside">
+          <div class="eyebrow">Rutas para abrir en Google Maps</div>
+          <div class="rroutes">${r.routes.map(x => `<a class="btn" href="${gmDir(x.s)}" target="_blank" rel="noopener">${esc(x.l)} ↗</a>`).join('')}</div>
+          <div class="eyebrow" style="margin-top:6px">Lugares</div>
+          <ol class="rpts">${r.pts.map(p => `<li><a href="${gmQ(p[4])}" target="_blank" rel="noopener">${esc(p[0])}</a> <span class="mono">${esc(p[3])}</span></li>`).join('')}</ol>
+        </div>
+      </div>
+    </section>`).join('');
+  $('#v-mapas').innerHTML = `
+    <div><div class="eyebrow">Recorrido</div><h2 style="font-size:26px">Mapas</h2>
+    <p class="lead">Un mapa general con todo el viaje y uno por región. Toca un punto para ver qué es y abrirlo en Google Maps, o abre directamente la ruta de cada día.</p></div>
+    <div class="filters rnav" role="group" aria-label="Ir a una región">${nav}</div>
+    <div class="note info" id="map-note" hidden>El fondo del mapa no se puede cargar en esta vista previa. En la web de GitHub Pages se ve completo, y los enlaces a Google Maps funcionan en ambos sitios.</div>
+    <div class="maps">${secs}</div>`;
+  document.querySelectorAll('#v-mapas .rnav button').forEach(b => b.addEventListener('click', () => {
+    const el = document.getElementById('rg-'+b.dataset.r); if(el) el.scrollIntoView({block:'start', behavior:'smooth'});
+  }));
+}
+let MAPS = null;
+function initMaps(){
+  if(MAPS) { Object.values(MAPS).forEach(m => m.invalidateSize()); return }
+  if(!window.L){ $('#map-note').hidden = false; return }
+  MAPS = {};
+  const css = getComputedStyle(document.documentElement);
+  const col = reg => (css.getPropertyValue('--l-'+reg).trim() || '#1E3A6B');
+  const ai = css.getPropertyValue('--ai').trim() || '#1E3A6B';
+  REGIONS.forEach(r => {
+    const m = L.map('map-'+r.id, {scrollWheelZoom:false, attributionControl:true});
+    const tl = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {subdomains:'abcd', maxZoom:19, attribution:'© OpenStreetMap · © CARTO'}).addTo(m);
+    tl.on('tileerror', () => { $('#map-note').hidden = false });
+    const isGen = r.id === 'general';
+    const lc = isGen ? ai : col(r.reg);
+    if(r.line) L.polyline(r.line, {color:lc, weight:4, opacity:.85}).addTo(m);
+    if(r.line2) L.polyline(r.line2, {color:lc, weight:4, opacity:.85}).addTo(m);
+    if(r.flight) L.polyline(r.flight, {color:lc, weight:3, opacity:.8, dashArray:'6 9'}).addTo(m);
+    const b = [];
+    r.pts.forEach((p, i) => {
+      const base = isGen ? !!p[5] : true;
+      const c = isGen ? col(GEN_REG[p[0]] || 'air') : col(r.reg);
+      const mk = L.circleMarker([p[1], p[2]], {radius: base ? 8 : 5, color:'#ffffff', weight:2, fillColor:c, fillOpacity:1}).addTo(m);
+      mk.bindPopup(`<b>${esc(p[0])}</b><br><span style="color:#5A6676">${esc(p[3])}</span><br><a href="${gmQ(p[4])}" target="_blank" rel="noopener">Abrir en Google Maps ↗</a>`);
+      if(isGen && base) mk.bindTooltip(esc(p[0]), {permanent:true, direction:'right', offset:[8,0], className:'lbl'});
+      else if(!isGen) mk.bindTooltip(`${i+1}. ${esc(p[0])}`, {direction:'top', offset:[0,-6], className:'lbl'});
+      b.push([p[1], p[2]]);
+    });
+    m.fitBounds(b, {padding:[28,28]});
+    MAPS[r.id] = m;
+  });
+}
+
+const RENDER = {ruta:vRuta, mapas:vMapas, dias:vDias, transporte:vTransporte, alojamiento:vAloj, presupuesto:vPresupuesto, preparativos:vPrep, consejos:vConsejos};
 function go(view, anchor){
   if(location.hash !== '#'+view) history.replaceState(null,'','#'+view);
   show(view, anchor);
@@ -978,6 +1241,7 @@ function show(view, anchor){
   VIEWS.forEach(([k]) => { $('#v-'+k).hidden = k!==view });
   document.querySelectorAll('#tabs a').forEach(a => a.setAttribute('aria-current', a.dataset.v===view ? 'page' : 'false'));
   if(view==='dias' && anchor){ dayFilter='todos'; vDias() }
+  if(view==='mapas') setTimeout(initMaps, 30);
   if(anchor){ const el = document.getElementById('d-'+anchor); if(el) el.scrollIntoView({block:'start'}) }
   else window.scrollTo(0,0);
 }
