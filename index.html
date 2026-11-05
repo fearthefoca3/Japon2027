@@ -187,6 +187,10 @@ td.num{text-align:right;white-space:nowrap}
 .blegend{display:grid;gap:4px;font-size:13px}
 .blegend div{display:grid;grid-template-columns:12px 1fr auto;gap:8px;align-items:center}
 .blegend i{width:12px;height:12px;border-radius:2px}
+.tot2{display:grid;grid-template-columns:1fr 1fr;gap:10px;border-top:1px solid var(--rule);margin-top:12px;padding-top:10px}
+.tot2 .mono{font-size:20px;font-weight:600}
+.desg tr.sum td{font-weight:600;background:var(--paper)}
+.brow select{text-align:left}
 
 /* Checklist */
 .check{display:grid;gap:6px}
@@ -861,17 +865,21 @@ const REGIONS = [
           {l:'26 ago · Himeji → Tokio', s:['Hiroshima Station','Himeji Castle','Kokoen Garden Himeji','Tokyo Station']}]},
 ];
 
-/* Presupuesto por defecto (por persona) */
+/* Presupuesto por defecto (por persona). nivel = 0 parte baja del rango de alojamiento, 0.5 punto medio, 1 parte alta */
+const BUDGET_PRESETS = {
+  ajustado:{vuelos:950, interno:12000, pases:76800, transp:55000, nivel:0, comida:3500, ocio:25000, compras:30000, seguro:100},
+  previsto:{vuelos:1100, interno:15000, pases:76800, transp:62000, nivel:0.5, comida:5000, ocio:35000, compras:60000, seguro:150},
+};
 const BUDGET_DEFAULT = {
-  vuelos:{v:1100, u:'€', l:'Vuelos internacionales', s:'Barcelona ↔ Tokio con 1 maleta facturada'},
-  interno:{v:15000, u:'¥', l:'Vuelo Sapporo → Osaka', s:'Low cost con maleta facturada'},
-  pases:{v:76800, u:'¥', l:'Tres pases de tren regionales', s:'40.000 + 19.800 + 17.000'},
-  transp:{v:62000, u:'¥', l:'Resto de transporte', s:'Shinkansen Himeji → Tokio, metro, Hakone, Otaru, buses, taquillas y aeropuertos'},
-  aloj:{v:0, u:'¥', l:'Alojamiento', s:'Calculado desde la pestaña Alojamientos (punto medio del rango ÷ viajeros)', auto:true},
-  comida:{v:5000, u:'¥/día', l:'Comida y bebida', s:'Konbini, ramen, teishoku y alguna cena especial', perDay:true},
-  ocio:{v:35000, u:'¥', l:'Entradas y actividades', s:'Templos, museos, teamLab, Ghibli y Nintendo Museum. Sin parques de atracciones'},
-  compras:{v:60000, u:'¥', l:'Compras y caprichos', s:'Figuras, manga y recuerdos'},
-  seguro:{v:150, u:'€', l:'Seguro, eSIM y varios', s:'Seguro con cancelación y datos móviles'},
+  vuelos:{u:'€', l:'Vuelos internacionales', s:'Barcelona ↔ Tokio con 1 maleta facturada', how:v=>'Ida y vuelta'},
+  interno:{u:'¥', l:'Vuelo Sapporo → Osaka', s:'Low cost con maleta facturada', how:v=>'Un trayecto'},
+  pases:{u:'¥', l:'Pases de tren regionales', s:'40.000 + 19.800 + 17.000', how:v=>'3 pases'},
+  transp:{u:'¥', l:'Resto de transporte', s:'Shinkansen Himeji → Tokio (16.000), metro, Hakone, Otaru, buses, taquillas y aeropuertos', how:v=>'Varios'},
+  aloj:{u:'¥', l:'Alojamiento', s:'28 noches según la pestaña Alojamientos, dividido entre los viajeros', auto:true, how:v=>'28 noches'},
+  comida:{u:'¥/día', l:'Comida y bebida', s:'Konbini, ramen, teishoku y alguna cena especial', perDay:true, how:v=>`${yen(v)} × 30 días`},
+  ocio:{u:'¥', l:'Entradas y actividades', s:'Templos, museos, teamLab, Ghibli y Nintendo Museum. Sin parques de atracciones', how:v=>'Varias'},
+  seguro:{u:'€', l:'Seguro, eSIM y varios', s:'Seguro con cancelación y datos móviles', how:v=>'Fijo'},
+  compras:{u:'¥', l:'Compras y caprichos', s:'Figuras, manga y recuerdos. Se cuenta aparte del coste del viaje', extra:true, how:v=>'A vuestro gusto'},
 };
 
 /* =========================================================
@@ -888,8 +896,9 @@ const DIAS = ['dom','lun','mar','mié','jue','vie','sáb'];
 const pd = s => { const [y,m,d] = s.split('-').map(Number); return new Date(Date.UTC(y,m-1,d)) };
 const fmtD = s => { const x = pd(s); return `${DIAS[x.getUTCDay()]} ${x.getUTCDate()} ${MESES[x.getUTCMonth()]}` };
 const nights = (a,b) => Math.round((pd(b)-pd(a))/864e5);
-const yen = n => Math.round(n).toLocaleString('es-ES') + ' ¥';
-const eur = n => Math.round(n).toLocaleString('es-ES') + ' €';
+const fmtN = n => { try{ return Math.round(n).toLocaleString('es-ES',{useGrouping:'always'}) }catch(e){ return Math.round(n).toLocaleString('es-ES') } };
+const yen = n => fmtN(n) + ' ¥';
+const eur = n => fmtN(n) + ' €';
 const stayById = id => STAYS.find(s => s.id === id);
 const color = reg => REGION[reg] || 'var(--ai)';
 const links = t => t.replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, (_,a,b) => `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(b)}" target="_blank" rel="noopener">${a}</a>`);
@@ -1065,54 +1074,71 @@ function vAloj(){
 }
 
 function vPresupuesto(){
-  const saved = store.get('budget', {});
-  const B = JSON.parse(JSON.stringify(BUDGET_DEFAULT));
-  Object.keys(saved).forEach(k => { if(B[k] && !B[k].auto) B[k].v = saved[k] });
+  const saved = store.get('budget2', {});
+  const base = Object.assign({}, BUDGET_PRESETS.previsto, saved);
   const trav = saved._trav || TRIP.travellers;
   const rate = saved._rate || TRIP.eurJpy;
-  const rows = Object.entries(B).map(([k,b]) => `<div class="brow"><label for="b-${k}">${b.l}<small>${b.s}</small></label>
-     <input id="b-${k}" type="number" inputmode="numeric" min="0" step="any" value="${b.v}" data-k="${k}" ${b.auto?'readonly tabindex="-1"':''}>
-     <span class="u">${b.u}</span></div>`).join('');
+  const rows = Object.entries(BUDGET_DEFAULT).map(([k,b]) => `<div class="brow"><label for="b-${k}">${b.l}<small>${b.s}</small></label>
+     ${b.auto ? `<select id="b-nivel" aria-label="Nivel de precio del alojamiento"><option value="0">Parte baja</option><option value="0.5">Punto medio</option><option value="1">Parte alta</option></select>`
+              : `<input id="b-${k}" type="number" inputmode="numeric" min="0" step="any" value="${base[k]}">`}
+     <span class="u">${b.auto?'rango':b.u}</span></div>`).join('');
   $('#v-presupuesto').innerHTML = `
     <div><div class="eyebrow">Por persona</div><h2 style="font-size:26px">Presupuesto</h2>
-    <p class="lead">Estimación económica con dos noches de ryokan. Cambia cualquier cifra y el total se recalcula al momento. Los cambios se guardan en este navegador.</p></div>
+    <p class="lead">Todas las cifras son por persona. Elige un escenario o cambia cualquier valor y el desglose se recalcula al momento. Las compras se cuentan aparte, porque dependen solo de vosotros. Los cambios se guardan en este navegador.</p></div>
+    <div class="filters" role="group" aria-label="Escenario"><button type="button" data-p="ajustado">Ajustado</button><button type="button" data-p="previsto">Previsto</button></div>
     <div class="budget">
       <div class="panel">
-        <div class="brow"><label for="b-trav">Viajeros<small>Afecta al reparto del alojamiento</small></label><input id="b-trav" type="number" min="1" step="1" value="${trav}"><span class="u">pers.</span></div>
+        <div class="brow"><label for="b-trav">Viajeros<small>Se reparten el alojamiento</small></label><input id="b-trav" type="number" min="1" step="1" value="${trav}"><span class="u">pers.</span></div>
         <div class="brow"><label for="b-rate">Cambio<small>Yenes por euro (noviembre 2026 ≈ 178)</small></label><input id="b-rate" type="number" min="1" step="0.1" value="${rate}"><span class="u">¥/€</span></div>
         ${rows}
-        <div class="row" style="margin-top:12px"><button class="btn" type="button" id="b-reset">Restablecer valores</button></div>
       </div>
       <div class="panel total" style="position:sticky;top:calc(env(safe-area-inset-top,0px) + 60px)">
-        <div class="eyebrow">Total por persona</div><div class="big" id="t-pp">…</div>
+        <div class="eyebrow">Coste del viaje por persona</div><div class="big" id="t-pp">…</div>
         <div class="mono" id="t-yen" style="color:var(--muted)"></div>
+        <div class="mono" id="t-day" style="font-size:13px;color:var(--muted)"></div>
         <div class="stack" id="t-stack"></div><div class="blegend" id="t-leg"></div>
-        <div style="border-top:1px solid var(--rule);margin-top:12px;padding-top:10px"><div class="eyebrow">Total del grupo</div><div class="mono" style="font-size:22px;font-weight:600" id="t-all"></div></div>
+        <div class="tot2"><div><div class="eyebrow">Con compras</div><div class="mono" id="t-buy"></div></div><div><div class="eyebrow">Total del grupo</div><div class="mono" id="t-all"></div></div></div>
       </div>
-    </div>`;
+    </div>
+    <div><h3 style="font-size:18px;margin-bottom:8px">Desglose por persona</h3>
+    <div class="tbl"><table class="desg"><thead><tr><th>Concepto</th><th>Cálculo</th><th style="text-align:right">Yenes</th><th style="text-align:right">Euros</th><th style="text-align:right">%</th></tr></thead><tbody id="t-rows"></tbody></table></div></div>
+    <div class="note info">Para comparar: 30 días en Japón en agosto, con vuelos desde Europa, suele costar entre 3.500 y 5.000 € por persona en un viaje económico con algún capricho. Lo que más pesa es el alojamiento en temporada alta y los vuelos.</div>`;
+  $('#b-nivel').value = String(base.nivel);
   const COLS = ['var(--l-air)','var(--l-tohoku)','var(--ai)','var(--l-kanto)','var(--l-chubu)','var(--l-kansai)','var(--l-chugoku)','var(--l-hokkaido)','var(--muted)'];
   function calc(){
     const tv = Math.max(1, +$('#b-trav').value || 1);
     const rt = Math.max(1, +$('#b-rate').value || TRIP.eurJpy);
-    const alojYen = STAYS.reduce((a,s)=>a+nights(s.in,s.out)*(s.precio[0]+s.precio[1])/2,0)/tv;
-    $('#b-aloj').value = Math.round(alojYen);
-    const s = {_trav:tv, _rate:rt};
-    const parts = Object.entries(B).map(([k,b],i) => {
-      let v = +$('#b-'+k).value || 0; if(!b.auto) s[k] = v;
-      let e = b.u==='€' ? v : (b.perDay ? v*30 : v)/rt;
-      return {l:b.l, e, c:COLS[i%COLS.length]};
+    const nv = +$('#b-nivel').value;
+    const alojYen = STAYS.reduce((a,s)=>a+nights(s.in,s.out)*(s.precio[0]+(s.precio[1]-s.precio[0])*nv),0)/tv;
+    const st = {_trav:tv, _rate:rt, nivel:nv};
+    const parts = Object.entries(BUDGET_DEFAULT).map(([k,b],i) => {
+      const v = b.auto ? alojYen : (+$('#b-'+k).value || 0);
+      if(!b.auto) st[k] = v;
+      const y = b.u==='€' ? v*rt : (b.perDay ? v*30 : v);
+      return {k, l:b.l, how:b.how(v), y, e:y/rt, c:COLS[i%COLS.length], extra:!!b.extra};
     });
-    store.set('budget', s);
-    const tot = parts.reduce((a,p)=>a+p.e,0);
+    store.set('budget2', st);
+    const trip = parts.filter(p=>!p.extra), tot = trip.reduce((a,p)=>a+p.e,0), buy = parts.find(p=>p.extra);
+    const inJp = trip.filter(p=>!['vuelos','seguro'].includes(p.k)).reduce((a,p)=>a+p.y,0);
     $('#t-pp').textContent = eur(tot);
     $('#t-yen').textContent = '≈ ' + yen(tot*rt);
-    $('#t-all').textContent = eur(tot*tv) + ` · ${tv} ${tv===1?'persona':'personas'}`;
-    $('#t-stack').innerHTML = parts.map(p=>`<span style="width:${(p.e/tot*100).toFixed(2)}%;background:${p.c}" title="${esc(p.l)}"></span>`).join('');
-    $('#t-leg').innerHTML = parts.map(p=>`<div><i style="background:${p.c}"></i><span>${esc(p.l)}</span><span class="mono">${eur(p.e)}</span></div>`).join('');
+    $('#t-day').textContent = `Gasto en Japón: ${yen(inJp/30)} al día (${eur(inJp/rt/30)})`;
+    $('#t-buy').textContent = eur(tot + buy.e);
+    $('#t-all').textContent = eur((tot + buy.e)*tv);
+    $('#t-stack').innerHTML = trip.map(p=>`<span style="width:${(p.e/tot*100).toFixed(2)}%;background:${p.c}" title="${esc(p.l)}"></span>`).join('');
+    $('#t-leg').innerHTML = trip.map(p=>`<div><i style="background:${p.c}"></i><span>${esc(p.l)}</span><span class="mono">${eur(p.e)}</span></div>`).join('');
+    $('#t-rows').innerHTML = trip.map(p=>`<tr><td><span class="sw" style="--c:${p.c}"></span>${esc(p.l)}</td><td>${esc(p.how)}</td><td class="num mono">${yen(p.y)}</td><td class="num mono">${eur(p.e)}</td><td class="num mono">${Math.round(p.e/tot*100)} %</td></tr>`).join('')
+      + `<tr class="sum"><td>Coste del viaje</td><td></td><td class="num mono">${yen(tot*rt)}</td><td class="num mono">${eur(tot)}</td><td class="num mono">100 %</td></tr>`
+      + `<tr><td><span class="sw" style="--c:${buy.c}"></span>${esc(buy.l)}</td><td>${esc(buy.how)}</td><td class="num mono">${yen(buy.y)}</td><td class="num mono">${eur(buy.e)}</td><td class="num mono">aparte</td></tr>`
+      + `<tr class="sum"><td>Total con compras</td><td></td><td class="num mono">${yen((tot+buy.e)*rt)}</td><td class="num mono">${eur(tot+buy.e)}</td><td></td></tr>`;
     const f = $('#fpp'); if(f) f.textContent = eur(tot);
+    const match = Object.entries(BUDGET_PRESETS).find(([n,ps]) => Object.keys(ps).every(k => (k==='nivel'?nv:st[k]) === ps[k]));
+    document.querySelectorAll('#v-presupuesto [data-p]').forEach(b => b.setAttribute('aria-pressed', match && match[0]===b.dataset.p ? 'true' : 'false'));
   }
-  document.querySelectorAll('#v-presupuesto input').forEach(i => i.addEventListener('input', calc));
-  $('#b-reset').addEventListener('click', () => { store.set('budget', {}); vPresupuesto() });
+  document.querySelectorAll('#v-presupuesto input, #v-presupuesto select').forEach(i => i.addEventListener('input', calc));
+  document.querySelectorAll('#v-presupuesto [data-p]').forEach(b => b.addEventListener('click', () => {
+    const cur = store.get('budget2', {}); store.set('budget2', Object.assign({_trav:cur._trav, _rate:cur._rate}, BUDGET_PRESETS[b.dataset.p])); vPresupuesto();
+  }));
   calc();
 }
 
