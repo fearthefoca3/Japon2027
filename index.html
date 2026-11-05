@@ -1218,8 +1218,14 @@ function initMaps(){
   const ai = css.getPropertyValue('--ai').trim() || '#1E3A6B';
   REGIONS.forEach(r => {
     const m = L.map('map-'+r.id, {scrollWheelZoom:false, attributionControl:true});
-    const tl = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {subdomains:'abcd', maxZoom:19, attribution:'© OpenStreetMap · © CARTO'}).addTo(m);
-    tl.on('tileerror', () => { $('#map-note').hidden = false });
+    /* Fondo: Esri World Street Map (sin clave, nombres en alfabeto latino). Si falla, OpenStreetMap. */
+    let fails = 0, swapped = false;
+    const tl = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {maxZoom:19, attribution:'Tiles © Esri · © OpenStreetMap'}).addTo(m);
+    tl.on('tileerror', () => {
+      if(++fails < 4 || swapped) { if(swapped) $('#map-note').hidden = false; return }
+      swapped = true; m.removeLayer(tl);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'© OpenStreetMap'}).on('tileerror', () => { $('#map-note').hidden = false }).addTo(m);
+    });
     const isGen = r.id === 'general';
     const lc = isGen ? ai : col(r.reg);
     if(r.line) L.polyline(r.line, {color:lc, weight:4, opacity:.85}).addTo(m);
