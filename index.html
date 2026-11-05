@@ -203,6 +203,45 @@ td.num{text-align:right;white-space:nowrap}
 footer{border-top:1px solid var(--rule);padding-block:20px 40px;font-size:12.5px;color:var(--muted)}
 .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 @media (prefers-reduced-motion:no-preference){.day,.stop{animation:none}}
+
+/* Fotos */
+.ph{position:relative;margin:0;overflow:hidden;border-radius:8px;background:var(--ai-soft);aspect-ratio:4/3;cursor:zoom-in}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.ph:hover img{transform:scale(1.04)}
+.ph figcaption{position:absolute;inset:auto 0 0 0;padding:18px 8px 6px;font-size:11.5px;line-height:1.3;color:#fff;background:linear-gradient(transparent,rgba(10,14,20,.78))}
+.ph.broken{cursor:default;display:grid;place-items:center;border:1px dashed var(--rule)}
+.ph.broken img{display:none}
+.ph.broken figcaption{position:static;background:none;color:var(--muted);text-align:center;padding:10px;font-size:12.5px}
+.ph.broken figcaption::before{content:"写";display:block;font-family:var(--f-display);font-size:26px;color:var(--ai);opacity:.5;margin-bottom:2px}
+@media (prefers-reduced-motion:reduce){.ph img{transition:none}.ph:hover img{transform:none}}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.day .gal{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+.gal.lead2 .ph:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+@media (max-width:480px){.gal{grid-template-columns:repeat(2,minmax(0,1fr))}.gal.lead2 .ph:first-child{grid-column:span 2;grid-row:auto;aspect-ratio:16/9}}
+.mosaic{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding-block:0 4px}
+.mosaic .ph{border-radius:4px;aspect-ratio:3/4}
+.mosaic .ph figcaption{font-size:10.5px}
+@media (max-width:700px){.mosaic{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-top:8px;max-width:440px}
+.thumbs .ph{border-radius:5px;aspect-ratio:1}
+.thumbs .ph figcaption{display:none}
+.thumbs .ph.broken figcaption{display:block;font-size:10px;padding:4px}
+.thumbs .ph.broken figcaption::before{font-size:16px}
+.stay .gal{padding:12px 18px 0;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.stay .gal .ph{aspect-ratio:1;border-radius:6px}
+.stay .gal .ph:first-child{grid-column:span 3;aspect-ratio:16/9}
+.stay .gal .ph figcaption{font-size:10.5px}
+.credit{font-size:12px;color:var(--muted)}
+
+/* Visor */
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(1100px,94vw);width:100%}
+dialog.lb::backdrop{background:rgba(8,11,16,.88)}
+.lb .fr{background:var(--sheet);border-radius:10px;overflow:hidden;display:grid}
+.lb img{width:100%;max-height:78vh;object-fit:contain;background:#0b0f14;display:block}
+.lb .bar2{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 14px;flex-wrap:wrap}
+.lb .cap{font-weight:500}
+.lb .nav{display:flex;gap:6px}
+.lb button{font:inherit;font-size:14px;padding:6px 12px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer}
 </style>
 
 <header class="top">
@@ -216,9 +255,20 @@ footer{border-top:1px solid var(--rule);padding-block:20px 40px;font-size:12.5px
       </div>
       <div class="countdown"><div class="n mono" id="cd">…</div><div class="l">días para salir</div></div>
     </div>
+    <div class="mosaic" id="mosaic"></div>
     <div class="facts" id="facts"></div>
   </div>
 </header>
+
+<dialog class="lb" id="lb" aria-label="Foto ampliada">
+  <div class="fr">
+    <img id="lb-img" alt="">
+    <div class="bar2">
+      <div><div class="cap" id="lb-cap"></div><a class="credit" id="lb-cr" target="_blank" rel="noopener">Autor y licencia en Wikimedia Commons ↗</a></div>
+      <div class="nav"><button type="button" id="lb-prev" aria-label="Foto anterior">←</button><button type="button" id="lb-next" aria-label="Foto siguiente">→</button><button type="button" id="lb-x">Cerrar</button></div>
+    </div>
+  </div>
+</dialog>
 
 <nav class="tabs" aria-label="Secciones"><div class="wrap" id="tabs"></div></nav>
 
@@ -232,7 +282,7 @@ footer{border-top:1px solid var(--rule);padding-block:20px 40px;font-size:12.5px
   <section class="view" id="v-consejos" hidden></section>
 </main>
 
-<footer><div class="wrap">Precios orientativos consultados en noviembre de 2026. Confirmar siempre en la web oficial antes de comprar. Las notas, la lista de preparativos y el presupuesto se guardan solo en este navegador.</div></footer>
+<footer><div class="wrap">Fotos de Wikimedia Commons con licencias libres. Toca cualquier foto para ampliarla y ver su autor y licencia. Precios orientativos consultados en noviembre de 2026. Confirmar siempre en la web oficial antes de comprar. Las notas, la lista de preparativos y el presupuesto se guardan solo en este navegador.</div></footer>
 
 <script>
 /* =========================================================
@@ -462,6 +512,193 @@ const PHRASES = [
  ['乾杯','kanpai','¡Salud!'],
 ];
 
+/* =========================================================
+   FOTOS · nombres exactos de archivo en Wikimedia Commons
+   ========================================================= */
+const PH = {
+  haneda1:['Haneda airport International Terminal no1.JPG','Aeropuerto de Haneda'],
+  haneda2:['Haneda airport international terminal 005.jpg','Terminal internacional de Haneda'],
+  haneda3:['Haneda Airport International Terminal observation deck.JPG','Mirador de Haneda'],
+  haneda4:['Terminal 3 haneda airport tokyo.jpg','Haneda, terminal 3'],
+  sumida1:['Sumidagawa Fireworks Festival 2023 (53329258420).jpg','Fuegos del río Sumida'],
+  sumida2:['Sumidagawa Fireworks Festival 2023 (53327943842).jpg','Sumidagawa Hanabi'],
+  skytree1:['Tokyo Sky Tree from Sumida River (10492399753).jpg','Skytree desde el río Sumida'],
+  skytree2:['Tokyo Skytree, view from Kuramae-bashi bridge on Sumida-gawa river. (14555040147).jpg','Skytree desde el puente Kuramae'],
+  sensoji1:['Senso-ji, Asakusa, Tokyo.jpg','Senso-ji, Asakusa'],
+  sensoji2:['Senso-ji Kaminarimon 201503a.jpg','Puerta Kaminarimon'],
+  sensoji3:['Pagoda, Sensoji Temple, Asakusa, Tokyo.jpg','Pagoda de Senso-ji'],
+  akiba1:['Akihabara Night.jpg','Akihabara de noche'],
+  akiba2:['Akihabara Electric Town 9999 263.jpg','Akihabara Electric Town'],
+  akiba3:['Taito Station Akihabara.jpg','Salones recreativos en Akihabara'],
+  meiji1:['Meiji-jingu torii.JPG','Torii de Meiji Jingu'],
+  meiji2:['Torii at entrance to Meiji Shrine.jpg','Entrada al santuario Meiji'],
+  shibuya1:['Shibuya Crossing, Aerial.jpg','Cruce de Shibuya'],
+  shibuya2:['2025 Shibuya Crossing at night.jpg','Shibuya de noche'],
+  omoide1:['Omoide Yokocho, Shinjuku (42384563020).jpg','Omoide Yokocho'],
+  omoide2:['Shinjuku-West Omoide-Yokocho.jpg','Callejón de yakitori en Shinjuku'],
+  kamakura1:['The Great Buddha of Kōtoku-in (Kamakura Daibutsu).jpg','Gran Buda de Kamakura'],
+  kamakura2:['Great Buddha of Kamakura (19660381206).jpg','Daibutsu de Kotoku-in'],
+  enoshima1:['Enoshima Island.jpg','Isla de Enoshima'],
+  enoshima2:['Sunset in Enoshima Island.jpg','Atardecer en Enoshima'],
+  nakano1:['Nakano broadway entrance.JPG','Entrada a Nakano Broadway'],
+  nakano2:['Nakano Broadway (53147264156).jpg','Nakano Broadway por dentro'],
+  nakano3:['Nakano San Mall Shopping Street.jpg','Galería Sun Mall de Nakano'],
+  hakone1:['Lake Ashi & Mt Fuji & Hakone Shrine.jpg','Lago Ashi y el Fuji'],
+  hakone2:['View of Mount Fuji from Lake Ashi.jpg','Fuji desde el lago Ashi'],
+  owaku1:['161223 Owakudani Hakone Japan08s3.jpg','Owakudani'],
+  owaku2:['Great Boiling valley owakudani.jpg','Valle volcánico de Owakudani'],
+  onsen1:['Takanoyu Onsen Rotenburo 086.jpg','Onsen al aire libre (rotenburo)'],
+  onsen2:['Tsurunoyu onsen rotenburo.JPG','Rotenburo de un ryokan'],
+  onsen3:['Yufuin Onsen Rotenburo.JPG','Baño termal exterior'],
+  kaiseki1:['Kaisekiryouri at Shimogamo Saryo.jpg','Cena kaiseki'],
+  kaiseki2:['Breakfast at Tamahan Ryokan, Kyoto.jpg','Desayuno de ryokan'],
+  hayabusa1:['Shinkansen train Hayabusa 18.jpg','Shinkansen Hayabusa'],
+  hayabusa2:['Shinkansen, the Hayabusa and the Super-Komachi super express.jpg','Hayabusa y Komachi'],
+  matsu1:['The islands of Matsushima from Saigyo Modoshi No Matsu park (2456102064).jpg','Bahía de Matsushima'],
+  matsu2:['Matsushima famous island.jpg','Islotes de Matsushima'],
+  tanabata1:['Sendai Tanabata 2005.jpg','Tanabata de Sendai'],
+  tanabata2:['TanabataOrizuru.jpg','Grullas de papel del Tanabata'],
+  tanabata3:['Kinchaku.jpg','Adorno kinchaku del Tanabata'],
+  tanabata4:['Tanzaku.jpg','Tiras de deseos (tanzaku)'],
+  nebuta1:['Aomori, Nebuta-matsuri 12.jpg','Desfile del Nebuta'],
+  nebuta2:['Float at Nebuta Museum Waarasse I.JPG','Carroza nebuta iluminada'],
+  nebuta3:['Nebuta house Warasse Aomori Japan05s5.jpg','Museo Wa Rasse'],
+  nebuta4:['Aomori Nebuta Banner.jpg','Nebuta Matsuri, Aomori'],
+  shinaomori:['Shin-Aomori station (5461511590).jpg','Estación de Shin-Aomori'],
+  hknight1:['Mount-Hakodate Night-view.jpg','Vista nocturna desde el monte Hakodate'],
+  hknight2:['Evening view of Hakodate city from Mount Hakodate.jpg','Hakodate al anochecer'],
+  gory1:['Hakodate Goryokaku Panorama 1.JPG','Fuerte de Goryokaku'],
+  gory2:['Goryokaku Tower Hakodate Hokkaido Japan15n.jpg','Torre de Goryokaku'],
+  hkmarket:['Hakodate Morning Market, Hakodate Asaichi, Hakodate, 2014.jpg','Mercado matinal de Hakodate'],
+  kaisendon:['Kaisendon 001.jpg','Kaisendon, bol de marisco'],
+  jigoku1:['Jigokudani (Hell Valley), Noboribetsu Onsen, Hokkaido, April 2023 23.jpg','Jigokudani, el valle del infierno'],
+  jigoku2:['Noboribetsu hot spring jigokudani.JPG','Fumarolas de Noboribetsu'],
+  nobo3:['131102 Noboribetsu Onsen Hokkaido Japan03s3.jpg','Pueblo termal de Noboribetsu'],
+  odori1:['Sapporo TV Tower and Odori park.JPG','Parque Odori y torre de la TV'],
+  odori2:['View of Sapporo TV Tower from Odori Park(2011).JPG','Odori en verano'],
+  ramen1:['151010 Sapporo ramen at Susukino Sapporo Hokkaido Japan01s.jpg','Ramen de Sapporo en Susukino'],
+  ramen2:['Ganso Ramen Street by zezebono in Sapporo, Hokkaido.jpg','Ganso Ramen Yokocho'],
+  ramen3:['Miso Ramen.JPG','Ramen de miso'],
+  otaru1:['Otaru Canal.jpg','Canal de Otaru'],
+  otaru2:['Otaru Canal Night.jpg','Canal de Otaru de noche'],
+  otaru3:['Otaru Canal 20140817.jpg','Otaru en agosto'],
+  otaru4:['Otaru Hokkaido Japan.jpg','Almacenes de Otaru'],
+  kix1:['Kansai International Airport Terminal.JPG','Aeropuerto de Kansai'],
+  kix2:['Terminal 2, Kansai International Airport (17155965417).jpg','KIX terminal 2'],
+  kix3:['Kansai International Airport Terminal2.JPG','Terminal de Kansai'],
+  kix4:['Kansai Airport terminal 1 ,from the top of observation hall "sky view" (16041786233).jpg','KIX desde el mirador Sky View'],
+  doton1:['Dotonbori, Osaka, at night, November 2016.jpg','Dotonbori de noche'],
+  doton2:['Dōtonbori at night, Osaka (19551420339).jpg','Canal de Dotonbori'],
+  doton3:['Neon Signs in Dotonbori, Osaka 20190415 1.jpg','Neones de Dotonbori'],
+  doton4:['Dōtonbori Nightlife 2018 (45140357124).jpg','Ambiente nocturno en Dotonbori'],
+  castle1:['Osaka Castle 2022-04-23.jpg','Castillo de Osaka'],
+  castle2:['Osaka Castle Keep Tower in 201504 001.JPG','Torre del castillo de Osaka'],
+  kuromon:['Kuromon-ichiba in 201408.JPG','Mercado Kuromon'],
+  shinsekai1:['Tsūtenkaku & Shinsekai.JPG','Shinsekai y la torre Tsutenkaku'],
+  shinsekai2:['Tsutenkaku and Shinsekai at night 20110122.jpg','Shinsekai de noche'],
+  awa1:['Awa Odori Tokushima Aug2009.jpg','Awa Odori, Tokushima'],
+  awa2:['Awa-odori 2008 Tokushima.jpg','Bailarinas del Awa Odori'],
+  awa3:['Japan - Bon AwaOdori Festival - Tokushima 12.jpg','Desfile del Awa Odori'],
+  awa4:['Awa-Odori-kikusui-narimono.JPG','Músicos del Awa Odori'],
+  bizan1:['Bizan Tokushima05s5.jpg','Vista desde el monte Bizan'],
+  fushimi1:['Fushimi Inari-taisha sembon-torii.jpg','Los mil torii de Fushimi Inari'],
+  fushimi2:['Torii path with lantern at Fushimi Inari Taisha Shrine, Kyoto, Japan.jpg','Sendero de Fushimi Inari'],
+  fushimi3:['Fushimi Inari Senbon Torii.jpg','Senbon torii'],
+  gion1:['Hanamikoji Street, Kyoto on June 18th, 2016.jpg','Hanamikoji, Gion'],
+  gion2:['Gion at night (31051047850).jpg','Gion de noche'],
+  kiyo1:['Kyoto-Kiyomizudera, Japan.jpg','Kiyomizu-dera'],
+  kiyo2:['Kiyomizu-dera, Kyoto, November 2016 -01.jpg','Escenario de madera de Kiyomizu-dera'],
+  nishiki1:['Nishiki Market, Kyoto - Flickr - Sergiy Galyonkin.jpg','Mercado Nishiki'],
+  nishiki2:['Nishiki Ichiba by jason.kaechler in Kyoto.jpg','Puestos del mercado Nishiki'],
+  okuribi1:['Gozan-okuribi Daimonji.jpg','Gozan Okuribi, el kanji Dai'],
+  okuribi2:['Gozan-okuribi Funagata.jpg','Hoguera con forma de barco'],
+  okuribi3:['Gozanokuribi Daimonji2.jpg','Daimonji encendido'],
+  arashi1:['Bamboo grove in Arashiyama.jpg','Bosque de bambú de Arashiyama'],
+  arashi2:['Sagano Bamboo forest, Arashiyama, Kyoto.jpg','Sagano'],
+  tenryu:['Tenryu-Ji Garden.jpg','Jardín de Tenryu-ji'],
+  kinkaku1:['Kinkaku-ji (Golden Pavillon).jpg','Kinkaku-ji'],
+  kinkaku2:['Kinkaku, the Golden Pavilion of Kinkakuji, Kyoto, Japan.jpg','Pabellón Dorado'],
+  todai:['Daibutsu Grand bouddha - Tōdai-ji - Nara.jpg','Gran Buda de Todai-ji'],
+  deer1:['Nara deer lounging at Todaiji.jpg','Ciervos de Nara'],
+  deer2:['Deer @ Todai-ji Temple @ Nara (13324418565).jpg','Ciervo frente a Todai-ji'],
+  kasuga1:['Lanterns at Kasuga Taisha.JPG','Farolillos de Kasuga Taisha'],
+  kasuga2:['Stone Lanterns lead to The Kasuga Shrine, Nara, Japan.jpg','Camino de linternas de piedra'],
+  byodo1:['Byodoin Phoenix Hall Uji 2009.jpg','Byodo-in, Uji'],
+  byodo2:['Phoenix Hall, Byodo-in, November 2016 -01.jpg','Pabellón del Fénix'],
+  byodo3:['Byodo-in in Uji.jpg','Byodo-in reflejado en el estanque'],
+  byodo4:['Byodoin-PhoenixHall-M1264.jpg','Detalle del Byodo-in'],
+  kenroku1:['Kotoji Toro and Nijibashi Bridge in Kenroku Garden.JPG','Kenroku-en'],
+  kenroku2:['Kotoji-toro lantern, Kenroku-en (3810732114).jpg','Linterna Kotoji'],
+  chaya1:['Higashi Chaya district, Kanazawa (3810720612).jpg','Higashi Chaya'],
+  chaya2:['Higashi chaya gai005.jpg','Casas de té de Kanazawa'],
+  omicho1:['Omicho Market.JPG','Mercado Omicho'],
+  omicho2:['Omicho covered market western entrance, Kanazawa, 2016.jpg','Entrada al mercado Omicho'],
+  shira1:['Shirakawago.jpg','Shirakawa-go'],
+  shira2:['Shirakawa-go (2014-06-03).JPG','Casas gassho en verano'],
+  shira3:['Shirakawa-go, june 2014 (14390763367).jpg','Arrozales de Shirakawa-go'],
+  shira4:['Gassho style houses.jpg','Techos de paja gassho'],
+  taka1:['Takayama Old Town (Sanmachi Suji) (35819349621).jpg','Sanmachi Suji, Takayama'],
+  taka2:['Hida Takayama old town streets (48519369602).jpg','Calles de Takayama'],
+  taka3:['Takayama Old Town At Night (135528503).jpeg','Takayama de noche'],
+  takam:['Hida-Takayama Miyagawa Morning Market (15668520238).jpg','Mercado matinal de Miyagawa'],
+  alps1:['Shinhotaka ropeway01s3200.jpg','Teleférico de Shinhotaka'],
+  alps2:['071123 Hotaka Mountains view from Nishihotaka-guchi Station Shinhotaka Ropeway Japan01s.jpg','Montes Hotaka, Alpes japoneses'],
+  dome1:['Hiroshima Peace Memorial (Genbaku Dome)-111456.jpg','Cúpula de la Bomba Atómica'],
+  dome2:['Genbaku Dome and Hiroshima Peace Memorial (8062056099).jpg','Parque de la Paz de Hiroshima'],
+  okono1:['Okonomiyaki, Nagata-Ya, Hiroshima (35565845404).jpg','Okonomiyaki de Hiroshima'],
+  okono2:['Hiroshimayaki.jpg','Hiroshimayaki en la plancha'],
+  torii1:['Itsukushima Floating Torii Gate, East view 20190417 1.jpg','Torii flotante de Miyajima'],
+  torii2:['Itsukushima-jinja torii at sunset, Miyajima, Japan, 20240816 1812 4144.jpg','Torii al atardecer en agosto'],
+  itsuku:['Itsukushima Shrine at high tide.jpg','Santuario de Itsukushima con marea alta'],
+  corridor:['Corridors, Itsukushima Shinto Shrine - DSC01945.JPG','Pasillos del santuario'],
+  miyapan:['Miyajima Panorama.jpg','Panorámica de Miyajima'],
+  hime1:['Himeji Castle The Keep Towers.jpg','Castillo de Himeji'],
+  hime2:['Himeji castle in may 2015.jpg','Himeji, la Garza Blanca'],
+  hime3:['Himeji Castle Aerial photograph 2010.jpg','Himeji desde el aire'],
+  hime4:['Himeji castle from distance.JPG','Himeji a lo lejos'],
+  kobe1:['Kobe Port Tower and Maritime Museum, November 2016.jpg','Puerto de Kobe'],
+  kobe2:['Kobe-meriken-park.jpg','Meriken Park, Kobe'],
+  kobe3:['Kobe port tower.jpg','Torre del puerto de Kobe'],
+  kobe4:['Kobe port tower12s3200.jpg','Kobe Port Tower'],
+};
+const DAY_PH = {
+  '2027-07-30':['haneda1','haneda2','haneda3','haneda4'],
+  '2027-07-31':['sumida1','sumida2','skytree1','skytree2'],
+  '2027-08-01':['sensoji1','sensoji2','sensoji3','akiba1','akiba2','akiba3'],
+  '2027-08-02':['shibuya1','meiji1','meiji2','shibuya2','omoide1','omoide2'],
+  '2027-08-03':['kamakura1','kamakura2','enoshima1','enoshima2'],
+  '2027-08-04':['nakano2','nakano1','nakano3','akiba1'],
+  '2027-08-05':['hakone1','hakone2','owaku1','owaku2','onsen1'],
+  '2027-08-06':['tanabata1','tanabata2','tanabata3','tanabata4','matsu1','matsu2','hayabusa1','hayabusa2'],
+  '2027-08-07':['nebuta1','nebuta2','nebuta3','nebuta4','shinaomori'],
+  '2027-08-08':['hknight1','gory1','gory2','hknight2'],
+  '2027-08-09':['jigoku1','hkmarket','kaisendon','jigoku2','nobo3','onsen2','kaiseki1'],
+  '2027-08-10':['odori1','odori2','ramen1','ramen2','ramen3'],
+  '2027-08-11':['otaru1','otaru2','otaru3','otaru4'],
+  '2027-08-12':['doton1','doton2','doton3','kix1'],
+  '2027-08-13':['awa1','awa2','awa3','awa4','bizan1'],
+  '2027-08-14':['castle1','castle2','kuromon','shinsekai1','shinsekai2'],
+  '2027-08-15':['fushimi1','fushimi2','fushimi3','gion1','gion2'],
+  '2027-08-16':['okuribi1','kiyo1','kiyo2','nishiki1','nishiki2','okuribi2','okuribi3'],
+  '2027-08-17':['arashi1','arashi2','tenryu','kinkaku1','kinkaku2'],
+  '2027-08-18':['todai','deer1','deer2','kasuga1','kasuga2'],
+  '2027-08-19':['byodo1','byodo2','byodo3','byodo4'],
+  '2027-08-20':['kenroku1','kenroku2','chaya1','chaya2','omicho1','omicho2'],
+  '2027-08-21':['shira1','shira2','shira3','shira4','taka3'],
+  '2027-08-22':['alps2','takam','taka1','taka2','alps1','onsen3'],
+  '2027-08-23':['dome1','dome2','okono1','okono2'],
+  '2027-08-24':['torii1','torii2','itsuku','corridor','miyapan'],
+  '2027-08-25':['hime1','hime2','hime3','hime4'],
+  '2027-08-26':['kobe1','kobe2','kobe3','kobe4'],
+  '2027-08-27':['doton4','doton3','shinsekai2','kuromon'],
+  '2027-08-28':['kix1','kix2','kix3','kix4'],
+};
+/* Fotos de cada alojamiento: las de sus días + las de ryokan si toca */
+const STAY_PH_EXTRA = { noboribetsu:['onsen2','kaiseki1','kaiseki2'], takayama:['onsen3','kaiseki1','kaiseki2'] };
+/* Paradas sin noche del diagrama */
+const MINI_PH = { 'Tokushima':['awa1','awa2','awa3','bizan1'], 'Shirakawa-go':['shira1','shira2','shira3','shira4'], 'Himeji':['hime1','hime2','hime3','hime4'], 'Barcelona':['haneda1','haneda3','kix1','kix4'] };
+const HERO_PH = ['fushimi1','nebuta1','shira2','torii1','shibuya2','hknight1'];
+
 /* Presupuesto por defecto (por persona) */
 const BUDGET_DEFAULT = {
   vuelos:{v:1100, u:'€', l:'Vuelos internacionales', s:'Multidestino BCN → Tokio, KIX → BCN'},
@@ -494,6 +731,11 @@ const eur = n => Math.round(n).toLocaleString('es-ES') + ' €';
 const stayById = id => STAYS.find(s => s.id === id);
 const color = reg => REGION[reg] || 'var(--ai)';
 const links = t => t.replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, (_,a,b) => `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(b)}" target="_blank" rel="noopener">${a}</a>`);
+const phUrl = (f, w) => `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(f)}?width=${w}`;
+const phPage = f => `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(f.replace(/ /g,'_'))}`;
+const fig = (k, g, w=640) => { const p = PH[k]; if(!p) return '';
+  return `<figure class="ph" data-ph="${k}" data-g="${g}" tabindex="0" role="button" aria-label="Ampliar foto: ${esc(p[1])}"><img src="${phUrl(p[0],w)}" alt="${esc(p[1])}" loading="lazy" decoding="async"><figcaption>${esc(p[1])}</figcaption></figure>` };
+const stayPh = id => { const s = new Set(); DAYS.filter(d=>d.base===id).forEach(d => (DAY_PH[d.d]||[]).forEach(k=>s.add(k))); (STAY_PH_EXTRA[id]||[]).forEach(k=>s.add(k)); return [...s] };
 const TAGS = {cultura:'Templos y cultura', anime:'Anime y tecnología', naturaleza:'Naturaleza', onsen:'Onsen', comida:'Gastronomía', festival:'Festival', transporte:'Día de traslado'};
 
 /* =========================================================
@@ -503,6 +745,7 @@ function header(){
   const today = new Date(); const t = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
   const left = Math.max(0, Math.round((pd(TRIP.start) - t)/864e5));
   $('#cd').textContent = left.toLocaleString('es-ES');
+  $('#mosaic').innerHTML = HERO_PH.map(k => fig(k, 'hero', 480)).join('');
   const totalN = STAYS.reduce((a,s)=>a+nights(s.in,s.out),0);
   const cities = new Set(STAYS.map(s=>s.name)).size;
   $('#facts').innerHTML = [
@@ -521,10 +764,13 @@ function vRuta(){
     const s = r.stay ? stayById(r.stay) : r;
     const c = color(s.reg);
     const chips = (r.chips||[]).map(([k,v]) => `<span class="chip ${k}">${esc(v)}</span>`).join('');
+    const pk = (r.stay ? stayPh(r.stay) : (MINI_PH[s.name]||[])).slice(0,4);
+    const g = 'r-' + (r.stay || s.name);
     return `<li class="stop ${r.mini?'mini':''} ${r.air?'air':''}" style="--c:${c}">
       <span class="dot" aria-hidden="true"></span>
-      <div><div class="nm"><strong>${esc(s.name)}</strong><span class="jp">${esc(s.jp||'')}</span></div>
-      <div class="meta">${esc(r.meta)}</div>${chips?`<div class="chips">${chips}</div>`:''}</div></li>`;
+      <div style="min-width:0"><div class="nm"><strong>${esc(s.name)}</strong><span class="jp">${esc(s.jp||'')}</span></div>
+      <div class="meta">${esc(r.meta)}</div>${chips?`<div class="chips">${chips}</div>`:''}
+      ${pk.length?`<div class="thumbs">${pk.map(k=>fig(k,g,320)).join('')}</div>`:''}</div></li>`;
   }).join('');
 
   // calendario jul 26 (lunes) a ago 29
@@ -576,7 +822,7 @@ function vDias(){
     return `<article class="day" id="d-${d.d}" style="--c:${c}"><div class="bar"></div>
       <div class="hd"><div class="date"><div class="dm">${DIAS[x.getUTCDay()]}</div><div class="dn">${x.getUTCDate()}</div><div class="dm">${MESES[x.getUTCMonth()]}</div></div>
       <div><div class="daynum">Día ${idx} · ${esc(s?s.name+' '+s.jp:'En vuelo')}</div><h3>${esc(d.title)}</h3><div class="chips">${chips}</div></div></div>
-      <div class="body"><ul>${d.plan.map(p=>`<li>${links(p)}</li>`).join('')}</ul>
+      <div class="body"><div class="gal lead2">${(DAY_PH[d.d]||[]).map(k=>fig(k,'d-'+d.d)).join('')}</div><ul>${d.plan.map(p=>`<li>${links(p)}</li>`).join('')}</ul>
       ${d.alt?`<div class="alt">${links(d.alt)}</div>`:''}
       <details ${notes[d.d]?'open':''}><summary>Mis notas${notes[d.d]?' · guardadas':''}</summary>
       <textarea id="n-${d.d}" data-note="${d.d}" placeholder="Reservas, horarios, restaurantes apuntados…">${esc(notes[d.d]||'')}</textarea></details></div></article>`;
@@ -616,6 +862,7 @@ function vAloj(){
     const url = `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(s.q)}&checkin=${s.in}&checkout=${s.out}&group_adults=${TRIP.travellers}&no_rooms=1`;
     return `<article class="stay" style="--c:${color(s.reg)}">
       <div class="signbox"><div class="k">${s.jp}</div><div class="r">${esc(s.name)}${s.onsen?' <span class="chip onsen">onsen</span>':''}</div><div class="kn">${s.kana}</div></div>
+      <div><div class="gal">${(s.onsen ? [...(STAY_PH_EXTRA[s.id]||[]), ...stayPh(s.id)] : stayPh(s.id)).filter((k,i,a)=>a.indexOf(k)===i).slice(0,7).map(k=>fig(k,'s-'+s.id,480)).join('')}</div>
       <div class="in"><dl>
         <dt>Fechas</dt><dd class="mono">${fmtD(s.in)} → ${fmtD(s.out)} · ${n} ${n===1?'noche':'noches'}</dd>
         <dt>Zona</dt><dd>${esc(s.zona)}</dd>
@@ -623,7 +870,7 @@ function vAloj(){
         <dt>Precio</dt><dd class="mono">${yen(s.precio[0])} a ${yen(s.precio[1])} por noche y habitación</dd>
         <dt>Total</dt><dd class="mono">≈ ${yen(mid*n)} · ${eur(mid*n/TRIP.eurJpy)}</dd></dl>
         <div style="font-size:13.5px;color:var(--muted)">${esc(s.tip)}</div>
-        <a class="btn" href="${url}" target="_blank" rel="noopener">Buscar en Booking ↗</a></div></article>`;
+        <a class="btn" href="${url}" target="_blank" rel="noopener">Buscar en Booking ↗</a></div></div></article>`;
   }).join('');
   const tot = STAYS.reduce((a,s)=>a+nights(s.in,s.out)*(s.precio[0]+s.precio[1])/2,0);
   $('#v-alojamiento').innerHTML = `
@@ -730,6 +977,39 @@ function show(view, anchor){
   if(anchor){ const el = document.getElementById('d-'+anchor); if(el) el.scrollIntoView({block:'start'}) }
   else window.scrollTo(0,0);
 }
+/* Fotos: marcar las que no cargan y visor ampliado */
+document.addEventListener('error', e => {
+  const f = e.target.closest && e.target.closest('.ph');
+  if(e.target.tagName === 'IMG' && f){ f.classList.add('broken'); f.removeAttribute('role'); f.removeAttribute('tabindex') }
+}, true);
+const LB = {list:[], i:0};
+function lbShow(){
+  const k = LB.list[LB.i], p = PH[k];
+  $('#lb-img').src = phUrl(p[0], 1600); $('#lb-img').alt = p[1];
+  $('#lb-cap').textContent = p[1] + `  ·  ${LB.i+1} de ${LB.list.length}`;
+  $('#lb-cr').href = phPage(p[0]);
+}
+function lbOpen(fg){
+  if(fg.classList.contains('broken')){ window.open(phPage(PH[fg.dataset.ph][0]), '_blank', 'noopener'); return }
+  const g = fg.dataset.g;
+  LB.list = [...document.querySelectorAll(`.ph[data-g="${g}"]:not(.broken)`)].map(x=>x.dataset.ph).filter((k,i,a)=>a.indexOf(k)===i);
+  LB.i = Math.max(0, LB.list.indexOf(fg.dataset.ph));
+  lbShow();
+  const d = $('#lb'); try{ d.showModal() }catch(err){ d.setAttribute('open','') }
+}
+const lbStep = n => { LB.i = (LB.i + n + LB.list.length) % LB.list.length; lbShow() };
+document.addEventListener('click', e => { const f = e.target.closest('.ph'); if(f) lbOpen(f) });
+document.addEventListener('keydown', e => {
+  const d = $('#lb');
+  if(d.open){ if(e.key==='ArrowRight') lbStep(1); if(e.key==='ArrowLeft') lbStep(-1); return }
+  const f = e.target.closest && e.target.closest('.ph');
+  if(f && (e.key==='Enter' || e.key===' ')){ e.preventDefault(); lbOpen(f) }
+});
+$('#lb-prev').addEventListener('click', () => lbStep(-1));
+$('#lb-next').addEventListener('click', () => lbStep(1));
+$('#lb-x').addEventListener('click', () => $('#lb').close());
+$('#lb').addEventListener('click', e => { if(e.target.id==='lb') $('#lb').close() });
+
 $('#tabs').innerHTML = VIEWS.map(([k,v]) => `<a href="#${k}" data-v="${k}">${v}</a>`).join('');
 window.addEventListener('hashchange', () => show(location.hash.slice(1)));
 header();
