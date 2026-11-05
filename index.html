@@ -1,3 +1,9 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Japón 2027</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Cuaderno de viaje a Japón del 30 de julio al 28 de agosto de 2027: ruta, día a día, transporte, alojamientos y presupuesto.">
@@ -37,6 +43,7 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6;margin:0}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--sheet)}
 a{color:var(--ai)}
@@ -309,6 +316,8 @@ dialog.lb::backdrop{background:rgba(8,11,16,.88)}
 .lb .nav{display:flex;gap:6px}
 .lb button{font:inherit;font-size:14px;padding:6px 12px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer}
 </style>
+</head>
+<body>
 
 <header class="top">
   <div class="stripe" aria-hidden="true"><span style="background:var(--l-kanto)"></span><span style="background:var(--l-tohoku)"></span><span style="background:var(--l-hokkaido)"></span><span style="background:var(--l-kansai)"></span><span style="background:var(--l-chubu)"></span><span style="background:var(--l-chugoku)"></span></div>
@@ -1284,3 +1293,5 @@ header();
 Object.values(RENDER).forEach(f => f());
 show(location.hash.slice(1) || 'ruta');
 </script>
+</body>
+</html>
