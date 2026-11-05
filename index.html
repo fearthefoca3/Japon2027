@@ -264,47 +264,19 @@ footer{border-top:1px solid var(--rule);padding-block:20px 40px;font-size:12.5px
 @media (max-width:560px){.mapbox{height:340px}}
 .rside{display:grid;gap:8px;min-width:0}
 .rroutes{display:grid;gap:6px}
-.rroutes .btn{width:100%;justify-content:space-between;white-space:normal;text-align:left}
 .rpts{margin:0;padding-left:22px;font-size:13.5px;columns:1}
 .rpts li{margin:3px 0}
 .rpts .mono{font-size:11.5px;color:var(--muted)}
 .rnav button{border-left:4px solid var(--c)}
-/* Leaflet (estilos mínimos, en línea) */
-.leaflet-pane,.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile-container,.leaflet-pane>svg,.leaflet-pane>canvas,.leaflet-zoom-box,.leaflet-image-layer,.leaflet-layer{position:absolute;left:0;top:0}
-.leaflet-container{overflow:hidden;font-family:var(--f-body);-webkit-tap-highlight-color:transparent;touch-action:pan-x pan-y;outline-offset:1px}
-.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow{user-select:none;-webkit-user-drag:none}
-.leaflet-container .leaflet-tile-pane img,.leaflet-container img.leaflet-tile{max-width:none!important;max-height:none!important;width:auto;padding:0}
-.leaflet-tile{filter:inherit;visibility:hidden}
-.leaflet-tile-loaded{visibility:inherit}
-.leaflet-zoom-animated{transform-origin:0 0}
-.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}
-.leaflet-map-pane canvas{z-index:100}.leaflet-map-pane svg{z-index:200}
-.leaflet-control{position:relative;z-index:800;pointer-events:auto;float:left;clear:both}
-.leaflet-top,.leaflet-bottom{position:absolute;z-index:1000;pointer-events:none}
-.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}
-.leaflet-right .leaflet-control{float:right}
-.leaflet-top .leaflet-control{margin-top:10px}.leaflet-bottom .leaflet-control{margin-bottom:0}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-right .leaflet-control{margin-right:0}
-.leaflet-fade-anim .leaflet-popup{opacity:0;transition:opacity .2s linear}
-.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}
-.leaflet-zoom-anim .leaflet-zoom-animated{transition:transform .25s cubic-bezier(0,0,.25,1)}
-.leaflet-zoom-anim .leaflet-tile,.leaflet-pan-anim .leaflet-tile{transition:none}
-.leaflet-interactive{cursor:pointer}
-.leaflet-grab{cursor:grab}.leaflet-dragging .leaflet-grab{cursor:grabbing}
-.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.35);border-radius:6px;overflow:hidden}
-.leaflet-bar a{background:#fff;border-bottom:1px solid #ccc;width:30px;height:30px;line-height:30px;display:block;text-align:center;text-decoration:none;color:#17202B;font:bold 18px/30px var(--f-mono)}
-.leaflet-bar a:last-child{border-bottom:none}
-.leaflet-bar a.leaflet-disabled{color:#bbb;cursor:default}
-.leaflet-control-attribution{background:rgba(255,255,255,.8);padding:0 5px;color:#333;font-size:10.5px}
-.leaflet-control-attribution a{color:#1E3A6B}
-.leaflet-popup{position:absolute;text-align:center;margin-bottom:20px}
-.leaflet-popup-content-wrapper{padding:1px;text-align:left;border-radius:10px;background:#fff;color:#17202B;box-shadow:0 3px 14px rgba(0,0,0,.3)}
-.leaflet-popup-content{margin:10px 14px;line-height:1.45;font-size:13px;min-width:140px}
-.leaflet-popup-content a{color:#1E3A6B}
-.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-top:-1px;margin-left:-20px;overflow:hidden;pointer-events:none}
-.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;transform:rotate(45deg);background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.3)}
-.leaflet-container a.leaflet-popup-close-button{position:absolute;top:0;right:0;width:24px;height:24px;font:16px/24px system-ui,sans-serif;color:#757575;text-decoration:none;text-align:center}
-.leaflet-tooltip{position:absolute;padding:2px 7px;background:#fff;border:1px solid rgba(0,0,0,.12);border-radius:4px;color:#17202B;white-space:nowrap;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.25);font-size:12px;font-weight:500}
-.leaflet-tooltip-top::before,.leaflet-tooltip-right::before{display:none}
+.mapcap{font-size:13px;font-weight:500;margin-bottom:6px;padding-left:10px;border-left:4px solid var(--c)}
+.mapbox{display:block;width:100%}
+.rr{display:grid;grid-template-columns:1fr auto;gap:6px;align-items:stretch}
+.rshow,.pshow{font:inherit;cursor:pointer;color:var(--ink);background:var(--sheet);border:1px solid var(--rule);border-radius:8px;text-align:left}
+.rshow{font-size:13.5px;padding:7px 10px}
+.rr.on .rshow{border-color:var(--c);background:var(--ai-soft);font-weight:500}
+.rr .btn{padding:7px 10px}
+.pshow{border:0;background:none;padding:0;color:var(--ai);text-decoration:underline;text-underline-offset:2px;font-size:13.5px}
+.rpts a{text-decoration:none;color:var(--muted);font-size:12px}
 
 /* Visor */
 dialog.lb{border:0;padding:0;background:transparent;max-width:min(1100px,94vw);width:100%}
@@ -360,7 +332,6 @@ dialog.lb::backdrop{background:rgba(8,11,16,.88)}
 
 <footer><div class="wrap">Fotos de Wikimedia Commons con licencias libres. Toca cualquier foto para ampliarla y ver su autor y licencia. Precios orientativos consultados en noviembre de 2026. Confirmar siempre en la web oficial antes de comprar. Las notas, la lista de preparativos y el presupuesto se guardan solo en este navegador.</div></footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 <script>
 /* =========================================================
    DATOS DEL VIAJE · editar aquí para cambiar el contenido
@@ -1183,67 +1154,49 @@ function vConsejos(){
 const gmDir = stops => 'https://www.google.com/maps/dir/' + stops.map(q => encodeURIComponent(q)).join('/');
 const gmQ = q => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 const GEN_REG = {Tokio:'kanto',Kamakura:'kanto',Hakone:'kanto',Sendai:'tohoku',Aomori:'tohoku',Hakodate:'hokkaido',Noboribetsu:'hokkaido',Sapporo:'hokkaido',Otaru:'hokkaido',Osaka:'kansai',Tokushima:'kansai',Kioto:'kansai',Nara:'kansai',Kanazawa:'chubu','Shirakawa-go':'chubu',Takayama:'chubu',Hiroshima:'chugoku',Miyajima:'chugoku',Himeji:'chugoku'};
+const gmEmbedDir = stops => `https://maps.google.com/maps?hl=es&saddr=${encodeURIComponent(stops[0])}&daddr=${stops.slice(1).map(q => encodeURIComponent(q)).join('+to:')}&output=embed`;
+const gmEmbedQ = q => `https://maps.google.com/maps?hl=es&q=${encodeURIComponent(q)}&z=15&output=embed`;
 function vMapas(){
   const nav = REGIONS.map(r => `<button type="button" data-r="${r.id}" style="--c:${color(r.reg)}">${esc(r.name)}</button>`).join('');
   const secs = REGIONS.map(r => `
     <section class="region" id="rg-${r.id}" style="--c:${color(r.reg)}">
       <div class="rhead"><div class="eyebrow">${esc(r.dates)}</div><h3>${esc(r.name)} <span class="jp">${r.jp}</span></h3><p class="lead">${esc(r.desc)}</p></div>
       <div class="rgrid">
-        <div class="mapbox" id="map-${r.id}" role="img" aria-label="Mapa de ${esc(r.name)}"></div>
+        <div>
+          <div class="mapcap" id="cap-${r.id}">${esc(r.routes[0].l)}</div>
+          <iframe class="mapbox" id="map-${r.id}" title="Google Maps · ${esc(r.name)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="${gmEmbedDir(r.routes[0].s)}"></iframe>
+        </div>
         <div class="rside">
-          <div class="eyebrow">Rutas para abrir en Google Maps</div>
-          <div class="rroutes">${r.routes.map(x => `<a class="btn" href="${gmDir(x.s)}" target="_blank" rel="noopener">${esc(x.l)} ↗</a>`).join('')}</div>
-          <div class="eyebrow" style="margin-top:6px">Lugares</div>
-          <ol class="rpts">${r.pts.map(p => `<li><a href="${gmQ(p[4])}" target="_blank" rel="noopener">${esc(p[0])}</a> <span class="mono">${esc(p[3])}</span></li>`).join('')}</ol>
+          <div class="eyebrow">Rutas · ver aquí o abrir en Google Maps</div>
+          <div class="rroutes">${r.routes.map((x,i) => `<div class="rr${i===0?' on':''}" data-r="${r.id}" data-i="${i}">
+              <button type="button" class="rshow" aria-label="Ver en el mapa: ${esc(x.l)}">${esc(x.l)}</button>
+              <a class="btn" href="${gmDir(x.s)}" target="_blank" rel="noopener">Abrir ↗</a></div>`).join('')}</div>
+          <div class="eyebrow" style="margin-top:6px">Lugares · toca uno para verlo en el mapa</div>
+          <ol class="rpts">${r.pts.map((p,i) => `<li><button type="button" class="pshow" data-r="${r.id}" data-p="${i}">${esc(p[0])}</button> <span class="mono">${esc(p[3])}</span> <a href="${gmQ(p[4])}" target="_blank" rel="noopener" aria-label="Abrir ${esc(p[0])} en Google Maps">↗</a></li>`).join('')}</ol>
         </div>
       </div>
     </section>`).join('');
   $('#v-mapas').innerHTML = `
     <div><div class="eyebrow">Recorrido</div><h2 style="font-size:26px">Mapas</h2>
-    <p class="lead">Un mapa general con todo el viaje y uno por región. Toca un punto para ver qué es y abrirlo en Google Maps, o abre directamente la ruta de cada día.</p></div>
+    <p class="lead">Un mapa general con todo el viaje y uno por región, todos de Google Maps. Elige una ruta o un lugar para verlo en el mapa, o pulsa "Abrir" para llevártelo a la app de Google Maps del móvil.</p></div>
     <div class="filters rnav" role="group" aria-label="Ir a una región">${nav}</div>
-    <div class="note info" id="map-note" hidden>El fondo del mapa no se puede cargar en esta vista previa. En la web de GitHub Pages se ve completo, y los enlaces a Google Maps funcionan en ambos sitios.</div>
+    <div class="note info">Los mapas de Google se ven en la web de GitHub Pages. En la vista previa de Claude aparecen en blanco, pero los botones "Abrir" funcionan igual.</div>
     <div class="maps">${secs}</div>`;
+  const setMap = (rid, src, cap) => { $('#map-'+rid).src = src; $('#cap-'+rid).textContent = cap };
+  document.querySelectorAll('#v-mapas .rshow').forEach(b => b.addEventListener('click', () => {
+    const w = b.parentElement, r = REGIONS.find(x => x.id === w.dataset.r), x = r.routes[+w.dataset.i];
+    w.parentElement.querySelectorAll('.rr').forEach(e => e.classList.toggle('on', e === w));
+    setMap(r.id, gmEmbedDir(x.s), x.l);
+  }));
+  document.querySelectorAll('#v-mapas .pshow').forEach(b => b.addEventListener('click', () => {
+    const r = REGIONS.find(x => x.id === b.dataset.r), p = r.pts[+b.dataset.p];
+    b.closest('.rside').querySelectorAll('.rr').forEach(e => e.classList.remove('on'));
+    setMap(r.id, gmEmbedQ(p[4]), `${p[0]} · ${p[3]}`);
+    document.getElementById('rg-'+r.id).scrollIntoView({block:'start', behavior:'smooth'});
+  }));
   document.querySelectorAll('#v-mapas .rnav button').forEach(b => b.addEventListener('click', () => {
     const el = document.getElementById('rg-'+b.dataset.r); if(el) el.scrollIntoView({block:'start', behavior:'smooth'});
   }));
-}
-let MAPS = null;
-function initMaps(){
-  if(MAPS) { Object.values(MAPS).forEach(m => m.invalidateSize()); return }
-  if(!window.L){ $('#map-note').hidden = false; return }
-  MAPS = {};
-  const css = getComputedStyle(document.documentElement);
-  const col = reg => (css.getPropertyValue('--l-'+reg).trim() || '#1E3A6B');
-  const ai = css.getPropertyValue('--ai').trim() || '#1E3A6B';
-  REGIONS.forEach(r => {
-    const m = L.map('map-'+r.id, {scrollWheelZoom:false, attributionControl:true});
-    /* Fondo: Esri World Street Map (sin clave, nombres en alfabeto latino). Si falla, OpenStreetMap. */
-    let fails = 0, swapped = false;
-    const tl = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {maxZoom:19, attribution:'Tiles © Esri · © OpenStreetMap'}).addTo(m);
-    tl.on('tileerror', () => {
-      if(++fails < 4 || swapped) { if(swapped) $('#map-note').hidden = false; return }
-      swapped = true; m.removeLayer(tl);
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'© OpenStreetMap'}).on('tileerror', () => { $('#map-note').hidden = false }).addTo(m);
-    });
-    const isGen = r.id === 'general';
-    const lc = isGen ? ai : col(r.reg);
-    if(r.line) L.polyline(r.line, {color:lc, weight:4, opacity:.85}).addTo(m);
-    if(r.line2) L.polyline(r.line2, {color:lc, weight:4, opacity:.85}).addTo(m);
-    if(r.flight) L.polyline(r.flight, {color:lc, weight:3, opacity:.8, dashArray:'6 9'}).addTo(m);
-    const b = [];
-    r.pts.forEach((p, i) => {
-      const base = isGen ? !!p[5] : true;
-      const c = isGen ? col(GEN_REG[p[0]] || 'air') : col(r.reg);
-      const mk = L.circleMarker([p[1], p[2]], {radius: base ? 8 : 5, color:'#ffffff', weight:2, fillColor:c, fillOpacity:1}).addTo(m);
-      mk.bindPopup(`<b>${esc(p[0])}</b><br><span style="color:#5A6676">${esc(p[3])}</span><br><a href="${gmQ(p[4])}" target="_blank" rel="noopener">Abrir en Google Maps ↗</a>`);
-      if(isGen && base) mk.bindTooltip(esc(p[0]), {permanent:true, direction:'right', offset:[8,0], className:'lbl'});
-      else if(!isGen) mk.bindTooltip(`${i+1}. ${esc(p[0])}`, {direction:'top', offset:[0,-6], className:'lbl'});
-      b.push([p[1], p[2]]);
-    });
-    m.fitBounds(b, {padding:[28,28]});
-    MAPS[r.id] = m;
-  });
 }
 
 const RENDER = {ruta:vRuta, mapas:vMapas, dias:vDias, transporte:vTransporte, alojamiento:vAloj, presupuesto:vPresupuesto, preparativos:vPrep, consejos:vConsejos};
@@ -1256,7 +1209,6 @@ function show(view, anchor){
   VIEWS.forEach(([k]) => { $('#v-'+k).hidden = k!==view });
   document.querySelectorAll('#tabs a').forEach(a => a.setAttribute('aria-current', a.dataset.v===view ? 'page' : 'false'));
   if(view==='dias' && anchor){ dayFilter='todos'; vDias() }
-  if(view==='mapas') setTimeout(initMaps, 30);
   if(anchor){ const el = document.getElementById('d-'+anchor); if(el) el.scrollIntoView({block:'start'}) }
   else window.scrollTo(0,0);
 }
