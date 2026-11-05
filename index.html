@@ -387,13 +387,19 @@ const STAYS = [
 const ROUTE = [
   {name:'Barcelona', jp:'バルセロナ', reg:'air', air:true, meta:'Sale el 30 jul · vuelo con 1 escala'},
   {stay:'tokio', meta:'31 jul a 6 ago · 6 noches', chips:[['fest','Hanabi del Sumida'],['','Hakone y Kamakura en excursión']]},
+  {name:'Kamakura y Enoshima', jp:'鎌倉', reg:'kanto', mini:true, meta:'3 ago · excursión de día desde Tokio'},
+  {name:'Hakone', jp:'箱根', reg:'kanto', mini:true, meta:'5 ago · excursión de día desde Tokio, onsen y lago Ashi'},
   {name:'Sendai', jp:'仙台', reg:'tohoku', mini:true, meta:'6 ago · parada de unas horas para ver el Tanabata', chips:[['fest','Tanabata'],['pass','Pase JR Este + Hokkaido']]},
   {stay:'hakodate', meta:'6 a 9 ago · 3 noches', chips:[['','Mirador nocturno'],['','Mercado matinal'],['','Parque de Onuma']]},
   {stay:'noboribetsu', meta:'9 ago · 1 noche de ryokan', chips:[['onsen','Ryokan con onsen']]},
-  {stay:'sapporo', air:true, meta:'10 a 13 ago · 3 noches', chips:[['','Otaru en excursión'],['','Biei y Furano']]},
+  {stay:'sapporo', meta:'10 a 13 ago · 3 noches', chips:[['','Otaru en excursión'],['','Biei y Furano']]},
+  {name:'Otaru', jp:'小樽', reg:'hokkaido', mini:true, meta:'11 ago · excursión de día desde Sapporo'},
+  {name:'Biei y Furano', jp:'美瑛・富良野', reg:'hokkaido', mini:true, air:true, meta:'12 ago · excursión de día desde Sapporo, campos de flores'},
   {stay:'osaka', meta:'13 a 15 ago · 2 noches · vuelo interno desde Sapporo', chips:[['fest','Awa Odori (excursión)'],['','Obon']]},
   {name:'Tokushima', jp:'徳島', reg:'kansai', mini:true, meta:'14 ago · excursión en bus para el Awa Odori'},
   {stay:'kioto', meta:'15 a 20 ago · 5 noches', chips:[['fest','Gozan Okuribi'],['','Nara, Uji y Nintendo Museum']]},
+  {name:'Nara', jp:'奈良', reg:'kansai', mini:true, meta:'18 ago · excursión de día desde Kioto, 45 min en tren'},
+  {name:'Uji', jp:'宇治', reg:'kansai', mini:true, meta:'19 ago · Nintendo Museum, Byodo-in y té matcha'},
   {stay:'kanazawa', meta:'20 a 22 ago · 2 noches', chips:[['pass','Pase Takayama Hokuriku'],['','Shirakawa-go en excursión']]},
   {name:'Shirakawa-go', jp:'白川郷', reg:'chubu', mini:true, meta:'21 ago · excursión de día desde Kanazawa'},
   {stay:'takayama', meta:'22 a 24 ago · 2 noches', chips:[['onsen','Minshuku o ryokan'],['','Alpes japoneses']]},
@@ -810,7 +816,7 @@ const DAY_PH = {
 /* Fotos de cada alojamiento: primero las propias, luego las de sus días */
 const STAY_PH_EXTRA = { tokio:['sensoji1','shibuya2'], hakodate:['hknight1','gory1'], sapporo:['odori1','bluepond1','shikisai1'], noboribetsu:['jigoku1','onsen2','kaiseki1'], takayama:['taka1','onsen3','kaiseki2'], osaka:['doton1','castle2'], tokio2:['radiokaikan2','mandarake1','sunshine1','akiba1'] };
 /* Paradas sin noche del diagrama */
-const MINI_PH = { 'Sendai':['tanabata1','tanabata2','gyutan1','tanabata3'], 'Tokushima':['awa1','awa2','awa3','naruto'], 'Shirakawa-go':['shira1','shira2','shira3','shira4'], 'Himeji':['hime1','hime2','kokoen1','kokoen2'], 'Barcelona':['haneda1','haneda2','haneda3','haneda4'] };
+const MINI_PH = { 'Kamakura y Enoshima':['kamakura1','engaku1','enoshima1','kamakura2'], 'Hakone':['hakone1','owaku1','ropeway','hakone2'], 'Otaru':['otaru1','sakaimachi1','orgel','otaru2'], 'Biei y Furano':['bluepond1','shikisai1','tomita1','kenmary'], 'Nara':['todai','deer1','kofuku1','kasuga1'], 'Uji':['byodo1','uji1','byodo2','uji2'], 'Sendai':['tanabata1','tanabata2','gyutan1','tanabata3'], 'Tokushima':['awa1','awa2','awa3','naruto'], 'Shirakawa-go':['shira1','shira2','shira3','shira4'], 'Himeji':['hime1','hime2','kokoen1','kokoen2'], 'Barcelona':['haneda1','haneda2','haneda3','haneda4'] };
 const HERO_PH = ['fushimi1','bluepond1','shira2','torii1','shibuya2','hknight1'];
 
 /* =========================================================
