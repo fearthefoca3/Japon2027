@@ -1,0 +1,738 @@
+<title>Japón 2027</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Cuaderno de viaje a Japón del 30 de julio al 28 de agosto de 2027: ruta, día a día, transporte, alojamientos y presupuesto.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: cuaderno de ruta ferroviaria. Cabecera tipo cartel de estación, pestañas como andenes, contenido en una columna ancha. */
+:root{
+  --paper:#F2F4F7;
+  --sheet:#FFFFFF;
+  --ink:#17202B;
+  --muted:#5A6676;
+  --rule:#D5DCE4;
+  --ai:#1E3A6B;          /* índigo aizome, acento principal */
+  --ai-soft:#E3E9F3;
+  --shu:#C2412A;         /* bermellón torii, solo para festivales y avisos */
+  --shu-soft:#F8E4DF;
+  --ok:#2F7D4F;
+  --l-kanto:#3B8C2F; --l-tohoku:#1B6FA6; --l-hokkaido:#0A8F86; --l-kansai:#D87400; --l-chubu:#7B4BA8; --l-chugoku:#B8352C; --l-air:#6B7686;
+  --f-display:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",system-ui,sans-serif;
+  --f-body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#10151C; --sheet:#171E27; --ink:#E5EAF1; --muted:#9AA6B6; --rule:#2A3441;
+    --ai:#93B3EA; --ai-soft:#1D2A3E; --shu:#F0806A; --shu-soft:#3A221D; --ok:#6CC28F;
+    --l-kanto:#6CC05E; --l-tohoku:#5AA8DD; --l-hokkaido:#3CC5BA; --l-kansai:#F2A04A; --l-chubu:#B48AE0; --l-chugoku:#EC7469; --l-air:#9AA6B6;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#10151C; --sheet:#171E27; --ink:#E5EAF1; --muted:#9AA6B6; --rule:#2A3441;
+  --ai:#93B3EA; --ai-soft:#1D2A3E; --shu:#F0806A; --shu-soft:#3A221D; --ok:#6CC28F;
+  --l-kanto:#6CC05E; --l-tohoku:#5AA8DD; --l-hokkaido:#3CC5BA; --l-kansai:#F2A04A; --l-chubu:#B48AE0; --l-chugoku:#EC7469; --l-air:#9AA6B6;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--sheet)}
+a{color:var(--ai)}
+:focus-visible{outline:2px solid var(--ai);outline-offset:2px;border-radius:3px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.25;margin:0}
+.eyebrow{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500}
+
+/* Cabecera: cartel de estación */
+header.top{background:var(--sheet);border-bottom:1px solid var(--rule)}
+.sign{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;padding-block:28px 18px}
+.sign .kanji{font-family:var(--f-display);font-weight:900;font-size:clamp(40px,7vw,64px);letter-spacing:.06em;line-height:1}
+.sign .roma{font-family:var(--f-display);font-weight:700;font-size:clamp(22px,3.2vw,30px);margin-top:6px}
+.sign .sub{color:var(--muted);margin-top:4px}
+.stripe{height:10px;display:flex}
+.stripe span{flex:1}
+.countdown{text-align:right}
+.countdown .n{font-family:var(--f-mono);font-size:34px;font-weight:600;line-height:1;color:var(--ai)}
+.countdown .l{font-size:12px;color:var(--muted)}
+.facts{display:flex;flex-wrap:wrap;gap:8px 22px;padding-block:12px 16px;font-size:13.5px;color:var(--muted)}
+.facts b{color:var(--ink);font-family:var(--f-mono);font-weight:600}
+
+/* Pestañas */
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--sheet);border-bottom:1px solid var(--rule)}
+nav.tabs .wrap{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav.tabs .wrap::-webkit-scrollbar{display:none}
+nav.tabs a{flex:none;text-decoration:none;color:var(--muted);padding:12px 12px 10px;font-weight:500;font-size:14px;border-bottom:3px solid transparent;white-space:nowrap}
+nav.tabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--ai)}
+nav.tabs a:hover{color:var(--ink)}
+
+main{padding-block:28px 64px}
+section.view{display:grid;gap:28px}
+.lead{max-width:68ch;color:var(--muted);margin:6px 0 0}
+.panel{background:var(--sheet);border:1px solid var(--rule);border-radius:10px;padding:20px}
+.note{border-left:3px solid var(--shu);background:var(--shu-soft);padding:10px 14px;border-radius:0 8px 8px 0;font-size:14px}
+.note.info{border-left-color:var(--ai);background:var(--ai-soft)}
+
+/* Diagrama de línea */
+.linemap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}
+@media (max-width:820px){.linemap{grid-template-columns:1fr}}
+.line{list-style:none;margin:0;padding:0;position:relative}
+.stop{display:grid;grid-template-columns:28px 1fr;gap:12px;position:relative;padding-bottom:18px}
+.stop::before{content:"";position:absolute;left:12px;top:14px;bottom:-4px;width:5px;background:var(--c,var(--ai))}
+.stop:last-child::before{display:none}
+.stop.air::before{background:repeating-linear-gradient(var(--l-air) 0 6px,transparent 6px 11px);width:3px;left:13px}
+.dot{width:28px;height:28px;border-radius:50%;background:var(--sheet);border:5px solid var(--c,var(--ai));position:relative;z-index:1}
+.stop.mini .dot{width:16px;height:16px;border-width:3px;margin:6px}
+.stop .nm{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.stop .nm strong{font-family:var(--f-display);font-size:18px}
+.stop .nm .jp{font-family:var(--f-display);color:var(--muted)}
+.stop.mini .nm strong{font-size:15px;font-weight:500}
+.stop .meta{font-size:13px;color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;padding:1px 8px;border-radius:99px;border:1px solid var(--rule);color:var(--muted);background:var(--sheet);white-space:nowrap}
+.chip.fest{border-color:var(--shu);color:var(--shu)}
+.chip.onsen{border-color:var(--l-hokkaido);color:var(--l-hokkaido)}
+.chip.pass{border-color:var(--ai);color:var(--ai)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:12.5px;color:var(--muted)}
+.legend i{display:inline-block;width:18px;height:5px;vertical-align:middle;margin-right:6px;border-radius:2px}
+
+/* Calendario */
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.cal .h{font-size:11px;color:var(--muted);text-align:center;letter-spacing:.08em}
+.cal a{display:block;text-decoration:none;color:var(--ink);background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:4px 5px 5px;min-height:56px;border-top:5px solid var(--c,var(--rule))}
+.cal a:hover{border-color:var(--ai)}
+.cal .d{font-family:var(--f-mono);font-size:12px;font-weight:600}
+.cal .c{font-size:11px;line-height:1.25;color:var(--muted);overflow:hidden;text-overflow:ellipsis}
+.cal .e{display:block}
+.cal .f{width:6px;height:6px;border-radius:50%;background:var(--shu);display:inline-block;margin-left:3px;vertical-align:middle}
+
+/* Día a día */
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filters button{font:inherit;font-size:13px;padding:5px 12px;border-radius:99px;border:1px solid var(--rule);background:var(--sheet);color:var(--ink);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ai);border-color:var(--ai);color:var(--sheet)}
+.days{display:grid;gap:14px}
+.day{background:var(--sheet);border:1px solid var(--rule);border-radius:10px;overflow:hidden;scroll-margin-top:70px}
+.day .bar{height:5px;background:var(--c)}
+.day .hd{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:16px 18px 6px;align-items:start}
+.day .date{font-family:var(--f-mono);text-align:center;min-width:52px}
+.day .date .dn{font-size:26px;font-weight:600;line-height:1}
+.day .date .dm{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.day h3{font-size:18px}
+.day .where{font-size:13px;color:var(--muted)}
+.day .body{padding:4px 18px 16px 86px;display:grid;gap:10px}
+@media (max-width:560px){.day .body{padding-left:18px}}
+.day ul{margin:0;padding-left:18px}
+.day li{margin:3px 0}
+.day .t{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin-right:6px}
+.day .alt{font-size:13.5px;color:var(--muted)}
+.day .alt b{color:var(--ink);font-weight:500}
+.day details{font-size:13.5px}
+.day summary{cursor:pointer;color:var(--ai);font-weight:500}
+.day textarea{width:100%;min-height:70px;margin-top:6px;font:inherit;font-size:14px;padding:8px 10px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);resize:vertical}
+.daynum{font-size:11px;color:var(--muted)}
+
+/* Tablas */
+.tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:10px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td .sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;background:var(--c)}
+td.num{text-align:right;white-space:nowrap}
+
+/* Tarjetas de pase: billete JR */
+.passes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.ticket{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;position:relative;display:grid;gap:8px;align-content:start}
+.ticket::after{content:"";position:absolute;right:-1px;top:50%;width:14px;height:28px;margin-top:-14px;background:var(--paper);border:1px solid var(--rule);border-right:0;border-radius:14px 0 0 14px}
+.ticket .pr{font-family:var(--f-mono);font-size:24px;font-weight:600;color:var(--ai)}
+.ticket .ds{font-size:13px;color:var(--muted)}
+.ticket .vs{font-size:13px}
+
+/* Alojamientos */
+.stays{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.stay{background:var(--sheet);border:1px solid var(--rule);border-radius:10px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.stay .signbox{padding:14px 18px 10px;border-bottom:6px solid var(--c)}
+.stay .signbox .k{font-family:var(--f-display);font-weight:900;font-size:28px;letter-spacing:.05em;line-height:1.1}
+.stay .signbox .r{font-weight:700;font-family:var(--f-display)}
+.stay .signbox .kn{font-size:12px;color:var(--muted)}
+.stay .in{padding:12px 18px 16px;display:grid;gap:8px;font-size:14px;align-content:start}
+.stay dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px}
+.stay dt{color:var(--muted);font-size:12.5px}
+.stay dd{margin:0}
+.btn{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:13.5px;font-weight:500;padding:7px 14px;border-radius:8px;border:1px solid var(--ai);color:var(--ai);background:transparent;text-decoration:none;cursor:pointer;width:max-content}
+.btn:hover{background:var(--ai-soft)}
+
+/* Presupuesto */
+.budget{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:820px){.budget{grid-template-columns:1fr}}
+.brow{display:grid;grid-template-columns:1fr 120px 56px;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--rule)}
+.brow:last-child{border-bottom:0}
+.brow label{font-size:14px}
+.brow small{display:block;color:var(--muted);font-size:12px;line-height:1.35}
+.brow input,.brow select{width:100%;font:inherit;font-family:var(--f-mono);font-size:14px;padding:6px 8px;border-radius:6px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);text-align:right}
+.brow .u{font-size:12px;color:var(--muted)}
+.total{display:grid;gap:4px}
+.total .big{font-family:var(--f-mono);font-size:40px;font-weight:600;line-height:1.1;color:var(--ai)}
+.stack{display:flex;height:16px;border-radius:4px;overflow:hidden;margin:12px 0 8px;background:var(--rule)}
+.stack span{height:100%}
+.blegend{display:grid;gap:4px;font-size:13px}
+.blegend div{display:grid;grid-template-columns:12px 1fr auto;gap:8px;align-items:center}
+.blegend i{width:12px;height:12px;border-radius:2px}
+
+/* Checklist */
+.check{display:grid;gap:6px}
+.check label{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:start;padding:10px 12px;background:var(--sheet);border:1px solid var(--rule);border-radius:8px;cursor:pointer}
+.check input{margin-top:4px;accent-color:var(--ai);width:16px;height:16px}
+.check .when{font-family:var(--f-mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.check .when.urgent{color:var(--shu);font-weight:600}
+.check label:has(input:checked) .tx{text-decoration:line-through;color:var(--muted)}
+.check small{display:block;color:var(--muted)}
+.prog{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+
+/* Consejos */
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.tips .panel h3{font-size:16px;margin-bottom:6px}
+.tips ul{margin:0;padding-left:18px;font-size:14px}
+.tips li{margin:4px 0}
+.phr{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:14px}
+.phr .jp{font-family:var(--f-display);font-weight:500}
+.phr .es{color:var(--muted)}
+
+footer{border-top:1px solid var(--rule);padding-block:20px 40px;font-size:12.5px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+@media (prefers-reduced-motion:no-preference){.day,.stop{animation:none}}
+</style>
+
+<header class="top">
+  <div class="stripe" aria-hidden="true"><span style="background:var(--l-kanto)"></span><span style="background:var(--l-tohoku)"></span><span style="background:var(--l-hokkaido)"></span><span style="background:var(--l-kansai)"></span><span style="background:var(--l-chubu)"></span><span style="background:var(--l-chugoku)"></span></div>
+  <div class="wrap">
+    <div class="sign">
+      <div>
+        <div class="kanji">日本 2027</div>
+        <div class="roma">Japón 2027</div>
+        <div class="sub">Cuaderno de ruta · 30 jul → 28 ago · de Tokio a Hokkaido y de vuelta por Kansai</div>
+      </div>
+      <div class="countdown"><div class="n mono" id="cd">…</div><div class="l">días para salir</div></div>
+    </div>
+    <div class="facts" id="facts"></div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Secciones"><div class="wrap" id="tabs"></div></nav>
+
+<main class="wrap">
+  <section class="view" id="v-ruta"></section>
+  <section class="view" id="v-dias" hidden></section>
+  <section class="view" id="v-transporte" hidden></section>
+  <section class="view" id="v-alojamiento" hidden></section>
+  <section class="view" id="v-presupuesto" hidden></section>
+  <section class="view" id="v-preparativos" hidden></section>
+  <section class="view" id="v-consejos" hidden></section>
+</main>
+
+<footer><div class="wrap">Precios orientativos consultados en noviembre de 2026. Confirmar siempre en la web oficial antes de comprar. Las notas, la lista de preparativos y el presupuesto se guardan solo en este navegador.</div></footer>
+
+<script>
+/* =========================================================
+   DATOS DEL VIAJE · editar aquí para cambiar el contenido
+   ========================================================= */
+const TRIP = { start:'2027-07-30', end:'2027-08-28', travellers:2, eurJpy:178 };
+
+const REGION = {
+  kanto:'var(--l-kanto)', tohoku:'var(--l-tohoku)', hokkaido:'var(--l-hokkaido)',
+  kansai:'var(--l-kansai)', chubu:'var(--l-chubu)', chugoku:'var(--l-chugoku)', air:'var(--l-air)'
+};
+
+/* Paradas con noche (alojamiento). precio = rango por habitación doble y noche en yenes */
+const STAYS = [
+  {id:'tokio', name:'Tokio', jp:'東京', kana:'とうきょう', reg:'kanto', in:'2027-07-31', out:'2027-08-06',
+   zona:'Ueno o Asakusa (más baratos y con tren directo a Narita y Haneda). Alternativa: Ikebukuro.',
+   tipo:'Hotel business (APA, Toyoko Inn, Sotetsu Fresa, Via Inn) o apartamento',
+   precio:[12000,18000], tip:'Seis noches seguidas: compensa un apartamento con lavadora para lavar ropa antes de ir al norte.', q:'Asakusa, Tokyo'},
+  {id:'sendai', name:'Sendai', jp:'仙台', kana:'せんだい', reg:'tohoku', in:'2027-08-06', out:'2027-08-07',
+   zona:'Alrededores de la estación de Sendai', tipo:'Hotel business', precio:[12000,20000],
+   tip:'Tanabata llena la ciudad. Reservar con cancelación gratuita cuanto antes.', q:'Sendai Station'},
+  {id:'aomori', name:'Aomori', jp:'青森', kana:'あおもり', reg:'tohoku', in:'2027-08-07', out:'2027-08-08',
+   zona:'Centro de Aomori. Si está lleno: Hirosaki (45 min) o Hachinohe (30 min en shinkansen)', tipo:'Hotel business', precio:[18000,35000],
+   tip:'Durante el Nebuta es la cama más difícil de todo el viaje. Prioridad número uno de reserva.', q:'Aomori'},
+  {id:'hakodate', name:'Hakodate', jp:'函館', kana:'はこだて', reg:'hokkaido', in:'2027-08-08', out:'2027-08-09',
+   zona:'Estación de Hakodate o zona de la bahía', tipo:'Hotel con desayuno buffet de marisco', precio:[10000,16000],
+   tip:'Muchos hoteles de Hakodate son famosos por el desayuno. Merece pagar un poco más con desayuno incluido.', q:'Hakodate Station'},
+  {id:'noboribetsu', name:'Noboribetsu', jp:'登別', kana:'のぼりべつ', reg:'hokkaido', in:'2027-08-09', out:'2027-08-10', onsen:true,
+   zona:'Noboribetsu Onsen (pueblo termal, no la estación)', tipo:'Ryokan con onsen, cena y desayuno incluidos (1泊2食)', precio:[30000,50000],
+   tip:'Primer capricho del viaje. Buscar plan "1泊2食" para que la cena kaiseki esté incluida.', q:'Noboribetsu Onsen'},
+  {id:'sapporo', name:'Sapporo', jp:'札幌', kana:'さっぽろ', reg:'hokkaido', in:'2027-08-10', out:'2027-08-12',
+   zona:'Susukino u Odori', tipo:'Hotel business', precio:[9000,14000], tip:'Hokkaido es la parte fresca del viaje (máximas de 25 a 27 °C).', q:'Susukino, Sapporo'},
+  {id:'osaka1', name:'Osaka', jp:'大阪', kana:'おおさか', reg:'kansai', in:'2027-08-12', out:'2027-08-15',
+   zona:'Namba o Shin-Imamiya (lo más económico)', tipo:'Hotel business o hostal con doble', precio:[9000,16000],
+   tip:'Coincide con Obon (13 al 16). Sube precio y se llena. Reservar pronto.', q:'Namba, Osaka'},
+  {id:'kioto', name:'Kioto', jp:'京都', kana:'きょうと', reg:'kansai', in:'2027-08-15', out:'2027-08-20',
+   zona:'Shijo y Karasuma o cerca de la estación de Kioto', tipo:'Hotel business o machiya (casa tradicional) compartida', precio:[13000,22000],
+   tip:'Kioto cobra un impuesto de alojamiento por persona y noche que se paga aparte en el hotel.', q:'Shijo Karasuma, Kyoto'},
+  {id:'kanazawa', name:'Kanazawa', jp:'金沢', kana:'かなざわ', reg:'chubu', in:'2027-08-20', out:'2027-08-21',
+   zona:'Estación de Kanazawa (el bus a Shirakawa-go sale de allí)', tipo:'Hotel business', precio:[10000,15000],
+   tip:'Dejar maleta grande en consigna o enviarla por takkyubin al hotel de Hiroshima.', q:'Kanazawa Station'},
+  {id:'takayama', name:'Takayama', jp:'高山', kana:'たかやま', reg:'chubu', in:'2027-08-21', out:'2027-08-23', onsen:true,
+   zona:'Casco antiguo de Takayama u Okuhida Onsen (más rural)', tipo:'1 noche ryokan o minshuku con cena de ternera de Hida + 1 noche hotel', precio:[15000,35000],
+   tip:'Segundo capricho del viaje. Un minshuku familiar con cena es más barato que un ryokan y muy auténtico.', q:'Takayama'},
+  {id:'hiroshima', name:'Hiroshima', jp:'広島', kana:'ひろしま', reg:'chugoku', in:'2027-08-23', out:'2027-08-25',
+   zona:'Hatchobori o alrededores de la estación', tipo:'Hotel business', precio:[9000,14000],
+   tip:'Opción especial: una noche en Miyajima para ver el torii sin excursionistas (más caro).', q:'Hatchobori, Hiroshima'},
+  {id:'osaka2', name:'Osaka', jp:'大阪', kana:'おおさか', reg:'kansai', in:'2027-08-25', out:'2027-08-28',
+   zona:'Namba (Nankai directo a KIX) o Bentencho si vais a Universal', tipo:'Hotel business', precio:[9000,15000],
+   tip:'Última base. Ideal para compras y para tener el aeropuerto a 40 minutos.', q:'Namba, Osaka'},
+];
+
+/* Diagrama de ruta: incluye excursiones sin noche (mini) y vuelos (air) */
+const ROUTE = [
+  {name:'Barcelona', jp:'バルセロナ', reg:'air', air:true, meta:'Sale el 30 jul · vuelo con 1 escala'},
+  {stay:'tokio', meta:'31 jul a 6 ago · 6 noches', chips:[['fest','Hanabi del Sumida'],['','Hakone y Kamakura en excursión']]},
+  {stay:'sendai', meta:'6 ago · 1 noche', chips:[['fest','Tanabata'],['pass','Pase JR Este + Hokkaido']]},
+  {stay:'aomori', meta:'7 ago · 1 noche', chips:[['fest','Nebuta Matsuri']]},
+  {stay:'hakodate', meta:'8 ago · 1 noche', chips:[['','Mirador nocturno']]},
+  {stay:'noboribetsu', meta:'9 ago · 1 noche', chips:[['onsen','Ryokan con onsen']]},
+  {stay:'sapporo', air:true, meta:'10 a 12 ago · 2 noches', chips:[['','Otaru en excursión']]},
+  {stay:'osaka1', meta:'12 a 15 ago · 3 noches · vuelo interno desde Sapporo', chips:[['fest','Awa Odori (excursión)'],['','Obon']]},
+  {name:'Tokushima', jp:'徳島', reg:'kansai', mini:true, meta:'13 ago · excursión en bus para el Awa Odori'},
+  {stay:'kioto', meta:'15 a 20 ago · 5 noches', chips:[['fest','Gozan Okuribi'],['','Nara, Uji y Nintendo Museum']]},
+  {stay:'kanazawa', meta:'20 ago · 1 noche', chips:[['pass','Pase Takayama Hokuriku']]},
+  {name:'Shirakawa-go', jp:'白川郷', reg:'chubu', mini:true, meta:'21 ago · parada en ruta, aldea gassho'},
+  {stay:'takayama', meta:'21 a 23 ago · 2 noches', chips:[['onsen','Minshuku o ryokan']]},
+  {stay:'hiroshima', meta:'23 a 25 ago · 2 noches', chips:[['pass','Pase Kansai Hiroshima'],['','Miyajima']]},
+  {name:'Himeji', jp:'姫路', reg:'chugoku', mini:true, meta:'25 ago · parada en ruta, castillo'},
+  {stay:'osaka2', air:true, meta:'25 a 28 ago · 3 noches', chips:[['','Universal Studios opcional']]},
+  {name:'Barcelona', jp:'バルセロナ', reg:'air', meta:'Vuelta el 28 ago desde Kansai (KIX)'},
+];
+
+/* Día a día. base = id de STAYS (o 'avion'). [[Texto|búsqueda]] crea enlace a Google Maps */
+const DAYS = [
+ {d:'2027-07-30', base:'avion', title:'Salida desde Barcelona', tags:['transporte'],
+  plan:['Vuelo BCN → Tokio con una escala. Llegada al día siguiente por la diferencia horaria (+7 h en verano).','Llevar en cabina una muda, cargador y la eSIM ya instalada.']},
+ {d:'2027-07-31', base:'tokio', title:'Aterrizaje y primer paseo', tags:['transporte','festival'],
+  plan:['Recoger Suica (o activarla en el móvil) y efectivo en un cajero de 7-Eleven.','Tren al hotel en Ueno o Asakusa, check-in y siesta corta.','Tarde: paseo suave por [[Ueno Ameyoko|Ameya Yokocho Ueno]] y cena de ramen.'],
+  alt:'El Sumidagawa Hanabi (fuegos del río Sumida) se celebra el último sábado de julio, que en 2027 cae este mismo día. Si el cuerpo aguanta, verlo desde Asakusa. Confirmar la fecha oficial en primavera.'},
+ {d:'2027-08-01', base:'tokio', title:'Asakusa, Ueno y Akihabara', tags:['cultura','anime'],
+  plan:['<span class="t">07:30</span>[[Senso-ji|Senso-ji Asakusa]] antes de que llegue el calor y la gente. Nakamise y melon pan.','[[Tokyo Skytree|Tokyo Skytree]] desde fuera o subir al atardecer si el cielo está despejado.','Tarde: [[Akihabara|Akihabara Electric Town]]. Super Potato, Radio Kaikan, gashapon y salones recreativos.'],
+  alt:'<b>Económico:</b> el mirador gratuito del [[Ayuntamiento de Tokio|Tokyo Metropolitan Government Building]] sustituye bien al Skytree.'},
+ {d:'2027-08-02', base:'tokio', title:'Shibuya, Harajuku y Shinjuku', tags:['cultura','comida','anime'],
+  plan:['Mañana en el santuario [[Meiji Jingu|Meiji Jingu]] (sombra y calma).','[[Takeshita Dori|Takeshita Street]] y Omotesando.','[[Shibuya Scramble|Shibuya Scramble Crossing]], [[Mugiwara Store y Pokémon Center en Shibuya Parco|Shibuya Parco]] y Nintendo Tokyo.','Noche: [[Omoide Yokocho|Omoide Yokocho]] y [[Golden Gai|Golden Gai Shinjuku]] para yakitori y un trago.']},
+ {d:'2027-08-03', base:'tokio', title:'Excursión a Kamakura y Enoshima', tags:['cultura','naturaleza'],
+  plan:['Tren JR Yokosuka a Kita-Kamakura (1 h). Templos de Engaku-ji y paseo hasta el [[Gran Buda de Kamakura|Kotoku-in]].','Enoden hasta [[Enoshima|Enoshima]]: isla, cuevas y playa de verano.','Volver al atardecer y cena en la zona del hotel.'],
+  alt:'<b>Alternativa:</b> Nikko (santuario Toshogu y cascadas) en el mismo formato de excursión de un día.'},
+ {d:'2027-08-04', base:'tokio', title:'Ghibli, Nakano y teamLab', tags:['anime','cultura'],
+  plan:['Mañana: [[Museo Ghibli|Ghibli Museum Mitaka]] con entrada comprada (salen el día 10 del mes anterior).','[[Nakano Broadway|Nakano Broadway]]: tiendas de figuras y manga de segunda mano a buen precio.','Tarde: [[teamLab Planets|teamLab Planets Toyosu]] y paseo por Odaiba.'],
+  alt:'<b>Para One Piece:</b> la Mugiwara Store de Shibuya y la de Ikebukuro, y el Pokémon Center Mega Tokyo en Sunshine City.'},
+ {d:'2027-08-05', base:'tokio', title:'Hakone: onsen y vistas al Fuji', tags:['naturaleza','onsen'],
+  plan:['Odakyu desde Shinjuku con el Hakone Free Pass (tren, cable, barco y buses de la zona).','Circuito: Hakone-Yumoto → Owakudani (huevos negros) → lago Ashi en barco.','Baño en un onsen de día como [[Tenzan Tohji-kyo|Tenzan Tohji-kyo Hakone]].','Por la noche: enviar la maleta grande por takkyubin al hotel de Osaka y viajar al norte con mochila.'],
+  alt:'En agosto el Fuji suele estar tapado por la calima. Si queréis subirlo, la temporada de ascenso es de julio a septiembre y requiere reserva previa.'},
+ {d:'2027-08-06', base:'sendai', title:'Sendai y el Tanabata', tags:['festival','transporte','naturaleza'],
+  plan:['Activar el JR East-South Hokkaido Rail Pass (día 1 de 6). Shinkansen Hayabusa a Sendai (1 h 30).','Mañana en [[Matsushima|Matsushima Bay]], una de las tres vistas más bellas de Japón (JR Senseki, cubierto).','Tarde y noche: decoraciones de papel del [[Tanabata de Sendai|Sendai Tanabata Matsuri Ichibancho]] en las galerías comerciales.','Cena de gyutan (lengua de ternera a la brasa), la especialidad local.']},
+ {d:'2027-08-07', base:'aomori', title:'Nebuta Matsuri, último día', tags:['festival'],
+  plan:['Pase día 2. Shinkansen a Shin-Aomori (1 h 30) y tren local a Aomori.','Mediodía: desfile diurno de los nebuta (carrozas gigantes de papel iluminado).','Noche: carrozas sobre el mar y fuegos artificiales en la bahía, el gran cierre del festival.','Antes o después: [[Nebuta Museum Wa Rasse|Nebuta Museum Wa Rasse]] para verlas de cerca.'],
+  alt:'El Nebuta suele celebrarse del 2 al 7 de agosto. Si las fechas de 2027 se publican distintas, intercambiar Sendai y Aomori.'},
+ {d:'2027-08-08', base:'hakodate', title:'Cruce a Hokkaido', tags:['comida','naturaleza'],
+  plan:['Pase día 3. Shinkansen por el túnel del Seikan hasta Shin-Hakodate-Hokuto y tren Hakodate Liner.','Fuerte estrellado de [[Goryokaku|Goryokaku Tower]] y almacenes de ladrillo rojo de la bahía.','Atardecer y noche: teleférico al [[Monte Hakodate|Mount Hakodate Ropeway]], de las mejores vistas nocturnas de Japón.']},
+ {d:'2027-08-09', base:'noboribetsu', title:'Mercado matinal y ryokan en Noboribetsu', tags:['comida','onsen','naturaleza'],
+  plan:['<span class="t">07:00</span>Desayuno de kaisendon (bol de marisco) en el [[Mercado matinal de Hakodate|Hakodate Morning Market]].','Pase día 4. Limited Express Hokuto a Noboribetsu (2 h 30) y bus al pueblo termal.','Paseo por el valle volcánico [[Jigokudani|Jigokudani Noboribetsu]] y el baño de pies natural del río Oyunuma.','Noche de ryokan: yukata, cena kaiseki y onsen.']},
+ {d:'2027-08-10', base:'sapporo', title:'Sapporo', tags:['comida','cultura'],
+  plan:['Pase día 5. Hokuto a Sapporo (1 h 10).','Parque Odori, torre de la TV y antiguo ayuntamiento de ladrillo.','[[Sapporo Beer Museum|Sapporo Beer Museum]] con degustación y cena de jingisukan (cordero a la plancha).','Noche: ramen de miso en el [[Ganso Ramen Yokocho|Ganso Ramen Yokocho Susukino]].']},
+ {d:'2027-08-11', base:'sapporo', title:'Excursión a Otaru', tags:['comida','cultura'],
+  plan:['Pase día 6 (último). Tren a Otaru (35 min).','Canal de Otaru, calle Sakaimachi, talleres de vidrio y la caja de música del Otaru Orgel Do.','Sushi en Sushiya-dori, de los mejores precios de Japón para su calidad.','Volver a Sapporo y preparar la mochila para el vuelo.']},
+ {d:'2027-08-12', base:'osaka1', title:'Vuelo a Osaka y Dotonbori', tags:['transporte','comida'],
+  plan:['Tren al aeropuerto New Chitose (40 min, ya sin pase) y vuelo low cost a Kansai.','Recoger la maleta enviada desde Tokio en el hotel.','Noche en [[Dotonbori|Dotonbori Osaka]]: takoyaki, kushikatsu y el cartel de Glico.']},
+ {d:'2027-08-13', base:'osaka1', title:'Awa Odori en Tokushima', tags:['festival'],
+  plan:['Bus directo desde Namba o Umeda a Tokushima (unas 2 h 30). Reservar ida y vuelta con antelación.','Tarde: subir al [[Monte Bizan|Mount Bizan Tokushima]] o visitar los remolinos de Naruto.','Desde las 18:00: el Awa Odori, el mayor festival de danza de Japón. Miles de bailarines por las calles.','Último bus de vuelta a Osaka.'],
+  alt:'El Awa Odori se celebra cada año del 12 al 15 de agosto. El 13 o el 14 son buenos días. Dormir en Tokushima esas noches es carísimo, por eso se plantea como excursión.'},
+ {d:'2027-08-14', base:'osaka1', title:'Osaka clásica y Den Den Town', tags:['cultura','anime','comida'],
+  plan:['[[Castillo de Osaka|Osaka Castle]] a primera hora.','Mediodía en el [[Mercado Kuromon|Kuromon Market]].','Tarde: [[Den Den Town|Den Den Town Nipponbashi]], la Akihabara de Osaka.','Noche en [[Shinsekai|Shinsekai Osaka]] o mirador [[Umeda Sky Building|Umeda Sky Building]].']},
+ {d:'2027-08-15', base:'kioto', title:'Llegada a Kioto y Fushimi Inari', tags:['cultura'],
+  plan:['JR Special Rapid a Kioto (30 min).','Tarde: [[Fushimi Inari|Fushimi Inari Taisha]] al bajar el sol. Subir hasta el mirador de Yotsutsuji.','Noche en [[Gion|Gion Kyoto]] y la calle Pontocho.']},
+ {d:'2027-08-16', base:'kioto', title:'Higashiyama y Gozan Okuribi', tags:['cultura','festival'],
+  plan:['<span class="t">07:00</span>[[Kiyomizu-dera|Kiyomizu-dera]] y bajar por Sannenzaka y Ninenzaka.','Mediodía: [[Mercado Nishiki|Nishiki Market]].','<span class="t">20:00</span>Gozan Okuribi: cinco hogueras gigantes con forma de kanji en las montañas que despiden a los espíritus de Obon. Verlo desde la orilla del río Kamo.']},
+ {d:'2027-08-17', base:'kioto', title:'Arashiyama y Kinkaku-ji', tags:['cultura','naturaleza'],
+  plan:['<span class="t">07:00</span>[[Bosque de bambú de Arashiyama|Arashiyama Bamboo Grove]] antes de las multitudes.','[[Tenryu-ji|Tenryu-ji]] y su jardín, y el parque de monos de Iwatayama.','Tarde: [[Kinkaku-ji|Kinkaku-ji]] (pabellón dorado) y [[Ryoan-ji|Ryoan-ji]] (jardín de piedras).']},
+ {d:'2027-08-18', base:'kioto', title:'Excursión a Nara', tags:['cultura','naturaleza'],
+  plan:['JR Nara Line (45 min).','[[Todai-ji|Todai-ji]] y su Gran Buda, el parque de los ciervos y [[Kasuga Taisha|Kasuga Taisha]].','Comer mochi recién machacado en Nakatanidou.','Volver y cena tranquila en Kioto.']},
+ {d:'2027-08-19', base:'kioto', title:'Nintendo Museum y Uji', tags:['anime','cultura','comida'],
+  plan:['[[Nintendo Museum|Nintendo Museum Ogura Uji]] con entrada por sorteo (solicitar con meses de antelación).','Tarde en Uji: [[Byodo-in|Byodo-in]] (el templo de la moneda de 10 yenes) y té matcha en la calle Byodoin Omotesando.','Última noche en Kioto. Enviar maleta grande a Hiroshima por takkyubin.']},
+ {d:'2027-08-20', base:'kanazawa', title:'Kanazawa', tags:['cultura','comida'],
+  plan:['Activar el Takayama-Hokuriku Area Tourist Pass (día 1 de 5). Thunderbird a Tsuruga y Hokuriku Shinkansen a Kanazawa (2 h 15).','Jardín [[Kenroku-en|Kenroku-en]], uno de los tres grandes jardines de Japón.','Barrio de geishas [[Higashi Chaya|Higashi Chaya District]] y helado con pan de oro.','Cena de marisco en el [[Mercado Omicho|Omicho Market]].']},
+ {d:'2027-08-21', base:'takayama', title:'Shirakawa-go y llegada a Takayama', tags:['naturaleza','cultura'],
+  plan:['Pase día 2. Bus a [[Shirakawa-go|Shirakawa-go]] (1 h 15, plaza reservada).','Aldea de casas gassho (techos de paja), mirador de Shiroyama y casa Wada.','Bus a Takayama (50 min). Noche de minshuku o ryokan con cena de ternera de Hida.']},
+ {d:'2027-08-22', base:'takayama', title:'Takayama y los Alpes japoneses', tags:['naturaleza','comida','onsen'],
+  plan:['Mercado matinal de Miyagawa y casco antiguo de [[Sanmachi Suji|Sanmachi Suji Takayama]] (sake y sushi de ternera de Hida).','Opción montaña: bus a Okuhida y [[Shinhotaka Ropeway|Shinhotaka Ropeway]] para ver los Alpes a 2.150 m, con aire fresco.','Onsen al aire libre en Okuhida antes de volver.'],
+  alt:'<b>Más tranquilo:</b> [[Hida no Sato|Hida Folk Village]] y tarde libre en Takayama.'},
+ {d:'2027-08-23', base:'hiroshima', title:'Gran traslado a Hiroshima', tags:['transporte','cultura'],
+  plan:['Salir temprano. Takayama → Toyama → Tsuruga → Shin-Osaka con el pase Takayama-Hokuriku (día 4, unas 4 h 30).','Activar el Kansai-Hiroshima Area Pass (día 1 de 5) y Shinkansen a Hiroshima (1 h 30).','Al atardecer: [[Parque Memorial de la Paz|Hiroshima Peace Memorial Park]] y la Cúpula de la Bomba Atómica.','Cena de okonomiyaki en [[Okonomimura|Okonomimura Hiroshima]].'],
+  alt:'Es el día de más tren del viaje. Llevar comida (ekiben) y algo para entretenerse.'},
+ {d:'2027-08-24', base:'hiroshima', title:'Miyajima', tags:['cultura','naturaleza'],
+  plan:['Museo de la Paz a primera hora.','Tren y ferry JR a [[Miyajima|Itsukushima Shrine]] (cubiertos por el pase).','Torii flotante, santuario de Itsukushima y subida al monte Misen (teleférico o a pie si no hace demasiado calor).','Ostras a la brasa y momiji manju. Quedarse a ver el torii iluminado si da tiempo.']},
+ {d:'2027-08-25', base:'osaka2', title:'Castillo de Himeji y vuelta a Osaka', tags:['cultura','transporte'],
+  plan:['Shinkansen a Himeji (1 h, pase día 3). Consigna de maletas en la estación.','[[Castillo de Himeji|Himeji Castle]], el castillo original más bonito de Japón, y el jardín Koko-en.','Tren a Osaka y check-in en Namba.']},
+ {d:'2027-08-26', base:'osaka2', title:'Universal Studios o Kobe', tags:['anime','comida'],
+  plan:['Opción A: [[Universal Studios Japan|Universal Studios Japan]] con Super Nintendo World (entrada con hora para la zona Nintendo).','Opción B, más económica: Kobe con el pase. Barrio de Kitano, puerto y ternera de Kobe en menú de mediodía.']},
+ {d:'2027-08-27', base:'osaka2', title:'Último día libre', tags:['comida','anime'],
+  plan:['Compras finales: Namba, Shinsaibashi y Den Den Town. Tax free con pasaporte a partir de 5.000 ¥ por tienda.','Recuperar el día que más os haya gustado o descansar.','Cena de despedida en un izakaya.']},
+ {d:'2027-08-28', base:'avion', title:'Vuelta a casa', tags:['transporte'],
+  plan:['Nankai desde Namba o JR Haruka hasta el aeropuerto de Kansai (unos 40 min).','Vuelo KIX → Barcelona con una escala. Se llega el mismo día por la diferencia horaria.']},
+];
+
+/* Trayectos */
+const LEGS = [
+ {f:'30 jul', de:'Barcelona (BCN)', a:'Tokio (HND o NRT)', m:'Avión, 1 escala', dur:'16 a 19 h', p:'≈ 1.100 € pp ida y vuelta', reg:'air', n:'Comprar como multidestino: ida a Tokio y vuelta desde Osaka KIX. Escalas habituales en Estambul, Doha, Dubái, Helsinki, París, Ámsterdam o Fráncfort.'},
+ {f:'31 jul', de:'Aeropuerto', a:'Hotel en Ueno o Asakusa', m:'Keikyu (Haneda) o Keisei (Narita)', dur:'30 a 60 min', p:'300 a 2.600 ¥', reg:'kanto', n:'Desde Haneda el Keikyu va directo a Asakusa. Desde Narita, Keisei Access Express o Skyliner a Ueno.'},
+ {f:'1 a 5 ago', de:'Tokio', a:'Tokio', m:'Metro y JR con Suica', dur:'', p:'≈ 800 ¥ por día', reg:'kanto', n:'No compensa pase de metro salvo días muy intensos.'},
+ {f:'3 ago', de:'Tokio', a:'Kamakura y Enoshima', m:'JR Yokosuka y Enoden', dur:'1 h', p:'≈ 2.500 ¥ total', reg:'kanto', n:''},
+ {f:'5 ago', de:'Shinjuku', a:'Hakone', m:'Odakyu + Hakone Free Pass', dur:'1 h 30', p:'≈ 6.100 ¥', reg:'kanto', n:'El pase incluye ida y vuelta desde Shinjuku y todo el circuito por Hakone.'},
+ {f:'6 ago', de:'Tokio', a:'Sendai', m:'Tohoku Shinkansen Hayabusa', dur:'1 h 30', p:'Pase día 1', reg:'tohoku', pass:'ehk', n:'Reservar asiento en cuanto abra la venta, un mes antes.'},
+ {f:'7 ago', de:'Sendai', a:'Shin-Aomori → Aomori', m:'Hayabusa + tren local', dur:'1 h 45', p:'Pase día 2', reg:'tohoku', pass:'ehk', n:''},
+ {f:'8 ago', de:'Shin-Aomori', a:'Hakodate', m:'Hokkaido Shinkansen + Hakodate Liner', dur:'1 h 30', p:'Pase día 3', reg:'hokkaido', pass:'ehk', n:'Cruza el túnel submarino del Seikan.'},
+ {f:'9 ago', de:'Hakodate', a:'Noboribetsu', m:'Limited Express Hokuto + bus', dur:'2 h 45', p:'Pase día 4 + bus ≈ 350 ¥', reg:'hokkaido', pass:'ehk', n:''},
+ {f:'10 ago', de:'Noboribetsu', a:'Sapporo', m:'Limited Express Hokuto', dur:'1 h 10', p:'Pase día 5', reg:'hokkaido', pass:'ehk', n:''},
+ {f:'11 ago', de:'Sapporo', a:'Otaru y vuelta', m:'JR rápido', dur:'35 min', p:'Pase día 6', reg:'hokkaido', pass:'ehk', n:''},
+ {f:'12 ago', de:'Sapporo (CTS)', a:'Osaka (KIX)', m:'Avión low cost (Peach, Jetstar)', dur:'2 h 10', p:'8.000 a 15.000 ¥ con maleta', reg:'air', n:'Tren JR a New Chitose ≈ 1.150 ¥. Facturar solo mochila si la maleta va por takkyubin.'},
+ {f:'13 ago', de:'Osaka', a:'Tokushima y vuelta', m:'Autobús de carretera', dur:'2 h 30', p:'≈ 8.000 ¥ ida y vuelta', reg:'kansai', n:'Durante el Awa Odori se agotan los buses de vuelta. Reservar en cuanto salgan.'},
+ {f:'15 ago', de:'Osaka', a:'Kioto', m:'JR Special Rapid', dur:'30 min', p:'≈ 580 ¥', reg:'kansai', n:''},
+ {f:'18 ago', de:'Kioto', a:'Nara y vuelta', m:'JR Nara Line', dur:'45 min', p:'≈ 1.500 ¥', reg:'kansai', n:''},
+ {f:'19 ago', de:'Kioto', a:'Uji y Ogura', m:'JR Nara Line o Kintetsu', dur:'30 min', p:'≈ 800 ¥', reg:'kansai', n:''},
+ {f:'20 ago', de:'Kioto', a:'Kanazawa', m:'Thunderbird + Hokuriku Shinkansen', dur:'2 h 15', p:'Pase día 1', reg:'chubu', pass:'thk', n:'Trasbordo en Tsuruga.'},
+ {f:'21 ago', de:'Kanazawa', a:'Shirakawa-go → Takayama', m:'Autobús Hokutetsu y Nohi', dur:'1 h 15 + 50 min', p:'Pase día 2', reg:'chubu', pass:'thk', n:'Las plazas del bus requieren reserva aunque el pase las cubra.'},
+ {f:'23 ago', de:'Takayama', a:'Shin-Osaka', m:'Hida + Shinkansen + Thunderbird', dur:'4 h 30', p:'Pase día 4', reg:'chubu', pass:'thk', n:'Vía Toyama y Tsuruga para quedarse dentro del pase.'},
+ {f:'23 ago', de:'Shin-Osaka', a:'Hiroshima', m:'Sanyo Shinkansen', dur:'1 h 30', p:'Pase día 1', reg:'chugoku', pass:'kh', n:'El pase incluye Nozomi y Mizuho en este tramo.'},
+ {f:'24 ago', de:'Hiroshima', a:'Miyajima y vuelta', m:'JR Sanyo + ferry JR', dur:'40 min', p:'Pase día 2 + tasa de visitante 100 ¥', reg:'chugoku', pass:'kh', n:'Solo el ferry de JR está cubierto, no el de Matsudai.'},
+ {f:'25 ago', de:'Hiroshima', a:'Himeji → Osaka', m:'Sanyo Shinkansen', dur:'1 h + 1 h', p:'Pase día 3', reg:'chugoku', pass:'kh', n:''},
+ {f:'26 a 27 ago', de:'Osaka', a:'Universal o Kobe', m:'JR', dur:'20 a 40 min', p:'Pase días 4 y 5', reg:'kansai', pass:'kh', n:''},
+ {f:'28 ago', de:'Osaka (Namba)', a:'Aeropuerto KIX', m:'Nankai Rapi:t o Airport Express', dur:'40 min', p:'≈ 970 a 1.500 ¥', reg:'kansai', n:''},
+ {f:'28 ago', de:'Osaka (KIX)', a:'Barcelona (BCN)', m:'Avión, 1 escala', dur:'16 a 19 h', p:'Incluido en el billete', reg:'air', n:'La tasa de salida de Japón (3.000 ¥ desde julio de 2026) va incluida en el billete.'},
+];
+
+const PASSES = [
+ {id:'ehk', name:'JR East-South Hokkaido Rail Pass', price:40000, days:'6 días seguidos · 6 al 11 ago',
+  cover:'Tokio → Sendai → Aomori → Hakodate → Noboribetsu → Sapporo → Otaru. Incluye shinkansen Hayabusa y reserva de asiento.',
+  vs:'Billetes sueltos ≈ 45.000 ¥', url:'https://www.jreast.co.jp/multi/en/pass/easthokkaido.html'},
+ {id:'thk', name:'Takayama-Hokuriku Area Tourist Pass', price:19800, days:'5 días seguidos · 20 al 24 ago (se usan 4)',
+  cover:'Kioto → Kanazawa, buses a Shirakawa-go y Takayama, y vuelta a Osaka vía Toyama y Tsuruga.',
+  vs:'Billetes sueltos ≈ 26.000 ¥', url:'https://www.westjr.co.jp/global/en/'},
+ {id:'kh', name:'Kansai-Hiroshima Area Pass', price:17000, days:'5 días seguidos · 23 al 27 ago',
+  cover:'Shin-Osaka ↔ Hiroshima en Nozomi, ferry JR a Miyajima, Himeji y JR por Kansai (Kobe, Universal).',
+  vs:'Billetes sueltos ≈ 23.000 ¥', url:'https://www.westjr.co.jp/global/en/'},
+];
+
+/* Preparativos: due = fecha límite orientativa */
+const CHECK = [
+ {id:'c-aomori', t:'Reservar alojamiento en Aomori para el 7 de agosto', s:'Es lo primero que se agota. Reserva con cancelación gratuita ya, aunque el plan cambie.', due:'2026-11-30'},
+ {id:'c-hoteles', t:'Reservar Sendai, Osaka (Obon) y Kioto con cancelación gratuita', s:'Se puede afinar después. Lo importante es asegurar cama en fechas de festival.', due:'2026-12-31'},
+ {id:'c-vuelos', t:'Comprar vuelos multidestino BCN → Tokio y KIX → BCN', s:'Vigilar con alertas de precio. El mejor momento suele ser entre enero y marzo.', due:'2027-03-15'},
+ {id:'c-nintendo', t:'Apuntarse al sorteo de entradas del Nintendo Museum', s:'Funciona por sorteo con varios meses de antelación. Revisar fechas en su web.', due:'2027-05-01'},
+ {id:'c-ryokan', t:'Reservar los dos ryokan (Noboribetsu y Takayama)', s:'Plan con cena y desayuno (1泊2食).', due:'2027-03-31'},
+ {id:'c-seguro', t:'Contratar seguro de viaje con cobertura médica y cancelación', s:'Agosto es temporada de tifones. Que cubra retrasos y cambios.', due:'2027-04-30'},
+ {id:'c-pases', t:'Comprar los tres pases de tren regionales', s:'Se compran online. Ver condiciones de canje y antelación máxima.', due:'2027-06-30'},
+ {id:'c-peach', t:'Comprar el vuelo Sapporo → Osaka', s:'Peach y Jetstar sacan ofertas. Añadir maleta solo si hace falta.', due:'2027-05-31'},
+ {id:'c-ghibli', t:'Comprar entradas del Museo Ghibli (4 de agosto)', s:'Salen el día 10 de julio a las 10:00 hora de Japón (03:00 en España).', due:'2027-07-10'},
+ {id:'c-bus', t:'Reservar bus Osaka ↔ Tokushima para el Awa Odori', s:'', due:'2027-07-13'},
+ {id:'c-shinkansen', t:'Reservar asientos de shinkansen del norte', s:'La venta abre un mes antes. El 6 de agosto empieza Obon en algunas zonas.', due:'2027-07-06'},
+ {id:'c-shirakawa', t:'Reservar los buses Kanazawa → Shirakawa-go → Takayama', s:'Aunque el pase los cubre, hay que reservar plaza.', due:'2027-07-21'},
+ {id:'c-usj', t:'Decidir Universal Studios y comprar entrada', s:'Precio variable por fecha. Añadir Express Pass si se quiere asegurar Nintendo World.', due:'2027-07-31'},
+ {id:'c-esim', t:'eSIM de datos para Japón', s:'Ubigi, Airalo, Holafly o similar. Instalar antes de salir.', due:'2027-07-25'},
+ {id:'c-vjw', t:'Rellenar Visit Japan Web', s:'Registro de inmigración y aduanas con código QR. Pasaporte español sin visado hasta 90 días.', due:'2027-07-27'},
+ {id:'c-dinero', t:'Tarjeta sin comisiones (Revolut, Wise o similar) y algo de efectivo', s:'Los cajeros de 7-Eleven aceptan tarjetas extranjeras.', due:'2027-07-20'},
+ {id:'c-suica', t:'Añadir Suica al móvil', s:'En iPhone desde la app Cartera. En Android la Welcome Suica física o la app Welcome Suica Mobile.', due:'2027-07-28'},
+];
+
+const TIPS = [
+ {h:'Calor de agosto', items:['Entre 32 y 36 °C con mucha humedad en Tokio, Kioto y Osaka. Hokkaido y los Alpes son el respiro.','Hacer las visitas al aire libre antes de las 11:00 y después de las 16:00. Mediodía para museos, comida y siesta.','Toallita para el sudor, abanico, gorra y bebidas isotónicas (Pocari Sweat) del konbini.']},
+ {h:'Obon y aglomeraciones', items:['Del 13 al 16 de agosto media Japón viaja. Trenes llenos y hoteles más caros.','Reservar siempre asiento en shinkansen esos días.','Los sitios famosos, a primera hora. A las 7:00 Fushimi Inari o Arashiyama son otro mundo.']},
+ {h:'Tifones', items:['Agosto y septiembre son temporada de tifones. Un tifón puede cancelar trenes y vuelos un día.','Consultar tenki.jp o la app Safety tips. Tener un plan B de interior por ciudad.','Seguro de viaje que cubra cambios y retrasos.']},
+ {h:'Ahorrar sin pasar penurias', items:['Desayuno de konbini (onigiri, sándwich de huevo, café) por unos 600 ¥.','Comida de mediodía en teishoku, ramen o udon por 900 a 1.400 ¥. Muchos restaurantes caros tienen menú de mediodía.','Supermercados después de las 19:00: bento y sushi con descuento del 20 al 50 %.','Agua gratis en todos los restaurantes. No se dejan propinas.']},
+ {h:'Takkyubin, el secreto del viaje', items:['Enviar la maleta grande de hotel a hotel por unos 2.000 a 3.000 ¥ y viajar solo con mochila.','Plan: Tokio → Osaka el 5 ago (norte con mochila) y Kioto → Hiroshima el 19 ago (Kanazawa y Takayama con mochila).','Se gestiona en recepción del hotel o en cualquier konbini. Tarda 1 o 2 días.']},
+ {h:'Etiqueta básica', items:['En onsen: ducharse antes, no meter la toalla en el agua y el bañador no se usa. Los tatuajes pueden estar prohibidos (buscar onsen "tattoo friendly" o tapar con parches).','Silencio en trenes y nada de hablar por teléfono.','Hay pocas papeleras. Llevar una bolsa para la basura.','Descalzarse donde haya escalón de entrada o zapatillas preparadas.']},
+ {h:'Apps útiles', items:['Google Maps para transporte (horarios y andenes muy precisos).','Japan Transit Planner (NAVITIME) para combinar pases JR.','Google Translate con cámara para cartas y carteles.','Tabelog para encontrar restaurantes buenos (3,5 es una nota alta).']},
+];
+
+const PHRASES = [
+ ['すみません','sumimasen','Perdone · disculpe · para llamar al camarero'],
+ ['ありがとうございます','arigatō gozaimasu','Muchas gracias'],
+ ['これをください','kore o kudasai','Esto, por favor'],
+ ['お会計お願いします','okaikei onegaishimasu','La cuenta, por favor'],
+ ['〜はどこですか','… wa doko desu ka','¿Dónde está …?'],
+ ['大丈夫です','daijōbu desu','Está bien · no hace falta (por ejemplo, bolsa)'],
+ ['いただきます','itadakimasu','Se dice antes de comer'],
+ ['乾杯','kanpai','¡Salud!'],
+];
+
+/* Presupuesto por defecto (por persona) */
+const BUDGET_DEFAULT = {
+  vuelos:{v:1100, u:'€', l:'Vuelos internacionales', s:'Multidestino BCN → Tokio, KIX → BCN'},
+  interno:{v:12000, u:'¥', l:'Vuelo Sapporo → Osaka', s:'Low cost con mochila'},
+  pases:{v:76800, u:'¥', l:'Tres pases de tren regionales', s:'40.000 + 19.800 + 17.000'},
+  transp:{v:45000, u:'¥', l:'Resto de transporte', s:'Metro, Hakone, bus Tokushima, aeropuertos, takkyubin'},
+  aloj:{v:0, u:'¥', l:'Alojamiento', s:'Calculado desde la pestaña Alojamientos (punto medio del rango ÷ viajeros)', auto:true},
+  comida:{v:5000, u:'¥/día', l:'Comida y bebida', s:'Konbini, ramen, teishoku y alguna cena especial', perDay:true},
+  ocio:{v:45000, u:'¥', l:'Entradas y actividades', s:'Templos, museos, teamLab, Ghibli, Nintendo, Universal'},
+  compras:{v:40000, u:'¥', l:'Compras y caprichos', s:'Figuras, manga, regalos'},
+  seguro:{v:150, u:'€', l:'Seguro, eSIM y varios', s:'Seguro con cancelación y datos móviles'},
+};
+
+/* =========================================================
+   UTILIDADES
+   ========================================================= */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const store = {
+  get(k, d){ try{ const v = localStorage.getItem('jp27-'+k); return v ? JSON.parse(v) : d }catch(e){ return d } },
+  set(k, v){ try{ localStorage.setItem('jp27-'+k, JSON.stringify(v)) }catch(e){} }
+};
+const MESES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+const DIAS = ['dom','lun','mar','mié','jue','vie','sáb'];
+const pd = s => { const [y,m,d] = s.split('-').map(Number); return new Date(Date.UTC(y,m-1,d)) };
+const fmtD = s => { const x = pd(s); return `${DIAS[x.getUTCDay()]} ${x.getUTCDate()} ${MESES[x.getUTCMonth()]}` };
+const nights = (a,b) => Math.round((pd(b)-pd(a))/864e5);
+const yen = n => Math.round(n).toLocaleString('es-ES') + ' ¥';
+const eur = n => Math.round(n).toLocaleString('es-ES') + ' €';
+const stayById = id => STAYS.find(s => s.id === id);
+const color = reg => REGION[reg] || 'var(--ai)';
+const links = t => t.replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, (_,a,b) => `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(b)}" target="_blank" rel="noopener">${a}</a>`);
+const TAGS = {cultura:'Templos y cultura', anime:'Anime y tecnología', naturaleza:'Naturaleza', onsen:'Onsen', comida:'Gastronomía', festival:'Festival', transporte:'Día de traslado'};
+
+/* =========================================================
+   CABECERA
+   ========================================================= */
+function header(){
+  const today = new Date(); const t = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+  const left = Math.max(0, Math.round((pd(TRIP.start) - t)/864e5));
+  $('#cd').textContent = left.toLocaleString('es-ES');
+  const totalN = STAYS.reduce((a,s)=>a+nights(s.in,s.out),0);
+  const cities = new Set(STAYS.map(s=>s.name)).size;
+  $('#facts').innerHTML = [
+    ['30', 'días'], [totalN, 'noches'], [cities, 'ciudades con noche'], ['5', 'festivales de verano'], ['2', 'noches de ryokan'],
+    [`<span id="fpp">…</span>`, 'por persona (estimado)']
+  ].map(([a,b]) => `<span><b>${a}</b> ${b}</span>`).join('');
+}
+
+/* =========================================================
+   VISTAS
+   ========================================================= */
+const VIEWS = [['ruta','Ruta'],['dias','Día a día'],['transporte','Transporte'],['alojamiento','Alojamientos'],['presupuesto','Presupuesto'],['preparativos','Preparativos'],['consejos','Consejos']];
+
+function vRuta(){
+  const line = ROUTE.map(r => {
+    const s = r.stay ? stayById(r.stay) : r;
+    const c = color(s.reg);
+    const chips = (r.chips||[]).map(([k,v]) => `<span class="chip ${k}">${esc(v)}</span>`).join('');
+    return `<li class="stop ${r.mini?'mini':''} ${r.air?'air':''}" style="--c:${c}">
+      <span class="dot" aria-hidden="true"></span>
+      <div><div class="nm"><strong>${esc(s.name)}</strong><span class="jp">${esc(s.jp||'')}</span></div>
+      <div class="meta">${esc(r.meta)}</div>${chips?`<div class="chips">${chips}</div>`:''}</div></li>`;
+  }).join('');
+
+  // calendario jul 26 (lunes) a ago 29
+  let cells = ['lun','mar','mié','jue','vie','sáb','dom'].map(d=>`<div class="h">${d}</div>`).join('');
+  const first = pd('2027-07-26');
+  for(let i=0;i<35;i++){
+    const dt = new Date(first.getTime()+i*864e5);
+    const iso = dt.toISOString().slice(0,10);
+    const day = DAYS.find(x=>x.d===iso);
+    if(!day){ cells += `<div></div>`; continue }
+    const s = stayById(day.base);
+    const c = s ? color(s.reg) : 'var(--l-air)';
+    const fest = day.tags.includes('festival') ? '<span class="f" title="Festival"></span>' : '';
+    cells += `<a href="#dias" data-day="${iso}" style="--c:${c}"><span class="d">${dt.getUTCDate()}${dt.getUTCDate()===1||i===4?' '+MESES[dt.getUTCMonth()]:''}${fest}</span><span class="c e">${esc(s?s.name:'Vuelo')}</span></a>`;
+  }
+
+  $('#v-ruta').innerHTML = `
+    <div><div class="eyebrow">Planteamiento</div><h2 style="font-size:26px">Una línea de norte a sur</h2>
+    <p class="lead">Entrada por Tokio, subida en tren hasta Hokkaido aprovechando los grandes festivales del norte, vuelo low cost a Osaka y vuelta por Kioto, los Alpes japoneses y Hiroshima. Se sale desde Kansai para no tener que volver a Tokio. Tres pases regionales en lugar del Japan Rail Pass nacional, que para esta ruta sale más caro.</p></div>
+    <div class="linemap">
+      <div class="panel"><ol class="line">${line}</ol></div>
+      <div style="display:grid;gap:16px;align-content:start">
+        <div class="panel"><div class="eyebrow" style="margin-bottom:10px">Calendario · toca un día para verlo</div><div class="cal">${cells}</div></div>
+        <div class="legend">
+          <span><i style="background:var(--l-kanto)"></i>Kanto</span><span><i style="background:var(--l-tohoku)"></i>Tohoku</span>
+          <span><i style="background:var(--l-hokkaido)"></i>Hokkaido</span><span><i style="background:var(--l-kansai)"></i>Kansai</span>
+          <span><i style="background:var(--l-chubu)"></i>Alpes y Hokuriku</span><span><i style="background:var(--l-chugoku)"></i>Hiroshima</span>
+          <span><i style="background:var(--shu);width:8px;height:8px;border-radius:50%"></i>Festival</span>
+        </div>
+        <div class="note"><b>Lo más urgente ahora:</b> la cama en Aomori para el 7 de agosto. Durante el Nebuta se agota con casi un año de antelación. Reserva con cancelación gratuita y ya se ajustará.</div>
+        <div class="note info"><b>Equipaje:</b> la ruta tiene cuatro noches seguidas de una sola noche en el norte. La idea es enviar la maleta grande de Tokio a Osaka por takkyubin y hacer Tohoku y Hokkaido solo con mochila.</div>
+      </div>
+    </div>`;
+  document.querySelectorAll('#v-ruta .cal a').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault(); go('dias', a.dataset.day);
+  }));
+}
+
+let dayFilter = 'todos';
+function vDias(){
+  const groups = [['todos','Todo']].concat(Object.entries(TAGS));
+  const notes = store.get('notes', {});
+  const list = DAYS.filter(d => dayFilter==='todos' || d.tags.includes(dayFilter)).map(d => {
+    const idx = DAYS.indexOf(d)+1;
+    const s = stayById(d.base);
+    const c = s ? color(s.reg) : 'var(--l-air)';
+    const x = pd(d.d);
+    const chips = d.tags.map(t => `<span class="chip ${t==='festival'?'fest':t==='onsen'?'onsen':''}">${TAGS[t]}</span>`).join('');
+    return `<article class="day" id="d-${d.d}" style="--c:${c}"><div class="bar"></div>
+      <div class="hd"><div class="date"><div class="dm">${DIAS[x.getUTCDay()]}</div><div class="dn">${x.getUTCDate()}</div><div class="dm">${MESES[x.getUTCMonth()]}</div></div>
+      <div><div class="daynum">Día ${idx} · ${esc(s?s.name+' '+s.jp:'En vuelo')}</div><h3>${esc(d.title)}</h3><div class="chips">${chips}</div></div></div>
+      <div class="body"><ul>${d.plan.map(p=>`<li>${links(p)}</li>`).join('')}</ul>
+      ${d.alt?`<div class="alt">${links(d.alt)}</div>`:''}
+      <details ${notes[d.d]?'open':''}><summary>Mis notas${notes[d.d]?' · guardadas':''}</summary>
+      <textarea id="n-${d.d}" data-note="${d.d}" placeholder="Reservas, horarios, restaurantes apuntados…">${esc(notes[d.d]||'')}</textarea></details></div></article>`;
+  }).join('');
+  $('#v-dias').innerHTML = `
+    <div><div class="eyebrow">30 días</div><h2 style="font-size:26px">Día a día</h2>
+    <p class="lead">Cada día tiene un plan principal y, si toca, una alternativa. Los nombres subrayados abren Google Maps. Las notas se guardan en este navegador.</p></div>
+    <div class="filters" role="group" aria-label="Filtrar días">${groups.map(([k,v])=>`<button type="button" data-f="${k}" aria-pressed="${k===dayFilter}">${v}</button>`).join('')}</div>
+    <div class="days">${list}</div>`;
+  document.querySelectorAll('#v-dias .filters button').forEach(b => b.addEventListener('click', () => { dayFilter = b.dataset.f; vDias() }));
+  document.querySelectorAll('#v-dias textarea').forEach(t => t.addEventListener('input', () => {
+    const n = store.get('notes', {}); n[t.dataset.note] = t.value; store.set('notes', n);
+  }));
+}
+
+function vTransporte(){
+  const passName = id => (PASSES.find(p=>p.id===id)||{}).name || '';
+  const rows = LEGS.map(l => `<tr style="--c:${color(l.reg)}"><td class="mono" style="white-space:nowrap">${esc(l.f)}</td>
+    <td><span class="sw"></span>${esc(l.de)} → ${esc(l.a)}${l.n?`<div style="font-size:12.5px;color:var(--muted)">${esc(l.n)}</div>`:''}</td>
+    <td>${esc(l.m)}${l.pass?`<div class="chips"><span class="chip pass">${esc(passName(l.pass))}</span></div>`:''}</td>
+    <td class="mono" style="white-space:nowrap">${esc(l.dur)}</td><td class="num mono">${esc(l.p)}</td></tr>`).join('');
+  const tk = PASSES.map(p => `<div class="ticket"><div class="eyebrow">Pase regional JR</div><h3 style="font-size:17px">${esc(p.name)}</h3>
+    <div class="pr">${yen(p.price)}</div><div class="ds mono">${esc(p.days)}</div><div class="vs">${esc(p.cover)}</div>
+    <div class="ds">${esc(p.vs)}</div><a class="btn" href="${p.url}" target="_blank" rel="noopener">Web oficial ↗</a></div>`).join('');
+  $('#v-transporte').innerHTML = `
+    <div><div class="eyebrow">Avión, tren y autobús</div><h2 style="font-size:26px">Transporte</h2>
+    <p class="lead">El Japan Rail Pass nacional de 21 días cuesta unos 100.000 ¥ y no compensa para esta ruta. Con tres pases regionales se cubren todos los trayectos largos por unos 76.800 ¥ por persona.</p></div>
+    <div class="passes">${tk}</div>
+    <div class="tbl"><table><thead><tr><th>Fecha</th><th>Trayecto</th><th>Medio</th><th>Duración</th><th style="text-align:right">Coste pp</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <div class="note info">Precios por persona. Los asientos de shinkansen se reservan desde un mes antes a las 10:00 hora de Japón. Los pases se usan días seguidos desde el primer uso, así que las fechas de esta tabla están ajustadas para no desperdiciar días.</div>`;
+}
+
+function vAloj(){
+  const cards = STAYS.map(s => {
+    const n = nights(s.in, s.out);
+    const mid = (s.precio[0]+s.precio[1])/2;
+    const url = `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(s.q)}&checkin=${s.in}&checkout=${s.out}&group_adults=${TRIP.travellers}&no_rooms=1`;
+    return `<article class="stay" style="--c:${color(s.reg)}">
+      <div class="signbox"><div class="k">${s.jp}</div><div class="r">${esc(s.name)}${s.onsen?' <span class="chip onsen">onsen</span>':''}</div><div class="kn">${s.kana}</div></div>
+      <div class="in"><dl>
+        <dt>Fechas</dt><dd class="mono">${fmtD(s.in)} → ${fmtD(s.out)} · ${n} ${n===1?'noche':'noches'}</dd>
+        <dt>Zona</dt><dd>${esc(s.zona)}</dd>
+        <dt>Tipo</dt><dd>${esc(s.tipo)}</dd>
+        <dt>Precio</dt><dd class="mono">${yen(s.precio[0])} a ${yen(s.precio[1])} por noche y habitación</dd>
+        <dt>Total</dt><dd class="mono">≈ ${yen(mid*n)} · ${eur(mid*n/TRIP.eurJpy)}</dd></dl>
+        <div style="font-size:13.5px;color:var(--muted)">${esc(s.tip)}</div>
+        <a class="btn" href="${url}" target="_blank" rel="noopener">Buscar en Booking ↗</a></div></article>`;
+  }).join('');
+  const tot = STAYS.reduce((a,s)=>a+nights(s.in,s.out)*(s.precio[0]+s.precio[1])/2,0);
+  $('#v-alojamiento').innerHTML = `
+    <div><div class="eyebrow">28 noches</div><h2 style="font-size:26px">Alojamientos</h2>
+    <p class="lead">Hoteles business en las ciudades (habitaciones pequeñas pero limpias, buena ubicación y precio contenido) y dos noches de capricho en ryokan con onsen. Precios por habitación doble en temporada alta de agosto.</p></div>
+    <div class="panel row" style="justify-content:space-between"><div><div class="eyebrow">Total estimado de alojamiento</div><div class="mono" style="font-size:24px;font-weight:600;color:var(--ai)">${yen(tot)} · ${eur(tot/TRIP.eurJpy)}</div></div><div style="color:var(--muted);font-size:13.5px">Para ${TRIP.travellers} personas en habitación doble</div></div>
+    <div class="stays">${cards}</div>`;
+}
+
+function vPresupuesto(){
+  const saved = store.get('budget', {});
+  const B = JSON.parse(JSON.stringify(BUDGET_DEFAULT));
+  Object.keys(saved).forEach(k => { if(B[k] && !B[k].auto) B[k].v = saved[k] });
+  const trav = saved._trav || TRIP.travellers;
+  const rate = saved._rate || TRIP.eurJpy;
+  const rows = Object.entries(B).map(([k,b]) => `<div class="brow"><label for="b-${k}">${b.l}<small>${b.s}</small></label>
+     <input id="b-${k}" type="number" inputmode="numeric" min="0" step="any" value="${b.v}" data-k="${k}" ${b.auto?'readonly tabindex="-1"':''}>
+     <span class="u">${b.u}</span></div>`).join('');
+  $('#v-presupuesto').innerHTML = `
+    <div><div class="eyebrow">Por persona</div><h2 style="font-size:26px">Presupuesto</h2>
+    <p class="lead">Estimación económica con dos noches de ryokan. Cambia cualquier cifra y el total se recalcula al momento. Los cambios se guardan en este navegador.</p></div>
+    <div class="budget">
+      <div class="panel">
+        <div class="brow"><label for="b-trav">Viajeros<small>Afecta al reparto del alojamiento</small></label><input id="b-trav" type="number" min="1" step="1" value="${trav}"><span class="u">pers.</span></div>
+        <div class="brow"><label for="b-rate">Cambio<small>Yenes por euro (noviembre 2026 ≈ 178)</small></label><input id="b-rate" type="number" min="1" step="0.1" value="${rate}"><span class="u">¥/€</span></div>
+        ${rows}
+        <div class="row" style="margin-top:12px"><button class="btn" type="button" id="b-reset">Restablecer valores</button></div>
+      </div>
+      <div class="panel total" style="position:sticky;top:calc(env(safe-area-inset-top,0px) + 60px)">
+        <div class="eyebrow">Total por persona</div><div class="big" id="t-pp">…</div>
+        <div class="mono" id="t-yen" style="color:var(--muted)"></div>
+        <div class="stack" id="t-stack"></div><div class="blegend" id="t-leg"></div>
+        <div style="border-top:1px solid var(--rule);margin-top:12px;padding-top:10px"><div class="eyebrow">Total del grupo</div><div class="mono" style="font-size:22px;font-weight:600" id="t-all"></div></div>
+      </div>
+    </div>`;
+  const COLS = ['var(--l-air)','var(--l-tohoku)','var(--ai)','var(--l-kanto)','var(--l-chubu)','var(--l-kansai)','var(--l-chugoku)','var(--l-hokkaido)','var(--muted)'];
+  function calc(){
+    const tv = Math.max(1, +$('#b-trav').value || 1);
+    const rt = Math.max(1, +$('#b-rate').value || TRIP.eurJpy);
+    const alojYen = STAYS.reduce((a,s)=>a+nights(s.in,s.out)*(s.precio[0]+s.precio[1])/2,0)/tv;
+    $('#b-aloj').value = Math.round(alojYen);
+    const s = {_trav:tv, _rate:rt};
+    const parts = Object.entries(B).map(([k,b],i) => {
+      let v = +$('#b-'+k).value || 0; if(!b.auto) s[k] = v;
+      let e = b.u==='€' ? v : (b.perDay ? v*30 : v)/rt;
+      return {l:b.l, e, c:COLS[i%COLS.length]};
+    });
+    store.set('budget', s);
+    const tot = parts.reduce((a,p)=>a+p.e,0);
+    $('#t-pp').textContent = eur(tot);
+    $('#t-yen').textContent = '≈ ' + yen(tot*rt);
+    $('#t-all').textContent = eur(tot*tv) + ` · ${tv} ${tv===1?'persona':'personas'}`;
+    $('#t-stack').innerHTML = parts.map(p=>`<span style="width:${(p.e/tot*100).toFixed(2)}%;background:${p.c}" title="${esc(p.l)}"></span>`).join('');
+    $('#t-leg').innerHTML = parts.map(p=>`<div><i style="background:${p.c}"></i><span>${esc(p.l)}</span><span class="mono">${eur(p.e)}</span></div>`).join('');
+    const f = $('#fpp'); if(f) f.textContent = eur(tot);
+  }
+  document.querySelectorAll('#v-presupuesto input').forEach(i => i.addEventListener('input', calc));
+  $('#b-reset').addEventListener('click', () => { store.set('budget', {}); vPresupuesto() });
+  calc();
+}
+
+function vPrep(){
+  const done = store.get('check', {});
+  const today = new Date().toISOString().slice(0,10);
+  const items = CHECK.slice().sort((a,b)=>a.due.localeCompare(b.due)).map(c => {
+    const late = !done[c.id] && c.due <= new Date(Date.now()+30*864e5).toISOString().slice(0,10);
+    const x = pd(c.due);
+    return `<label for="${c.id}"><input type="checkbox" id="${c.id}" ${done[c.id]?'checked':''}>
+      <span class="tx">${esc(c.t)}${c.s?`<small>${esc(c.s)}</small>`:''}</span>
+      <span class="when ${late?'urgent':''}">antes del ${x.getUTCDate()} ${MESES[x.getUTCMonth()]} ${String(x.getUTCFullYear()).slice(2)}</span></label>`;
+  }).join('');
+  const n = CHECK.filter(c=>done[c.id]).length;
+  $('#v-preparativos').innerHTML = `
+    <div><div class="eyebrow">Antes de salir</div><h2 style="font-size:26px">Preparativos</h2>
+    <p class="lead">Ordenados por fecha límite. En rojo lo que vence en los próximos 30 días. Las marcas se guardan en este navegador.</p></div>
+    <div class="prog" id="prog">${n} de ${CHECK.length} hechos</div>
+    <div class="check">${items}</div>`;
+  document.querySelectorAll('#v-preparativos input').forEach(i => i.addEventListener('change', () => {
+    const d = store.get('check', {}); d[i.id] = i.checked; store.set('check', d);
+    $('#prog').textContent = `${CHECK.filter(c=>d[c.id]).length} de ${CHECK.length} hechos`;
+  }));
+}
+
+function vConsejos(){
+  $('#v-consejos').innerHTML = `
+    <div><div class="eyebrow">Japón en agosto</div><h2 style="font-size:26px">Consejos</h2></div>
+    <div class="tips">${TIPS.map(t=>`<div class="panel"><h3>${esc(t.h)}</h3><ul>${t.items.map(i=>`<li>${esc(i)}</li>`).join('')}</ul></div>`).join('')}
+    <div class="panel"><h3>Frases de supervivencia</h3><div class="phr">${PHRASES.map(([j,r,e])=>`<span class="jp">${j}</span><span><span class="mono" style="font-size:12.5px">${r}</span><br><span class="es">${e}</span></span>`).join('')}</div></div></div>`;
+}
+
+/* =========================================================
+   NAVEGACIÓN
+   ========================================================= */
+const RENDER = {ruta:vRuta, dias:vDias, transporte:vTransporte, alojamiento:vAloj, presupuesto:vPresupuesto, preparativos:vPrep, consejos:vConsejos};
+function go(view, anchor){
+  if(location.hash !== '#'+view) history.replaceState(null,'','#'+view);
+  show(view, anchor);
+}
+function show(view, anchor){
+  if(!RENDER[view]) view = 'ruta';
+  VIEWS.forEach(([k]) => { $('#v-'+k).hidden = k!==view });
+  document.querySelectorAll('#tabs a').forEach(a => a.setAttribute('aria-current', a.dataset.v===view ? 'page' : 'false'));
+  if(view==='dias' && anchor){ dayFilter='todos'; vDias() }
+  if(anchor){ const el = document.getElementById('d-'+anchor); if(el) el.scrollIntoView({block:'start'}) }
+  else window.scrollTo(0,0);
+}
+$('#tabs').innerHTML = VIEWS.map(([k,v]) => `<a href="#${k}" data-v="${k}">${v}</a>`).join('');
+window.addEventListener('hashchange', () => show(location.hash.slice(1)));
+header();
+Object.values(RENDER).forEach(f => f());
+show(location.hash.slice(1) || 'ruta');
+</script>
