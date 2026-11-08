@@ -1,18 +1,18 @@
 # Japón 2027
 
-Cuaderno de viaje a Japón del 30 de julio al 28 de agosto de 2027.
+Cuaderno de viaje a Japón del 30 de julio al 28 de agosto de 2027: llegada a Osaka, Kioto, los Alpes, Hokkaido y 9 días finales en Tokio.
 
 Web estática de un solo archivo (`index.html`) pensada para GitHub Pages.
 
 ## Secciones
 
-- Ruta: diagrama de la línea Tokio → Hokkaido → Osaka → Kioto → Alpes → Hiroshima y calendario
-- Día a día: plan de los 30 días con enlaces a Google Maps y notas personales
-- Transporte: pases JR regionales y todos los trayectos con coste
-- Alojamientos: zona, tipo, precio orientativo y búsqueda en Booking para cada parada
-- Presupuesto: calculadora editable por persona
-- Preparativos: lista ordenada por fecha límite
-- Consejos: calor, Obon, tifones, ahorro, etiqueta y frases útiles
+- Resumen: mosaico de fotos de lo que veréis, la ruta ciudad a ciudad, calendario y mapa del viaje
+- Ciudades y mapas: qué ver en cada ciudad con foto, tiempo, precio y etiqueta, mapa de toda la ciudad y mapa por día
+- Día a día: horario de cada día con fotos, dónde dormís y ruta en Google Maps
+- Vuelos y transporte: qué vuelo comprar y cuándo, pases de tren y todos los trayectos
+- Alojamientos: una ficha por ciudad con búsqueda en Booking y Airbnb
+- Presupuesto: desglose por persona en yenes y euros
+- Preparativos y Consejos
 
 ## Publicar en GitHub Pages
 
@@ -22,6 +22,6 @@ La web quedará en `https://fearthefoca3.github.io/Japon2027/`.
 
 ## Editar el contenido
 
-Todo el contenido está en los objetos `STAYS`, `ROUTE`, `DAYS`, `LEGS`, `PASSES`, `CHECK` y `TIPS` al principio del `<script>` de `index.html`.
+Todo el contenido está en los objetos `SPOTS`, `CITIES`, `DAYS`, `LEGS`, `PASSES`, `CHECK` y `TIPS` al principio del `<script>` de `index.html`.
 
 Las notas, la lista de preparativos y el presupuesto se guardan en el navegador de cada dispositivo (localStorage).
