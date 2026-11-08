@@ -1,14 +1,14 @@
 # Japón 2027
 
-Cuaderno de viaje a Japón del 30 de julio al 28 de agosto de 2027: llegada a Osaka, Kioto, los Alpes, Hokkaido y 9 días finales en Tokio.
+Cuaderno de viaje a Japón del 30 de julio al 22 de agosto de 2027: llegada a Osaka, Kioto, los Alpes, ryokan en Hakone y 8 días finales en Tokio.
 
 Web estática de un solo archivo (`index.html`) pensada para GitHub Pages.
 
 ## Secciones
 
-- Resumen: mosaico de fotos de lo que veréis, la ruta ciudad a ciudad, calendario y mapa del viaje
+- Resumen: mosaico de fotos de lo que veréis, mapa de las paradas, la ruta ciudad a ciudad y calendario
 - Ciudades y mapas: qué ver en cada ciudad con foto, tiempo, precio y etiqueta, mapa de toda la ciudad y mapa por día
-- Día a día: horario de cada día con fotos, dónde dormís y ruta en Google Maps
+- Día a día: línea de tiempo de cada día (visitar, comer, tren, dormir) con fotos y ruta en Google Maps
 - Vuelos y transporte: qué vuelo comprar y cuándo, pases de tren y todos los trayectos
 - Alojamientos: una ficha por ciudad con búsqueda en Booking y Airbnb
 - Presupuesto: desglose por persona en yenes y euros
