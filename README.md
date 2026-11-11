@@ -2,7 +2,7 @@
 
 Cuaderno de viaje a Japón del 30 de julio al 22 de agosto de 2027: llegada a Osaka, Kioto, los Alpes, ryokan en Hakone y 8 días finales en Tokio.
 
-Web estática de un solo archivo (`index.html`) pensada para GitHub Pages.
+Web estática de un solo archivo (`index.html`) pensada para GitHub Pages, en español e inglés (botón ES | EN arriba, o enlace directo con `?lang=en`).
 
 ## Secciones
 
