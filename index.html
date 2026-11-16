@@ -9,7 +9,7 @@
 <meta name="description" content="Cuaderno del viaje a Japón del 30 de julio al 22 de agosto de 2027: de Osaka a Tokio pasando por Kioto, los Alpes y Hakone.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
 <style>
 /* Layout: cuaderno de ruta ferroviaria. Cabecera tipo cartel de estación, pestañas como andenes, contenido en una columna ancha. */
 :root{
@@ -27,20 +27,6 @@
   --f-display:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",system-ui,sans-serif;
   --f-body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --paper:#10151C; --sheet:#171E27; --ink:#E5EAF1; --muted:#9AA6B6; --rule:#2A3441;
-    --ai:#93B3EA; --ai-soft:#1D2A3E; --shu:#F0806A; --shu-soft:#3A221D; --ok:#6CC28F;
-    --l-kanto:#6CC05E; --l-tohoku:#5AA8DD; --l-hokkaido:#3CC5BA; --l-kansai:#F2A04A; --l-chubu:#B48AE0; --l-chugoku:#EC7469; --l-air:#9AA6B6;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --paper:#10151C; --sheet:#171E27; --ink:#E5EAF1; --muted:#9AA6B6; --rule:#2A3441;
-  --ai:#93B3EA; --ai-soft:#1D2A3E; --shu:#F0806A; --shu-soft:#3A221D; --ok:#6CC28F;
-  --l-kanto:#6CC05E; --l-tohoku:#5AA8DD; --l-hokkaido:#3CC5BA; --l-kansai:#F2A04A; --l-chubu:#B48AE0; --l-chugoku:#EC7469; --l-air:#9AA6B6;
-  color-scheme:dark;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -672,23 +658,298 @@ section[id^="sec-"]{scroll-margin-top:60px}
 }
 .exp,.dbar,.ec,.cmap{grid-template-columns:minmax(0,1fr)}
 
+/* ================= v4: diario de viaje japonés =================
+   Papel cálido, tinta azul, rojo de sello. Títulos en serif editorial, texto en sans.
+   Cabecera: barra fija con secciones + portada con foto y línea de la ruta. */
+:root{
+  --paper:#F5EBDD; --sheet:#FFFCF6; --ink:#192B43; --muted:#5E6470; --rule:#E3D6BD; --sand:#D8C6A5;
+  --ai:#192B43; --ai-soft:#EDE2CE; --shu:#C83D35; --shu-soft:#F6DFD8; --ok:#55695C; --green:#718477;
+  --l-kansai:#C83D35; --l-chugoku:#46618C; --l-chubu:#5F7566; --l-kanto:#A97F38; --l-air:#8B8377; --l-tohoku:#7C97B5; --l-hokkaido:#4E8686;
+  --f-display:"EB Garamond","Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",Georgia,serif;
+  --f-body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"Zen Kaku Gothic New","Hiragino Sans",system-ui,sans-serif;
+  --r:14px; --shadow:0 1px 2px rgba(25,43,67,.05),0 8px 22px rgba(25,43,67,.06); --bar:54px;
+  color-scheme:light;
+}
+body{background:var(--paper);font-size:15.5px}
+body::before{background:var(--paper)}
+.wrap{max-width:1140px}
+.mono{font-variant-numeric:tabular-nums;letter-spacing:.01em}
+a{color:var(--ink);text-decoration-color:var(--shu);text-underline-offset:3px}
+:focus-visible{outline-color:var(--shu)}
+::selection{background:var(--shu-soft)}
+
+/* barra superior */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:rgba(245,235,221,.93);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.tb{display:flex;align-items:center;gap:18px;height:var(--bar)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);flex:none}
+.brand .mark{width:34px;height:34px;display:block}
+.brand .bk{font-family:var(--f-display);font-weight:600;font-size:20px;letter-spacing:.02em;white-space:nowrap}
+nav.tabs{position:static;background:none;border:0;flex:1;min-width:0}
+#tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;justify-content:safe center}
+#tabs::-webkit-scrollbar{display:none}
+nav.tabs a{font-family:var(--f-body);font-size:13.5px;font-weight:500;color:var(--muted);padding:8px 8px 7px;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+nav.tabs a:hover{color:var(--ink);border-bottom-color:var(--sand)}
+nav.tabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--shu);font-weight:700}
+.lang{margin:0;flex:none;border-color:var(--sand);background:var(--sheet)}
+.lang button{font:700 12px/1 var(--f-body);padding:7px 11px;letter-spacing:.04em}
+.lang button[aria-pressed="true"]{background:var(--shu);color:#fff}
+@media (max-width:1180px){.brand .bk{display:none}#tabs{justify-content:flex-start}}
+@media (max-width:560px){:root{--bar:48px}.tb{gap:8px}.brand .mark{width:28px;height:28px}nav.tabs a{padding:7px 8px 6px;font-size:13.5px}.lang button{padding:6px 8px}}
+
+/* portada */
+header.top{position:relative;border:0;background:linear-gradient(180deg,#F1C7A6 0%,#F4DCC6 52%,#EEDFC9 100%);overflow:visible}
+.hero-art{position:absolute;inset:0;overflow:hidden}
+.hero-art svg{position:absolute;right:0;bottom:0;height:100%;width:auto;min-width:60%}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block}
+header.top::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(245,235,221,.95) 0%,rgba(245,235,221,.86) 34%,rgba(245,235,221,.25) 62%,rgba(245,235,221,0) 78%),linear-gradient(0deg,rgba(245,235,221,.9) 0%,rgba(245,235,221,0) 26%)}
+.hero-in{position:relative;z-index:2}
+.sign{grid-template-columns:minmax(0,1fr) auto;align-items:center;padding-block:56px 84px;gap:24px}
+.sign .kanji{font-family:"Shippori Mincho",var(--f-display);font-weight:700;font-size:20px;letter-spacing:.3em;color:var(--shu);line-height:1}
+.sign .roma{font-family:var(--f-display);font-weight:600;font-size:clamp(46px,7.4vw,84px);line-height:1;margin:10px 0 0;letter-spacing:-.01em;color:var(--ink)}
+.sign .sub{font-family:var(--f-display);font-size:clamp(17px,2.1vw,23px);line-height:1.35;color:var(--ink);margin-top:14px;max-width:26em;padding-top:12px;position:relative}
+.sign .sub::before{content:"";position:absolute;left:0;top:0;width:72px;height:2px;background:var(--shu)}
+.countdown{text-align:center;background:var(--sheet);border-radius:var(--r);box-shadow:var(--shadow);padding:16px 22px 14px;min-width:132px}
+.countdown .n{font-family:var(--f-display);font-size:46px;font-weight:600;color:var(--shu);line-height:1}
+.countdown .l{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);font-weight:700;margin-top:6px;border-top:1px solid var(--rule);padding-top:6px}
+.hero-cr{position:absolute;right:12px;top:10px;z-index:2;font-size:11px;color:var(--ink);background:rgba(255,252,246,.78);padding:2px 8px;border-radius:99px;text-decoration:none}
+.hero-cr:hover{background:var(--sheet)}
+.hwrap{position:absolute;left:0;right:0;bottom:0;transform:translateY(50%);z-index:3}
+.hroute{display:flex;align-items:center;gap:10px;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r);box-shadow:var(--shadow);padding:10px 18px;overflow-x:auto;scrollbar-width:none;max-width:980px;margin:0 auto}
+.hroute::-webkit-scrollbar{display:none}
+.hroute button{all:unset;cursor:pointer;display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);white-space:nowrap;padding:4px 2px;border-radius:6px;flex:none}
+.hroute button:hover{color:var(--shu)}
+.hroute button:focus-visible{outline:2px solid var(--shu);outline-offset:2px}
+.hroute i{width:10px;height:10px;border-radius:50%;background:var(--shu);flex:none}
+.hroute .hl{flex:1 1 18px;min-width:14px;height:1px;background:var(--ink);opacity:.55}
+.factsw{padding-top:46px}
+.facts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;padding:0;color:var(--muted);font-size:13px}
+.facts>span{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r);box-shadow:var(--shadow);padding:12px 16px;display:grid;gap:2px;line-height:1.3}
+.facts b{font-family:var(--f-display);font-size:28px;font-weight:600;color:var(--ink);line-height:1.05}
+.facts #fpp{white-space:nowrap}
+@media (max-width:860px){.facts{grid-template-columns:repeat(3,minmax(0,1fr))}.facts>span:last-child{grid-column:span 2}}
+@media (max-width:560px){
+  .sign{grid-template-columns:minmax(0,1fr);padding-block:30px 60px;gap:16px}
+  .sign .kanji{font-size:16px}
+  .sign .roma{font-size:44px;margin-top:8px}
+  .sign .sub{font-size:16.5px;line-height:1.35}
+  .countdown{display:flex;align-items:baseline;gap:10px;justify-self:start;padding:8px 14px;min-width:0}
+  .countdown .n{font-size:28px}
+  .countdown .l{border:0;padding:0;margin:0}
+  header.top::before{background:linear-gradient(180deg,rgba(245,235,221,.9) 0%,rgba(245,235,221,.8) 60%,rgba(245,235,221,.92) 100%)}
+  .hroute{padding:8px 12px;gap:8px}
+  .hroute button{font-size:11.5px;letter-spacing:.08em}
+  .factsw{padding-top:38px}
+  .facts{display:flex;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;gap:8px;padding:2px 0 6px;font-size:12px}
+  .facts>span{padding:8px 14px;flex:none;box-shadow:none}
+  .facts>span:last-child{grid-column:auto}
+  .facts b{font-size:22px}
+}
+
+/* fondo y pie con motivos */
+main{position:relative;isolation:isolate;padding-block:34px 72px}
+main::before{content:"";position:absolute;z-index:-1;right:0;top:0;width:min(300px,40vw);height:210px;opacity:.55;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30' viewBox='0 0 60 30'%3E%3Cg fill='%23F5EBDD' stroke='%23D8C6A5' stroke-width='1.3'%3E%3Ccircle cx='30' cy='0' r='29'/%3E%3Ccircle cx='30' cy='0' r='20' fill='none'/%3E%3Ccircle cx='30' cy='0' r='11' fill='none'/%3E%3Ccircle cx='0' cy='15' r='29'/%3E%3Ccircle cx='0' cy='15' r='20' fill='none'/%3E%3Ccircle cx='0' cy='15' r='11' fill='none'/%3E%3Ccircle cx='60' cy='15' r='29'/%3E%3Ccircle cx='60' cy='15' r='20' fill='none'/%3E%3Ccircle cx='60' cy='15' r='11' fill='none'/%3E%3Ccircle cx='30' cy='30' r='29'/%3E%3Ccircle cx='30' cy='30' r='20' fill='none'/%3E%3Ccircle cx='30' cy='30' r='11' fill='none'/%3E%3C/g%3E%3C/svg%3E");-webkit-mask-image:radial-gradient(ellipse at 100% 0%,#000 0%,transparent 70%);mask-image:radial-gradient(ellipse at 100% 0%,#000 0%,transparent 70%)}
+footer{border-top:0;padding:0 0 40px;background:var(--paper);position:relative;color:var(--muted)}
+footer::before{content:"";display:block;height:150px;margin-bottom:18px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 150' preserveAspectRatio='none'%3E%3Cpath d='M0 150V96l90-34 70 26 110-58 90 44 120-36 100 40 130-62 110 50 100-30 110 44 80-26 90 40v56z' fill='%23D8C6A5' opacity='.45'/%3E%3Cpath d='M0 150v-38l120-30 100 22 140-44 110 34 150-40 120 36 140-30 130 40 90-22 100 28v44z' fill='%23718477' opacity='.4'/%3E%3Cpath d='M0 150v-20l160-22 140 14 180-26 160 20 200-24 180 22 180-14v50z' fill='%23192B43' opacity='.35'/%3E%3C/svg%3E") bottom/100% 100% no-repeat}
+footer::after{content:"";position:absolute;right:max(24px,8vw);top:44px;width:86px;height:92px;opacity:.75;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 86 92'%3E%3Cg fill='%23192B43'%3E%3Cpath d='M2 10Q43 0 84 10l-2 8Q43 9 4 18z'/%3E%3Crect x='10' y='26' width='66' height='6'/%3E%3Crect x='17' y='14' width='7' height='78'/%3E%3Crect x='62' y='14' width='7' height='78'/%3E%3Crect x='40' y='16' width='6' height='12'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat}
+
+/* títulos */
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:600;letter-spacing:0}
+.eyebrow{font-size:11px;letter-spacing:.16em;font-weight:700;color:var(--muted)}
+.h2{font-size:clamp(28px,3.6vw,38px);display:flex;align-items:center;gap:12px;margin-top:4px}
+.h2::before{content:"";flex:none;width:28px;height:28px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-12 -12 24 24'%3E%3Cg fill='%23C83D35'%3E%3Cellipse cy='-6.3' rx='3.7' ry='5.5'/%3E%3Cellipse cy='-6.3' rx='3.7' ry='5.5' transform='rotate(72)'/%3E%3Cellipse cy='-6.3' rx='3.7' ry='5.5' transform='rotate(144)'/%3E%3Cellipse cy='-6.3' rx='3.7' ry='5.5' transform='rotate(216)'/%3E%3Cellipse cy='-6.3' rx='3.7' ry='5.5' transform='rotate(288)'/%3E%3C/g%3E%3Ccircle r='2.1' fill='%23F5EBDD'/%3E%3C/svg%3E") center/contain no-repeat}
+.h2::after{content:"";flex:1;height:1px;min-width:24px;background:linear-gradient(90deg,var(--shu),rgba(200,61,53,0))}
+.h3{font-size:24px;margin:0 0 12px}
+.lead{font-size:16px;color:var(--muted)}
+section.view{gap:32px}
+.day.one h3,.chead h3{font-size:30px}
+.rtitle h3{font-size:25px}
+.ec h3{font-size:25px;line-height:1.15}
+.shead h4{font-size:19px;font-weight:600}
+.gt{font-size:19px;border-left:3px solid var(--c);padding-left:12px}
+.tips .panel h3{font-size:21px}
+.fopt h3{font-size:21px}
+.jp,.chead .jp,.rtitle .jp,.stay .signbox .k,.phr .jp{font-family:"Shippori Mincho",var(--f-display)}
+
+/* superficies */
+.panel,.spot,.day,.stay,.rrow,.fopt,.ticket,.tile,.tbl,.legs,.ag,.check label{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r);box-shadow:var(--shadow)}
+.rrow{border-left:5px solid var(--c)}
+.ag{border-left:5px solid var(--c)}
+.spot,.ag,.mtile,.check label,.fopt,.tile{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.spot:hover,.ag:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(25,43,67,.06),0 14px 30px rgba(25,43,67,.10)}
+@media (prefers-reduced-motion:reduce){.spot,.ag,.mtile,.check label,.fopt,.tile{transition:none}.spot:hover,.ag:hover{transform:none}}
+.note{border-radius:0 var(--r) var(--r) 0;font-size:14.5px;border-left-width:3px}
+.note.info{border-left-color:var(--green);background:#E9EBDF}
+.tbox,.tsm,.dnext button{background:#FAF3E6;border-color:var(--rule);border-radius:12px}
+.dnext.flat button{background:var(--sheet);box-shadow:var(--shadow)}
+.ticket::after{background:var(--paper)}
+.fopt.ok{border:2px solid var(--green)}
+.fopt.ok .eyebrow{color:var(--ok)}
+.stay.ok{border-color:var(--green);box-shadow:inset 0 0 0 1px var(--green),var(--shadow)}
+
+/* controles */
+.btn{border-radius:99px;border-color:var(--ink);color:var(--ink);padding:8px 16px;font-weight:700;font-size:13px;letter-spacing:.02em;transition:background .15s,color .15s}
+.btn:hover{background:var(--ink);color:var(--sheet)}
+.btn.solid{background:var(--shu);border-color:var(--shu);color:#fff}
+.btn.solid:hover{background:#B2342D;border-color:#B2342D;color:#fff;filter:none}
+.filters button,.chipb{border-color:var(--sand);background:var(--sheet);font-weight:500;transition:background .15s,color .15s,border-color .15s}
+.filters button:hover,.chipb:hover{border-color:var(--ink)}
+.filters button[aria-pressed="true"],.chipb.on{background:var(--ink);border-color:var(--ink);color:var(--sheet)}
+.seg2{border-color:var(--sand)}
+.seg2 button[aria-pressed="true"]{background:var(--ink);color:var(--sheet)}
+.ibtn{border-color:var(--sand)}
+.ibtn:hover{border-color:var(--shu);color:var(--shu)}
+.chip{border-color:var(--sand);background:var(--sheet)}
+.chip.pass{border-color:var(--ink);color:var(--ink)}
+.chip.onsen{border-color:var(--l-hokkaido);color:var(--l-hokkaido)}
+.tag{border-color:var(--sand);letter-spacing:.03em}
+.spill{border-color:var(--sand);color:var(--ink);background:var(--sheet)}
+.mini{color:var(--ink)}
+.intl input,.check input{accent-color:var(--shu)}
+input,select,textarea{border-color:var(--sand)!important}
+.brow input,.brow select,.day textarea,.stayname{background:#FAF3E6}
+.agsearch input{background:var(--sheet);border-radius:99px;padding:10px 16px;box-shadow:var(--shadow)}
+.kind{background:var(--ai-soft);color:var(--ink);border-radius:4px}
+.kind.k-shinkansen{background:var(--ink);color:var(--sheet)}
+.kind.k-pase{border-color:var(--ink)}
+
+/* barras fijas secundarias */
+.dbar,.cpick{top:calc(env(safe-area-inset-top,0px) + var(--bar) + 1px);background:rgba(245,235,221,.95);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.day,.stay,.city,section[id^="sec-"]{scroll-margin-top:calc(var(--bar) + 20px)}
+#dview{scroll-margin-top:calc(var(--bar) + 110px)}
+.dsb button{border-color:var(--rule);border-radius:10px}
+.dsb b{font-family:var(--f-display);font-size:18px}
+.dsb button[aria-pressed="true"]{background:var(--shu);border-color:var(--shu);color:#fff}
+.dsb button[aria-pressed="true"] small{color:#fff}
+.dsl{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;border-top-width:3px}
+.cpick button{border-color:var(--sand)}
+.cpick b{color:#fff;font-family:var(--f-display);font-size:15px}
+.cpick button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--sheet)}
+
+/* fotos */
+.ph{border-radius:10px;background:var(--ai-soft)}
+.ph figcaption{font-size:12px;background:linear-gradient(transparent,rgba(25,43,67,.82))}
+.ph.broken figcaption::before{color:var(--shu);opacity:.6;font-family:"Shippori Mincho",serif}
+.mosaic2{gap:8px;grid-auto-rows:170px}
+.mtile{border-radius:12px;background:var(--ai-soft);box-shadow:var(--shadow)}
+.mtile .mcap{background:linear-gradient(transparent,rgba(25,43,67,.86));padding:30px 12px 10px}
+.mtile .mcap b{font-family:var(--f-display);font-size:18px;font-weight:600}
+.mtile.big .mcap b{font-size:26px}
+.mtile .mcap i{font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.sph{height:210px}
+.spot{overflow:hidden}
+.rthumbs .ph{border:3px solid #fff;box-shadow:0 1px 3px rgba(25,43,67,.18);border-radius:6px}
+.ec-ph{grid-auto-rows:96px;gap:6px}
+.ec-ph.n1{grid-auto-rows:198px}
+.lb .fr{border-radius:var(--r)}
+dialog.lb::backdrop{background:rgba(25,43,67,.9)}
+.lb button{border-radius:99px;border-color:var(--sand);background:var(--sheet)}
+@media (max-width:900px){.mosaic2{grid-auto-rows:140px}}
+
+/* mapa dibujado */
+.exp{padding:22px}
+.jmwrap{border-radius:12px;border:1px solid var(--rule)}
+.jm-sea{fill:#E4E9E2}
+.jm-land{fill:#FBF4E6;stroke:var(--sand);stroke-width:1.4}
+.jm-seg{stroke:var(--shu);opacity:.2;stroke-width:3.2}
+.jm-seg.done{opacity:1}
+.jm-spoke{stroke:var(--ink);opacity:.55}
+.jm-spoke.cur{opacity:1}
+.jm-l{font:600 19px var(--f-display);stroke:#FBF4E6}
+.jm-s{font:500 12px var(--f-body)}
+.jm-n{font:700 13px var(--f-body)}
+.jm-stop text{stroke:#FBF4E6}
+.jm-base circle{stroke:#FFFCF6}
+.jm-flyt{font:italic 500 15px var(--f-display);fill:var(--ink)}
+.jmleg i{border-top-color:var(--shu)}
+.lg-num{background:var(--ink)}
+.rnum{font-family:var(--f-display);font-size:19px;background:var(--c);color:#fff}
+.ec{border-top:0;padding-top:0}
+.ec-date{color:var(--shu);letter-spacing:.14em;font-size:11.5px;font-weight:700}
+.mapbox{border-radius:12px;border-color:var(--rule)}
+.mapcap{border-left-width:3px}
+
+/* día a día */
+.day .bar{height:4px}
+.day .date .dn{font-family:var(--f-display);font-size:38px;font-weight:600}
+.day .date .dm{letter-spacing:.14em;font-weight:700}
+.day .date{border-right:1px solid var(--rule);padding-right:14px}
+.tlp{letter-spacing:.16em;font-weight:700}
+.tlt{letter-spacing:.1em}
+.tlc{font-size:15px}
+.tli.ty-dormir .tlc{background:var(--ai-soft);border-radius:12px}
+.tld::after{background:var(--sheet)}
+.ag .date b{font-family:var(--f-display);font-size:26px}
+.agb b{font-family:var(--f-display);font-size:19px}
+
+/* transporte, alojamiento */
+.tile b,.ticket .pr,.fopt .pr{font-family:var(--f-display);font-size:28px;color:var(--ink);font-weight:600}
+.leg .lt b{font-family:var(--f-display);font-size:18px}
+.leg summary:hover,.leg[open] summary,.leg .lb2{background:#FAF3E6}
+.pdays div{background:var(--ai-soft);border-radius:8px}
+.pdays b{color:var(--shu)}
+.ftl li.hi{background:var(--shu-soft);border-radius:10px}
+.ftl li.hi .fm{color:var(--shu)}
+.stay .signbox{border-bottom:3px solid var(--c);background:linear-gradient(180deg,#FAF3E6,var(--sheet))}
+.stay .signbox .k{font-weight:700;font-size:32px}
+.stay .signbox .r{font-size:22px;font-weight:600}
+.timeline .seg{border-radius:8px;padding:7px 8px 6px}
+th{background:#FAF3E6;letter-spacing:.12em;font-weight:700}
+.desg tr.sum td{background:#FAF3E6}
+
+/* presupuesto */
+.total .big{font-family:var(--f-display);font-size:60px;color:var(--shu);font-weight:600}
+.tot2 .mono{font-family:var(--f-display);font-size:26px}
+.stack{height:22px;border-radius:99px;background:var(--ai-soft);gap:2px}
+.stack span:first-child{border-radius:99px 0 0 99px}
+.stack span:last-child{border-radius:0 99px 99px 0}
+.blegend{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.blegend div{grid-template-columns:auto minmax(0,1fr);gap:2px 8px;background:#FAF3E6;border:1px solid var(--rule);border-radius:10px;padding:8px 10px;align-items:center}
+.blegend i{width:10px;height:10px;border-radius:50%}
+.blegend .mono{grid-column:1/-1;font-family:var(--f-display);font-size:20px;font-weight:600}
+.blegend span{font-size:12.5px;line-height:1.3}
+.brow{border-bottom-color:var(--rule)}
+
+/* preparativos */
+.pbar{height:12px;background:var(--ai-soft);border:1px solid var(--rule)}
+.pbar i{background:linear-gradient(90deg,var(--green),var(--ok))}
+.prog{font-family:var(--f-display);font-size:20px;color:var(--ink)}
+.check{gap:8px}
+.check label{padding:12px 14px;border-left:4px solid var(--sand)}
+.check label:hover{border-color:var(--sand);border-left-color:var(--shu)}
+.check label:has(input:checked){background:#EEF0E6;border-left-color:var(--green);box-shadow:none}
+.check label:has(.urgent){border-left-color:var(--shu)}
+.check .tx{font-weight:500}
+.check small{font-weight:400}
+.check .when{font-size:12px;background:#FAF3E6;border-radius:99px;padding:2px 9px}
+.check .when.urgent{background:var(--shu-soft)}
+.phr .jp{font-size:17px}
+
 </style>
 </head>
 <body>
+<div class="topbar"><div class="wrap tb">
+  <a class="brand" href="#resumen" aria-label="日本 2027"><svg class="mark" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="17" fill="#C83D35"/><g fill="#FFFCF6"><path d="M7 11.2Q17 8 27 11.2l-.6 2.3Q17 10.6 7.6 13.5z"/><rect x="9.5" y="15.6" width="15" height="1.9"/><rect x="11.4" y="12.4" width="2.1" height="14.6"/><rect x="20.5" y="12.4" width="2.1" height="14.6"/></g></svg><span class="bk">日本 2027</span></a>
+  <nav class="tabs" id="tabsnav" aria-label="Secciones"><div id="tabs"></div></nav>
+  <div class="lang" id="lang" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" lang="es">ES</button><button type="button" data-lang="en" lang="en">EN</button></div>
+</div></div>
 <header class="top">
-  <div class="stripe" aria-hidden="true"><span style="background:var(--l-kansai)"></span><span style="background:var(--l-chugoku)"></span><span style="background:var(--l-chubu)"></span><span style="background:var(--l-kanto)"></span></div>
-  <div class="wrap">
+  <div class="hero-art" aria-hidden="true"><svg viewBox="0 0 800 400" preserveAspectRatio="xMaxYMax slice"><circle cx="560" cy="150" r="86" fill="#F7E3D2" opacity=".9"/><path d="M0 400V300l120-40 90 30 150-150 40 22 36-16 130 150 110-50 124 60v94z" fill="#B9A9A8" opacity=".55"/><path d="M324 162l36-22 40 22 36-16 22 26-40-8-30 14-28-12z" fill="#FFFCF6" opacity=".9"/><path d="M0 400v-70l140-36 120 26 160-44 130 38 150-34 100 30v90z" fill="#718477" opacity=".5"/><path d="M0 400v-34l200-26 180 18 220-28 200 26v44z" fill="#192B43" opacity=".4"/></svg></div>
+  <img class="hero-img" id="hero-img" alt="">
+  <a class="hero-cr" id="hero-cr" target="_blank" rel="noopener"></a>
+  <div class="wrap hero-in">
     <div class="sign">
       <div>
         <div class="kanji">日本 2027</div>
-        <div class="roma" id="t-roma">Japón 2027</div>
+        <h1 class="roma" id="t-roma">Japón 2027</h1>
         <div class="sub" id="t-sub">Cuaderno de ruta · 30 jul → 22 ago · de Osaka a Tokio pasando por Kioto, los Alpes y Hakone</div>
       </div>
-      <div class="countdown"><div class="lang" id="lang" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" lang="es">ES</button><button type="button" data-lang="en" lang="en">EN</button></div><div class="n mono" id="cd">…</div><div class="l" id="t-cdl">días para salir</div></div>
+      <div class="countdown"><div class="n mono" id="cd">…</div><div class="l" id="t-cdl">días para salir</div></div>
     </div>
-    <div class="facts" id="facts"></div>
   </div>
+  <div class="hwrap"><div class="wrap"><div class="hroute" id="hroute"></div></div></div>
 </header>
+<div class="wrap factsw"><div class="facts" id="facts"></div></div>
 
 <dialog class="lb" id="lb" aria-label="Foto ampliada">
   <div class="fr">
@@ -699,8 +960,6 @@ section[id^="sec-"]{scroll-margin-top:60px}
     </div>
   </div>
 </dialog>
-
-<nav class="tabs" id="tabsnav" aria-label="Secciones"><div class="wrap" id="tabs"></div></nav>
 
 <main class="wrap">
   <section class="view" id="v-resumen"></section>
@@ -1216,6 +1475,13 @@ function header(){
     [DAYS.length,L('días','days')], [totalN,L('noches','nights')], [CITIES.length,L('alojamientos','places to stay')], [Object.values(SPOTS).filter(s=>s.tag!=='info').length,L('sitios para ver','sights')],
     [`<span id="fpp">…</span>`, L('por persona sin compras','per person excluding shopping')]
   ].map(([a,b]) => `<span><b>${a}</b> ${b}</span>`).join('');
+  /* portada: foto ya usada en el cuaderno (lago Ashi y el Fuji) y línea de la ruta con las ciudades */
+  const hp = PH['hakone1'], hi = $('#hero-img'), hc = $('#hero-cr');
+  if(hp && hi){
+    if(!hi.dataset.set){ hi.dataset.set = '1'; hi.addEventListener('error', () => { hi.hidden = true; hc.hidden = true }); hi.src = phUrl(hp[0], 1800) }
+    hc.href = phPage(hp[0]); hc.textContent = L('Foto: Wikimedia Commons ↗','Photo: Wikimedia Commons ↗');
+  }
+  $('#hroute').innerHTML = CITIES.map(c => `<button type="button" data-goc="${c.id}"><i style="background:${color(c.reg)}"></i>${esc(c.name)}</button>`).join('<span class="hl" aria-hidden="true"></span>');
 }
 
 /* =========================================================
